@@ -11,9 +11,6 @@ TODO:
 		- 3 Pictures with upload button (to change carousel)
 	-USER PAGE
 
-	This version is not organized yet and does not use OOP or a framework. It is just a barebones working website with Bootstrap"
-	
-
 Pages:
 	- index
 		0- logo
@@ -58,4 +55,3 @@ Pages:
 		- telephone number
 		- email
 		- phone number
-		- links to fb, shopee, lazada, etc.
