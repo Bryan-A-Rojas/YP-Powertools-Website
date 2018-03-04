@@ -140,6 +140,12 @@ hr{
 	cursor: pointer;
 }
 
+.rounded-square-size{
+	width: 400px;
+	height: 300px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 
 #footer-black{
 	background-color: black;
