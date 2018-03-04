@@ -1,0 +1,151 @@
+html{
+	height: 100%;
+}
+
+body{
+	background-size: cover;
+	background-position: center;
+	font-family: 'Patua One';
+}
+
+h1{
+	font-weight: 700;
+	font-size: 5em;
+}
+
+hr{
+	width: 400px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+	color: white;
+}
+
+.navbar-expand-lg .collapse .navbar-nav>li>a {
+	color: white;
+}
+
+.navbar-expand-lg .collapse .navbar-nav>li>a:hover{
+	color: #546970;
+}
+
+.navbar-expand-lg .navbar-brand {
+		font-family: 'Plaster';
+		color: white;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+	color: white;
+}
+
+.navbar-expand-lg .navbar-brand:hover {
+	color: #546970;
+}
+
+#logo-text{
+	text-align: center;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+				 0px 8px 13px rgba(0,0,0,0.1),
+				 0px 18px 23px rgba(0,0,0,0.1);
+	 font-size: 3.8em;
+	 font-family: 'Plaster';
+	 padding-bottom: 15%;
+}
+
+#logo-padding{
+	padding-top: 13%;
+	display: block; /*for the img inside your div */ 
+	margin: 0 auto;
+}
+
+.footer {
+   position: relative;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+   text-align: center;
+}
+
+.carousel {
+  width:950px;
+  height:500px;
+  margin: auto;
+}
+
+.w-100 {
+	width: 100%!important;
+    height: 500px;
+}
+
+#bg-dark{
+	background-color: #000!important;
+}
+
+.arrow-size{
+	font-size:5em;
+}
+
+.arrow-black{
+	color:black; 
+}
+
+/* reduce the height of the carousel - the number is percent of the viewport height */
+.carousel-inner .carousel-products{
+    height:50vh;
+}
+/*adjust the position of the inserted image - it still fits the width of the container */
+.mbr-section {
+    background-position:50% 80%;
+    height:50vh;
+}
+/*push down the caption to avoid overlapping with the navbar */
+.container-slide {
+    padding-top:80px;
+}
+
+.column-products {
+	border: 1px solid purple;
+}
+
+.column-item {
+	border: 1px solid blue;
+	height: 100px;
+	width: 100px;
+}
+
+.parallax { 
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#front-page-background{
+	/* The image used */
+    background-image: url("../images/front-page-background.png");
+}
+
+.icon-size{
+	width:60px;
+	height:50px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+
+#footer-black{
+	background-color: black;
+	color: white;
+}
+
+.pagination-placement{
+	margin: auto;
+}
