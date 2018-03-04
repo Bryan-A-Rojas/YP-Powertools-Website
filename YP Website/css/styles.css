@@ -149,3 +149,7 @@ hr{
 .pagination-placement{
 	margin: auto;
 }
+
+.product-button:hover{
+	background-color: #B4B4B2;
+}
