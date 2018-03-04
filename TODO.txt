@@ -1,0 +1,61 @@
+TODO:
+	0- Logo
+	0- Header should have navbar
+	0- Footer should have copyright
+
+	-SIGNUP PAGE
+	-LOGIN PAGE
+	-ADMIN PAGE
+		- 3 Pictures with upload button (to change carousel)
+	-SUPERADMIN PAGE
+		- 3 Pictures with upload button (to change carousel)
+	-USER PAGE
+
+	This version is not organized yet and does not use OOP or a framework. It is just a barebones working website with Bootstrap"
+	
+
+Pages:
+	- index
+		0- logo
+		0- navbar
+		0- carousel (4 items)
+		- mailing list
+		0- copyright
+
+	- navbar
+		- sign up & login redirects to another page
+
+	- sign up & login
+		- Make php script
+		- redirect to user/admin/superadmin page
+
+	- user page
+		-
+
+	- admin
+		- Should have custom navbar
+		- can change front page carousel photos
+		- can see all users
+
+	- super admin
+		- can change front page carousel photos
+		- can see all users & admins
+
+	- products
+		- search bar
+		- products (cards) 3 columns 3 rows
+		- pagination
+		- modal
+
+	- about us
+		- meaning of yp
+		- mission and vision
+		- year they started
+		- history
+
+	- contact us
+		- google maps of two branches
+		- telephone number
+		- email
+		- phone number
+		- links to fb, shopee, lazada, etc.
