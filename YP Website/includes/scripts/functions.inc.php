@@ -40,4 +40,70 @@ function move_image($FilesArray){
 	}
 }
 
-?>
+function getProductById($id_number){
+	//Require database header
+	require_once 'dbh.inc.php';
+	//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
+	$sql = "SELECT * FROM products WHERE id='$id_number'";
+	//Query sql string
+	$Database->query($sql);
+	//loop through information
+	// while(){
+
+	// }
+	//Store data in associative array called product_information
+	//return product_information
+}
+
+
+
+
+//Experimental code
+function open_database_connection(){
+    $connection = new PDO("mysql:host=localhost;dbname=yp_powertools_database", 'root', '');
+    return $connection;
+}
+
+function close_database_connection(&$connection){
+    $connection = null;
+}
+
+function get_products($search = null, $sort = null){
+    $Database = open_database_connection();
+    
+    $sql = "SELECT * FROM products";
+
+    if($search != null){
+		$sql .= " WHERE LIKE %" . $search. "%";
+	}
+
+    if($sort != null){
+    	$sql .= " SORT BY " . $sort . " ASC";
+	}
+
+	$result = $Database->query($sql);
+
+    $products = array();
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $products[] = $row;
+    }
+
+    close_database_connection($connection);
+
+    return $products;
+}
+
+function display_product($id_number){
+	$Database = open_database_connection();
+   
+	$result = $Database->query("SELECT * FROM products WHERE id=$id_number");
+
+    $products = array();
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $products[] = $row;
+    }
+
+    close_database_connection($connection);
+
+    return $products;	
+}
