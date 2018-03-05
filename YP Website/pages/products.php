@@ -62,89 +62,22 @@ include '../includes/navbar.inc.php';
     <br>
     <!-- Columns -->
     <div class="row">
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <a href="../pages/specific_product_page.php?productid=1" type="button" class="btn btn-link product-button">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</a>
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
+        <?php
+            require_once '../includes/scripts/functions.inc.php';
 
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_150146.jpg">
-					</button>
+            $products_array = get_all_products();
+        ?>
 
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Asaki - Table Vice/20180217_155142.jpg">
-					</button>
-
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Finish Sander HT-FS 18702/20180217_150810.jpg">
-					</button>
-
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
-
-        <div class="col-lg-4 col-sm-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-            <h2>Product Name</h2>
-            <p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-        </div>
+        <?php foreach ($products_array as $product): ?>
+            <div class='col-lg-4 col-sm-6'>
+                <a href='../pages/specific_product_page.php?productid=<?php echo $product['product_id']?>' type='button' class='btn btn-link product-button'>
+                <img class='rounded-square-size img-rounded img-fluid' src='../images/products/<?php echo $product['product_image']?>'>
+                </a>
+                
+                <h2><?php echo $product['product_name'] ?></h2>
+                <p style="color:green;">PHP <?php echo $product['product_price'] ?></p>
+            </div>
+        <?php endforeach ?>
 
     </div>
 

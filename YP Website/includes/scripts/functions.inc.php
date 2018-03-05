@@ -40,70 +40,93 @@ function move_image($FilesArray){
 	}
 }
 
-function getProductById($id_number){
+function get_all_products(){
 	//Require database header
 	require_once 'dbh.inc.php';
 	//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-	$sql = "SELECT * FROM products WHERE id='$id_number'";
+	$sql = "SELECT * FROM products";
 	//Query sql string
-	$Database->query($sql);
-	//loop through information
-	// while(){
+	$result = $Database->query($sql);
 
-	// }
-	//Store data in associative array called product_information
-	//return product_information
+	//Array to store results
+	$resultsArray = array();
+
+	//loop through information
+    while($row = $result->fetch_assoc()) {
+        $resultsArray[] = $row;
+    }
+
+	//return array
+	return $resultsArray;
 }
 
+function get_specific_product($product_id){
+	//Require database header
+	require_once 'dbh.inc.php';
+	//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
+	$sql = "SELECT * FROM products WHERE product_id = $product_id";
+	//Query sql string
+	$result = $Database->query($sql);
 
+	//Array to store results
+	$resultsArray = array();
+
+	//loop through information
+    while($row = $result->fetch_assoc()) {
+        $resultsArray[] = $row;
+    }
+
+	//return array
+	return $resultsArray;
+}
 
 
 //Experimental code
-function open_database_connection(){
-    $connection = new PDO("mysql:host=localhost;dbname=yp_powertools_database", 'root', '');
-    return $connection;
-}
+// function open_database_connection(){
+//     $connection = new PDO("mysql:host=localhost;dbname=yp_powertools_database", 'root', '');
+//     return $connection;
+// }
 
-function close_database_connection(&$connection){
-    $connection = null;
-}
+// function close_database_connection(&$connection){
+//     $connection = null;
+// }
 
-function get_products($search = null, $sort = null){
-    $Database = open_database_connection();
+// function get_products($search = null, $sort = null){
+//     $Database = open_database_connection();
     
-    $sql = "SELECT * FROM products";
+//     $sql = "SELECT * FROM products";
 
-    if($search != null){
-		$sql .= " WHERE LIKE %" . $search. "%";
-	}
+//     if($search != null){
+// 		$sql .= " WHERE LIKE %" . $search. "%";
+// 	}
 
-    if($sort != null){
-    	$sql .= " SORT BY " . $sort . " ASC";
-	}
+//     if($sort != null){
+//     	$sql .= " SORT BY " . $sort . " ASC";
+// 	}
 
-	$result = $Database->query($sql);
+// 	$result = $Database->query($sql);
 
-    $products = array();
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $products[] = $row;
-    }
+//     $products = array();
+//     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+//         $products[] = $row;
+//     }
 
-    close_database_connection($connection);
+//     close_database_connection($connection);
 
-    return $products;
-}
+//     return $products;
+// }
 
-function display_product($id_number){
-	$Database = open_database_connection();
+// function display_product($id_number){
+// 	$Database = open_database_connection();
    
-	$result = $Database->query("SELECT * FROM products WHERE id=$id_number");
+// 	$result = $Database->query("SELECT * FROM products WHERE id=$id_number");
 
-    $products = array();
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $products[] = $row;
-    }
+//     $products = array();
+//     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+//         $products[] = $row;
+//     }
 
-    close_database_connection($connection);
+//     close_database_connection($connection);
 
-    return $products;	
-}
+//     return $products;	
+// }

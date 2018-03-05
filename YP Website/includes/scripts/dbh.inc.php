@@ -13,4 +13,4 @@
 	$db_name = "YP-Powertools-Database";
 
 	// Create connection
-	$Database = new mysqli($servername, $username, $password);
+	$Database = new mysqli($db_server_name, $db_username, $db_password, $db_name);

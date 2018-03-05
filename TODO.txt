@@ -20,7 +20,7 @@ Pages:
 		0- copyright
 
 	- navbar
-		- sign up & login redirects to another page
+		0- sign up & login redirects to another page
 
 	- sign up & login
 		- Make php script
@@ -39,10 +39,10 @@ Pages:
 		- can see all users & admins
 
 	- products
-		- search bar
-		- products (cards) 3 columns 3 rows
-		- pagination
-		- modal
+		0- search bar
+		0- products (cards) 3 columns 3 rows
+		X- pagination
+		X- modal
 
 	- about us
 		- meaning of yp

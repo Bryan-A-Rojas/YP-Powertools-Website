@@ -7,6 +7,11 @@ session_start();
 include '../includes/header.inc.php';
 include '../includes/navbar.inc.php';
 
+require_once "../includes/scripts/functions.inc.php";
+
+$product_information = get_specific_product($_GET['productid']);
+$product_information = $product_information[0];
+
 ?>
 
 <div class="jumbotron" style="padding:1rem 2rem">
@@ -16,14 +21,16 @@ include '../includes/navbar.inc.php';
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<img src="../images/Available in Stock/Hoyoma Japan - Jigsaw HT - JS650/20180217_153733.jpg" style="width:890px; height: 400px; padding-left: 200px">
+				<img src="../images/products/<?php echo $product_information['product_image'] ?>" style="width:890px; height: 400px; padding-left: 200px">
 			</div>	
 
 		</div>
-		<h2>Random Product</h2>
-		<h4 class="product_page-product_price">Price: 3000PHP</h4>
-		<h3>Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero explicabo ea laboriosam nostrum quas in vitae repellendus dignissimos, culpa ad pariatur atque vel suscipit, iusto facere nulla natus odio consectetur.</h3>
+		<h2><?php echo $product_information['product_name'] ?></h2>
+		<h4 class="product_page-product_price">Price: PHP <?php echo $product_information['product_price'] ?></h4>
+		<h3>Description: <?php echo $product_information['product_description'] ?></h3>
 		<form action="../includes/scripts/addtocart.php" method="POST">
+			<input type="hidden" name="product_id" value="<?php echo $product_information['product_id'] ?>">
+			<h2 style="display:inline;">Quantity: </h2><input type="number" name="quantity" min="1" max="5" value="1" style="font-size:30px">
 			<input type="submit" name="btnsubmit_addToCart" value="Add to Cart" class="btn btn-success btn-lg">
 		</form>
 	</div>
