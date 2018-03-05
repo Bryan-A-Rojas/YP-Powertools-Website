@@ -15,6 +15,7 @@ include '../includes/header.inc.php';
             	<!-- Logo image and text -->
                 <img src="../images/icons/yplogoblk.png" id="logo-padding">
                 <h1 id="logo-text">Powertools</h1>
+                <form action="">
         		<input type="file" name="txtuploadpicture" accept="image/*">
         		<br>
         		<input type="text" placeholder="Enter Name" name="txtfullname" required>
@@ -26,6 +27,7 @@ include '../includes/header.inc.php';
         		<input type="password" placeholder="Confirm Password" name="txtconfirmpassword" required>
         		<br>
         		<button type="submit" name="submit">Register</button>
+        		</form>
 
         		<a href="../pages/index.php">Return to Home</a>
             </div>

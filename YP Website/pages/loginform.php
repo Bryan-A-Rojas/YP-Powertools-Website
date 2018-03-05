@@ -5,6 +5,12 @@ include '../includes/header.inc.php';
 
 ?>
 
+<div class="jumbotron" style="margin: auto;">
+		<h1>Login</h1>
+		<p>Login your account</p>
+		<a href="index.php">&lt;Back to Home Page</a>
+	</div>
+
 <!-- Parallax -->
 <div class="parallax" id="front-page-background">
     <div class="container">
@@ -15,6 +21,9 @@ include '../includes/header.inc.php';
             	<!-- Logo image and text -->
                 <img src="../images/icons/yplogoblk.png" id="logo-padding">
                 <h1 id="logo-text">Powertools</h1>
+                <div class="container" id="form-transbox">
+                <form action="">
+                <label for="email">Email:</label>
 				<input type="email" placeholder="Enter Email" name="txtemail" required>
 				<br />
 
@@ -26,8 +35,9 @@ include '../includes/header.inc.php';
 				<br />
 
 				<button type="submit" name="submit">Log In</button>
-
-        		<a href="../pages/index.php">Return to Home</a>
+				</form>
+				<p>No account?</p> <a href="signupform.php">Signup here</a>
+				</div>
             </div>
 	    </div>
     </div>	
