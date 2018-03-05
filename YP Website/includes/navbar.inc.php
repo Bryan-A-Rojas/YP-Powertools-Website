@@ -27,7 +27,7 @@
                         <a class="nav-link" href="../pages/signupform.php">Sign Up <i class="fa fa-user-plus"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login <i class="fa fa-user"></i></a>
+                        <a class="nav-link" href="../pages/loginform.php">Login <i class="fa fa-user"></i></a>
                     </li>
                 </ul>
             </form>

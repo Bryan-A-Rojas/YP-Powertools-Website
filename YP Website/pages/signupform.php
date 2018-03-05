@@ -26,6 +26,8 @@ include '../includes/header.inc.php';
         		<input type="password" placeholder="Confirm Password" name="txtconfirmpassword" required>
         		<br>
         		<button type="submit" name="submit">Register</button>
+
+        		<a href="../pages/index.php">Return to Home</a>
             </div>
 	    </div>
     </div>	
