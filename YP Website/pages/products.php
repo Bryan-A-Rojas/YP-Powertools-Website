@@ -41,36 +41,21 @@ include '../includes/navbar.inc.php';
         	</div>
         </div>
 
+<br>
 
-<!-- Sort by -->
+<!-- Search and Sort by -->
+<div class="row">
+<input type="text" placeholder="Search Product" name="txtsearcproduct" required>
+</div>
+<br>
+
 	<!-- Columns -->
 		<div class="row">
 			<div class="col-lg-4 col-sm-6">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
+						<a href="../pages/productpages.php" type="button" class="btn btn-link product-button">
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+					</a>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -81,26 +66,6 @@ include '../includes/navbar.inc.php';
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_150146.jpg">
 					</button>
 
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -111,26 +76,6 @@ include '../includes/navbar.inc.php';
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Asaki - Table Vice/20180217_155142.jpg">
 					</button>
 
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -141,26 +86,6 @@ include '../includes/navbar.inc.php';
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Finish Sander HT-FS 18702/20180217_150810.jpg">
 					</button>
 
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -170,27 +95,15 @@ include '../includes/navbar.inc.php';
 					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
 					</button>
+				<h2>Product Name</h2>
+					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
+			</div>
 
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
+			<div class="col-lg-4 col-sm-6">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
+					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
+					</button>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -200,27 +113,6 @@ include '../includes/navbar.inc.php';
 					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
 					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -230,27 +122,6 @@ include '../includes/navbar.inc.php';
 					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
 					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>
@@ -260,57 +131,6 @@ include '../includes/navbar.inc.php';
 					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
 					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
 					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					<h2>Product Name</h2>
-					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
-			</div>
-
-			<div class="col-lg-4 col-sm-6">
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-link product-button" data-toggle="modal" data-target="#exampleModal">
-					  <img class="rounded-square-size img-rounded img-fluid" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg">
-					</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body">
-					        ...
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 					<h2>Product Name</h2>
 					<p>Product Description Product Description Product Description Product Description Product Description Product Description</p>
 			</div>

@@ -24,7 +24,7 @@
             <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign Up <i class="fa fa-user-plus"></i></a>
+                        <a class="nav-link" href="../pages/signupform.php">Sign Up <i class="fa fa-user-plus"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Login <i class="fa fa-user"></i></a>

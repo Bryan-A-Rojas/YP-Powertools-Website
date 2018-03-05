@@ -15,18 +15,18 @@
 
 		if(empty($full_name) || empty($email) || empty($password) || empty($confirm_password)){
 			//Fields are empty
-			header("Location: ../../Register.php?signup=empty");
+			header("Location: ../../pages/signupform.php?signup=empty");
 			exit();
 		} else {
 			//Check if password and confirm password is NOT the same
 			if($password != $confirm_password){
-				header("Location: ../../Register.php?signup=password_not_same");
+				header("Location: ../../pages/signupform.php?signup=password_not_same");
 				exit();
 			} else {
 				//Check if they are in the right format
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
 				    //Invalid email format
-				    header("Location: ../../Register.php?signup=invalid_email");
+				    header("Location: ../../pages/signupform.php?signup=invalid_email");
 					exit();
 				} else {
 					//Hash password
@@ -42,7 +42,7 @@
 					} else {
 						//else move profile image to a folder
 						if($error = move_image($_FILES['profile_image']) !== true){
-							header("Location: ../../Register.php?$error");
+							header("Location: ../../pages/signupform.php?$error");
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
@@ -60,13 +60,13 @@
 						//Close connection
 						$conn->close();
 
-					    header("Location: ../../Register.php?signup=success");
+					    header("Location: ../../pages/signupform.php?signup=success");
 					    exit();
 					} else {
 						//Close connection
 						$conn->close();
 						
-					    header("Location: ../../Register.php?signup=database_error");
+					    header("Location: ../../pages/signupform.php?signup=database_error");
 					    exit();
 					}
 				}
@@ -74,6 +74,6 @@
 		}
 	} else {
 		//User did not click the button
-		header("Location: ../../Register.php?signup=used_get");
+		header("Location: ../../pages/signupform.php?signup=used_get");
 		exit();
 	}
