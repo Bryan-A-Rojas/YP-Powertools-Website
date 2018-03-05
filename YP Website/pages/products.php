@@ -7,8 +7,11 @@ include '../includes/navbar.inc.php';
 ?>
 
 <!-- Carousel -->
+<div class="jumbotron" id="jumbotron-margin" style="background-color: white;">
 <h1 style="padding-left:30px;">Best Sellers</h1>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding-top:10px">
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding-top:auto;">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>

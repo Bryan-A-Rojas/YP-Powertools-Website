@@ -5,6 +5,11 @@ include '../includes/header.inc.php';
 
 ?>
 
+<div class="jumbotron" id="jumbotron-margin">
+		<h1>Sign Up</h1>
+		<a href="index.php"><h3>&lt;Back to Home Page</h3></a>
+</div>
+
 <!-- Parallax -->
 <div class="parallax" id="front-page-background">
     <div class="container">
@@ -15,21 +20,35 @@ include '../includes/header.inc.php';
             	<!-- Logo image and text -->
                 <img src="../images/icons/yplogoblk.png" id="logo-padding">
                 <h1 id="logo-text">Powertools</h1>
-                <form action="">
-        		<input type="file" name="txtuploadpicture" accept="image/*">
-        		<br>
-        		<input type="text" placeholder="Enter Name" name="txtfullname" required>
-        		<br>
-        		<input type="email" placeholder="Enter Email" name="txtemail" required>
-        		<br>
-        		<input type="password" placeholder="Enter Password" name="txtpassword" required>
-        		<br>
-        		<input type="password" placeholder="Confirm Password" name="txtconfirmpassword" required>
-        		<br>
-        		<button type="submit" name="submit">Register</button>
-        		</form>
-
-        		<a href="../pages/index.php">Return to Home</a>
+                <div class="container" id="form-transbox">
+                <form action="../includes/scripts/signup.php" method="POST" enctype="multipart/form-data">
+	                <label for="uploading">Upload Profile Picture:</label>
+	                <br>
+	        		<input type="file" name="txtuploadpicture" accept="image/*" class="btn btn-primary">
+	        		<br />
+	        		<br />
+	        		<label for="Name">Full Name:</label>
+					<br>
+	        		<input type="text" placeholder="Enter Full Name" name="txtfullname" required>
+	        		<br>
+	        		<label for="email">Email:</label>
+					<br>
+	        		<input type="email" placeholder="Enter Email" name="txtemail" required>
+	        		<br>
+	        		<label for="password">Password:</label>
+	        		<br>
+	        		<input type="password" placeholder="Enter Password" name="txtpassword" required>
+	        		<br>
+	        		<label for="confirmpassword">Confirm Password:</label>
+	        		<br>
+	        		<input type="password" placeholder="Confirm Password" name="txtconfirmpassword" required>
+	        		<br>
+	        		<br>
+	        		<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+	        	</form>
+				<br>
+        		<p style="display:inline;">Already have an account? </p><a href="loginform.php" style="display:inline;">Login here</a>
+        		</div>
             </div>
 	    </div>
     </div>	

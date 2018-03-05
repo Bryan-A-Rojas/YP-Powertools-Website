@@ -5,11 +5,10 @@ include '../includes/header.inc.php';
 
 ?>
 
-<div class="jumbotron" style="margin: auto;">
+<div class="jumbotron" id="jumbotron-margin">
 		<h1>Login</h1>
-		<p>Login your account</p>
-		<a href="index.php">&lt;Back to Home Page</a>
-	</div>
+		<a href="index.php"><h3>&lt;Back to Home Page</h3></a>
+</div>
 
 <!-- Parallax -->
 <div class="parallax" id="front-page-background">
@@ -23,20 +22,22 @@ include '../includes/header.inc.php';
                 <h1 id="logo-text">Powertools</h1>
                 <div class="container" id="form-transbox">
                 <form action="">
-                <label for="email">Email:</label>
-				<input type="email" placeholder="Enter Email" name="txtemail" required>
-				<br />
+	                <label for="email">Email:</label>
+	                <br />
+					<input type="email" placeholder="Enter Email" name="txtemail" required>
+					<br />
 
-				<label for="password">Password:</label>
-				<br />
+					<label for="password">Password:</label>
+					<br />
 
-				<input type="password" placeholder="Enter Password" name="txtpassword" required>
-				<br />
-				<br />
+					<input type="password" placeholder="Enter Password" name="txtpassword" required>
+					<br />
+					<br />
 
-				<button type="submit" name="submit">Log In</button>
+					<button type="submit" name="submit" class="btn btn-success">Log In</button>
 				</form>
-				<p>No account?</p> <a href="signupform.php">Signup here</a>
+				<br>
+				<p style="display:inline;">No account? </p><a href="signupform.php" style="display:inline;">Sign Up here</a>
 				</div>
             </div>
 	    </div>

@@ -75,6 +75,10 @@ hr{
   margin: auto;
 }
 
+.product-carousel{
+	width: auto;
+}
+
 .w-100 {
 	width: 100%!important;
     height: 500px;
@@ -170,11 +174,16 @@ hr{
 	color:green;
 }
 #form-transbox {
-  margin: 5px;
+  margin: auto;
   background-color: #ffffff;
   border: 1px solid black;
-  opacity: 0.6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
-  width: auto;
+  width: 400px;
   height: auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom:50px;
+}
+
+#jumbotron-margin{
+	margin: auto;
 }
