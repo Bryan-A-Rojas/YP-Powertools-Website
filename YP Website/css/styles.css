@@ -54,10 +54,28 @@ hr{
 	 padding-bottom: 15%;
 }
 
+#logo-text-sm{
+	text-align: center;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+				 0px 8px 13px rgba(0,0,0,0.1),
+				 0px 18px 23px rgba(0,0,0,0.1);
+	 font-size: 2em;
+	 font-family: 'Plaster';
+	 padding-bottom: 3%;	
+}
+
 #logo-padding{
 	padding-top: 13%;
 	display: block; /*for the img inside your div */ 
 	margin: 0 auto;
+}
+
+#logo-padding-sm{
+	padding-top: 13%;
+	display: block; 
+	margin: 0 auto;
+	width: 180px;
+	height: 200px;
 }
 
 .footer {

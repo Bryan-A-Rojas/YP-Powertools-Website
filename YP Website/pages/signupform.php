@@ -18,8 +18,8 @@ include '../includes/header.inc.php';
             <div class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             	<!-- Logo image and text -->
-                <img src="../images/icons/yplogoblk.png" id="logo-padding">
-                <h1 id="logo-text">Powertools</h1>
+                <img src="../images/icons/yplogoblk.png" id="logo-padding-sm">
+                <h1 id="logo-text-sm">Powertools</h1>
                 <div class="container" id="form-transbox">
                 <form action="../includes/scripts/signup.php" method="POST" enctype="multipart/form-data">
 	                <label for="uploading">Upload Profile Picture:</label>

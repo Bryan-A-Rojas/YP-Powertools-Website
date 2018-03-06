@@ -27,7 +27,14 @@
                         <a class="nav-link" href="accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Edit Pages <i class="fas fa-edit"></i></a>
+                                <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
+                                Edit Pages <i class="fas fa-edit"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="../pages/edit_products.php">Products</a>
+                                </div>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../pages/admin_page.php">Profile <i class="fa fa-user"></i></a>
