@@ -4,14 +4,17 @@
 	require_once 'functions.inc.php';
 
 	//Check if they used the button
-	if(isset($_POST['btnsignup'])){
+	if(isset($_POST['submit'])){
+		//connect to database
+		require_once 'dbh.inc.php';
+
 		//Get all post data and sanitize input
 		//profile_image,full_name, email, password, confirm password
-		$profile_image = mysqli_real_escape_string($_FILES['profile_image']);
-		$full_name = mysqli_real_escape_string($_POST['txtfullname']);
-		$email = mysqli_real_escape_string($_POST['txtemail']);
-		$password = mysqli_real_escape_string($_POST['txtpassword']);
-		$confirm_password = mysqli_real_escape_string($_POST['txtconfirmpassword']);
+		$profile_image = $_FILES['profile_image'];
+		$full_name = $Database->real_escape_string($_POST['txtfullname']);
+		$email = $Database->real_escape_string($_POST['txtemail']);
+		$password = $Database->real_escape_string($_POST['txtpassword']);
+		$confirm_password = $Database->real_escape_string($_POST['txtconfirmpassword']);
 
 		if(empty($full_name) || empty($email) || empty($password) || empty($confirm_password)){
 			//Fields are empty
@@ -31,14 +34,12 @@
 				} else {
 					//Hash password
 					$HashedPassword = password_hash($password,PASSWORD_DEFAULT);
-					//connect to database
-					require_once 'dbh.inc.php';
 					
 					//SQL string to insert in database
-					$sql = ""
+					$sql = "";
 					//if profile image is not uploaded then use different insert
 					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
-						$sql = "INSERT INTO 'users' ('full_name', 'email', 'password') VALUES ('$full_name', '$email', '$HashedPassword')";
+						$sql = "INSERT INTO `users` (`full_name`, `email`, `password`) VALUES ('$full_name', '$email', '$HashedPassword')";
 					} else {
 						//else move profile image to a folder
 						if($error = move_image($_FILES['profile_image']) !== true){
@@ -46,7 +47,7 @@
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
-							$sql = "INSERT INTO 'users'('profile_image', 'full_name', 'email', 'password') VALUES ('$image_name', '$full_name', '$email', '$HashedPassword')";
+							$sql = "INSERT INTO `users` (`profile_image`, `full_name`, `email`, `password`) VALUES ('$image_name', '$full_name', '$email', '$HashedPassword')";
 						}
 					}
 
@@ -57,15 +58,10 @@
 						//Store ID in session
 						$_SESSION['id'] = $id;
 						
-						//Close connection
-						$conn->close();
-
 					    header("Location: ../../pages/signupform.php?signup=success");
 					    exit();
 					} else {
-						//Close connection
-						$conn->close();
-						
+
 					    header("Location: ../../pages/signupform.php?signup=database_error");
 					    exit();
 					}

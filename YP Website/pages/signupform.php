@@ -24,7 +24,7 @@ include '../includes/header.inc.php';
                 <form action="../includes/scripts/signup.php" method="POST" enctype="multipart/form-data">
 	                <label for="uploading">Upload Profile Picture:</label>
 	                <br>
-	        		<input type="file" name="txtuploadpicture" accept="image/*" class="btn btn-primary">
+	        		<input type="file" name="profile_image" accept="image/*" class="btn btn-primary">
 	        		<br />
 	        		<br />
 	        		<label for="Name">Full Name:</label>

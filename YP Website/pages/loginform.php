@@ -21,7 +21,7 @@ include '../includes/header.inc.php';
                 <img src="../images/icons/yplogoblk.png" id="logo-padding">
                 <h1 id="logo-text">Powertools</h1>
                 <div class="container" id="form-transbox">
-                <form action="">
+                <form action="../includes/scripts/login.php" method="POST">
 	                <label for="email">Email:</label>
 	                <br />
 					<input type="email" placeholder="Enter Email" name="txtemail" required>
