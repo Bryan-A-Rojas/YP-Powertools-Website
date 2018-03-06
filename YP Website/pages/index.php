@@ -2,7 +2,18 @@
 
 session_start();
 include '../includes/header.inc.php';
-include '../includes/navbar.inc.php';
+
+include '../includes/scripts/functions.inc.php';
+
+$navbar = "";
+
+if(isset($_SESSION['role'])){
+    $navbar = displayNavbar($_SESSION['role']);
+}else{
+    $navbar = '../includes/navbar.inc.php';
+}
+
+include $navbar;
 
 ?>
 

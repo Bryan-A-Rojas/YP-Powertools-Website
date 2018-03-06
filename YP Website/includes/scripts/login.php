@@ -11,7 +11,7 @@ session_start();
 		$password = $_POST['txtpassword'];
 
 		if(empty($email) || empty($password)){
-			header("Location: ../LoginForm.php?login=empty");
+			header("Location: ../../pages/LoginForm.php?login=empty");
 			exit();
 		} else {
 			//SQL insert statement
@@ -20,13 +20,13 @@ session_start();
 			$resultCheck = mysqli_num_rows($result);
 			
 			if($resultCheck < 1){
-				header("Location: ../LoginForm.php?login=error");
+				header("Location: ../../pages/LoginForm.php?login=error");
 				exit();
 			} else {
 				if($row = mysqli_fetch_assoc($result)){
 
 					if(!password_verify($password, $row['password'])){
-						header("Location: ../LoginForm.php?login=error");
+						header("Location: ../../pages/LoginForm.php?login=error");
 						exit();
 					}else{
 						$_SESSION['id'] = $row['id'];
@@ -53,7 +53,7 @@ session_start();
 		}
 	} else {
 		//User did not click the button
-		header("Location: ../LoginForm.php?login=used_get");
+		header("Location: ../../pages/LoginForm.php?login=used_get");
 		exit();
 	}
 

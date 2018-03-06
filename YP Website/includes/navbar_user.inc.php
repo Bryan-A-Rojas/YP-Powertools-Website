@@ -21,7 +21,7 @@
                     <a class="nav-link" href="../pages/contact.php">Contact</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <ul class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="../pages/cart.php">Cart <i class="fa fa-user-plus"></i></a>
@@ -30,9 +30,11 @@
                         <a class="nav-link" href="../pages/user_page.php">Profile <i class="fa fa-user"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/index.php">Log Out <i class="fa fa-user"></i></a>
+                        <form action="../includes/scripts/logout.php" method="POST">
+                            <button type="submit" name="submit" class="btn btn-danger">Logout</button>
+                        </form>
                     </li>
                 </ul>
-            </form>
+            </ul>
         </div>
     </nav>

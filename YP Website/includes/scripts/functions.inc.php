@@ -22,7 +22,7 @@ function move_image($FilesArray){
 			//Check if file size is less than 40mb (40,000kb)
 			if($fileSize < 4000000000){
 				//Change file name using uniqid('',true) then add a dot and lastly the file ext
-				$fileDestination = "../../images/profile_images". $fileName;
+				$fileDestination = "../../images/profile_images/". $fileName;
 				move_uploaded_file($fileTmp, $fileDestination);
 				
 				return true;	
@@ -78,6 +78,17 @@ function get_specific_product($product_id){
 
 	//return array
 	return $resultsArray;
+}
+
+function displayNavbar($role){
+
+	if((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "User"){
+    	return '../includes/navbar_user.inc.php';
+	} else if ((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "Admin"){
+    	return '../includes/navbar.inc.php';
+	} else if ((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "SuperAdmin"){
+    	return '../includes/navbar.inc.php';
+    }
 }
 
 

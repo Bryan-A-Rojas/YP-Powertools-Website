@@ -1,5 +1,7 @@
 <?php 
 
+if(isset($_SESSION['role'])){
+
 session_start();
 include '../includes/header.inc.php';
 include '../includes/navbar_user.inc.php';
@@ -11,5 +13,8 @@ include '../includes/navbar_user.inc.php';
 <?php 
 
 include '../includes/endtags.inc.php';
-
+} else {
+	header("Location: index.php");
+	exit();
+}
 ?>
