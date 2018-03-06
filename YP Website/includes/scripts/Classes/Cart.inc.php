@@ -47,7 +47,10 @@ class Cart{
 	}
 
 	function add_to_cart($product_id, $quantity){
-		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) VALUES ($user_id, $product_id, $quantity);";
+		//Require database header
+		require_once "dbh.inc.php";
+
+		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) VALUES ($this->user_id, $product_id, $quantity);";
 		$result = $Database->query($sql);
 		return $result;
 	}
@@ -60,7 +63,7 @@ class Cart{
 
 	function clear_cart(){
 		//Require database header
-		require_once "../includes/scripts/dbh.inc.php";
+		require_once "dbh.inc.php";
 
 		$id = $this->user_id;
 		$result = $Database->query("DELETE FROM `cart` WHERE user_id = $id");

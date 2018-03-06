@@ -15,7 +15,7 @@ $cart_items = $cart->display_cart();
 <div class="container">
 <div class="jumbotron">
   <h1>Cart</h1>
-  <form action="../includes/clear_cart.inc.php" method="POST">
+  <form action="../includes/scripts/clear_cart.inc.php" method="POST">
     <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
   </form>
 </div>

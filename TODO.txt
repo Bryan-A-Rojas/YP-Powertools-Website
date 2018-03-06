@@ -28,9 +28,9 @@ Pages:
 
 	- user page
 		0- has cart
-		- can add to cart
+		0- can add to cart
 		- can remove from cart
-		- can clear cart
+		0- can clear cart
 
 	- admin
 		0- Should have custom navbar

@@ -39,10 +39,10 @@ $product_information = $product_information[0];
 		<h2><?php echo $product_information['product_name'] ?></h2>
 		<h4 class="product_page-product_price">Price: PHP <?php echo $product_information['product_price'] ?></h4>
 		<h3>Description: <?php echo $product_information['product_description'] ?></h3>
-		<form action="../includes/scripts/addtocart.php" method="POST">
+		<form action="../includes/scripts/add_to_cart.inc.php" method="POST">
 			<input type="hidden" name="product_id" value="<?php echo $product_information['product_id'] ?>">
-			<h2 style="display:inline;">Quantity: </h2><input type="number" name="quantity" min="1" max="5" value="1" style="font-size:30px">
-			<input type="submit" name="btnsubmit_addToCart" value="Add to Cart" class="btn btn-success btn-lg">
+			<h2 style="display:inline;">Quantity: </h2><input type="number" name="quantity" min="1" max="10" value="1" style="font-size:30px">
+			<input type="submit" name="add_to_cart" value="Add to Cart" class="btn btn-success btn-lg">
 		</form>
 	</div>
 </div>
