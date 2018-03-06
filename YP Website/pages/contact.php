@@ -22,26 +22,20 @@ include $navbar;
     <div class="container">
     	<div class="row">
         <h1>Contact</h1>
-        <h2></h2>
-        <p>this company Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem itaque placeat in. Assumenda cupiditate eum, dicta necessitatibus ex inventore similique maiores impedit id sequi, a ut quibusdam, excepturi nostrum ratione.</p>
         </div>
-        <div class="row">
-        <h2>Locations</h2>
-        <ul>
-            <li>
-                <h3>Marcoz Alvarez, Las Pinas</h3>
-
-            </li>
-        </ul>
-        </div>
-        <h2>Contact Numbers</h2>
+        
+        <h2>Contact Numbers:</h2>
         <ul>
             <li>0909034043545</li>
             <li>8090492340924</li>
             <li>65453445345453</li>
         </ul>
-        <h2>Email</h2>
-        <p>Loremt@GMAIL.COM</p>
+        <h2>Email:</h2>
+        <p>yp_powertools@gmail.com</p>
+        <div class="row">
+        <h2>Location:</h2>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15455.762071098161!2d121.0036502!3d14.4305915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4275f2715e0b8821!2sYP+POWERTOOLS!5e0!3m2!1sen!2sph!4v1520347094055" width="600" height="450" frameborder="0" style="border:1px solid black;" allowfullscreen></iframe>
     </div>
 </div>
 

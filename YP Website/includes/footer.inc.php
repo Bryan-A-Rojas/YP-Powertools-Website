@@ -17,6 +17,8 @@
                           <a target="_blank" href="https://www.facebook.com/YP-Powertools-1011558542278674/" class="pointer"><img class="icon-size" src="../images/icons/fb-logo.png"></a>
                           <!--Shopee-->
                           <a target="_blank" href="https://shopee.ph/ypenterprises" class="pointer"><img class="icon-size" src="../images/icons/shopee-logo.png"></a>
+                          <!-- Lazada -->
+                          <a target="_blank" href="https://www.lazada.com.ph/shop/yuanpaul-enterprises"><img class="icon-size" src="../images/icons/lazada-logo.png"></a>
                       </div>
 
                       <br />
