@@ -42,7 +42,7 @@
 						$sql = "INSERT INTO `users` (`full_name`, `email`, `password`) VALUES ('$full_name', '$email', '$HashedPassword')";
 					} else {
 						//else move profile image to a folder
-						if($error = move_image($_FILES['profile_image']) !== true){
+						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
 							header("Location: ../../pages/signupform.php?$error");
 							exit();
 						} else {

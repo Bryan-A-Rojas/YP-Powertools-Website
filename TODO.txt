@@ -3,13 +3,13 @@ TODO:
 	0- Header should have navbar
 	0- Footer should have copyright
 
-	-SIGNUP PAGE
-	-LOGIN PAGE
-	-ADMIN PAGE
+	0-SIGNUP PAGE
+	0-LOGIN PAGE
+	0-ADMIN PAGE
 		- 3 Pictures with upload button (to change carousel)
-	-SUPERADMIN PAGE
+	0-SUPERADMIN PAGE
 		- 3 Pictures with upload button (to change carousel)
-	-USER PAGE
+	0-USER PAGE
 
 Pages:
 	- index
@@ -22,15 +22,18 @@ Pages:
 	- navbar
 		0- sign up & login redirects to another page
 
-	- sign up & login
-		- Make php script
-		- redirect to user/admin/superadmin page
+	0- sign up & login
+		0- Make php script
+		0- redirect to user/admin/superadmin page
 
 	- user page
-		-
+		0- has cart
+		- can add to cart
+		- can remove from cart
+		- can clear cart
 
 	- admin
-		- Should have custom navbar
+		0- Should have custom navbar
 		- can change front page carousel photos
 		- can see all users
 

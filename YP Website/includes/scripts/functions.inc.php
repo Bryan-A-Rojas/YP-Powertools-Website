@@ -1,6 +1,6 @@
 <?php
 
-function move_image($FilesArray){
+function move_image($FilesArray, $folder_name){
 	//Store each thing in the array $_FILES in seperate variables
 	$fileName = $FilesArray['name'];
 	$fileType = $FilesArray['type'];
@@ -22,7 +22,7 @@ function move_image($FilesArray){
 			//Check if file size is less than 40mb (40,000kb)
 			if($fileSize < 4000000000){
 				//Change file name using uniqid('',true) then add a dot and lastly the file ext
-				$fileDestination = "../../images/profile_images/". $fileName;
+				$fileDestination = "../../images/$folder_name/". $fileName;
 				move_uploaded_file($fileTmp, $fileDestination);
 				
 				return true;	
