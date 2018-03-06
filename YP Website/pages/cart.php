@@ -4,14 +4,20 @@ session_start();
 include '../includes/header.inc.php';
 include '../includes/navbar_user.inc.php';
 
+require_once '../includes/scripts/classes/Cart.inc.php';
+
+$cart = new Cart($_SESSION['id']);
+
+$cart_items = $cart->display_cart();
+
 ?>
 
 <div class="container">
 <div class="jumbotron">
   <h1>Cart</h1>
-<form action="">
-  <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
-</form>
+  <form action="../includes/clear_cart.inc.php" method="POST">
+    <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
+  </form>
 </div>
 
 <table class="table table-hover table-dark">
@@ -26,26 +32,28 @@ include '../includes/navbar_user.inc.php';
   </thead>
   </tfoot>
   <tbody>
-    <tr>
-      <th scope="row"><img src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg" alt="product-img" class="product-image-size"></th>
-      <td>Angle Grinder</td>
-      <td>3000</td>
-      <td>1</td>
-      <td>Wow Such Grinder Much Angle lorem</td>
-    </tr>
-    <tr>
-      <th scope="row"><img src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg" alt="product-img" class="product-image-size"></th>
-      <td>Angle Grinder</td>
-      <td>3000</td>
-      <td>1</td>
-      <td>Wow Such Grinder Much Angle</td>
-    </tr>
+
+    <?php foreach ($cart_items as $key => $item): ?>
+      
+    <?php if($item != end($cart_items)): ?>
+      <tr>
+        <th scope="row"><img src="../images/products/<?php echo $item['product_image'] ?>" class="product-image-size"></th>
+        <td><?php echo $item['product_name'] ?></td>
+        <td><?php echo $item['product_price'] ?></td>
+        <td><?php echo $item['quantity'] ?></td>
+        <td><?php echo $item['product_description'] ?></td>
+      </tr>
+    <?php endif ?>
+
+    <?php endforeach ?>
+
   </tbody>
   <tfoot>
-    <tr align="justify" style="color: green; font-size: 25px;">
-      <td>Sum</td>
-      <td>PHP 10,000</td>
+    <tr align="justify" style="color: #00ff35; font-size: 25px;">
+      <td>Total</td>
+      <td><?php echo $cart_items['Total Price']['SUM(product_price * quantity)'] ?></td>
     </tr>
+  </tfoot>
 </table>
 </div>
 

@@ -10,7 +10,7 @@ class Cart{
 
 	function display_cart(){
 		//Require database header
-		require_once '../dbh.inc.php';
+		require_once "../includes/scripts/dbh.inc.php";
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
 		$sql = "SELECT product_image, product_name, product_price, quantity, product_description 
 			FROM products
@@ -47,20 +47,23 @@ class Cart{
 	}
 
 	function add_to_cart($product_id, $quantity){
-		$sql = "INSERT INTO cart (`user_id`, `product_id`, `quantity`) VALUES ($user_id, $product_id, $quantity);";
+		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) VALUES ($user_id, $product_id, $quantity);";
 		$result = $Database->query($sql);
 		return $result;
 	}
 
 	function remove_from_cart($cart_id){
-		$sql = "DELETE * FROM cart WHERE `cart_id` = $cart_id;";
+		$sql = "DELETE FROM cart WHERE `cart_id` = $cart_id;";
 		$result = $Database->query($sql);
 		return $result;
 	}
 
 	function clear_cart(){
-		$sql = "DELETE * FROM cart WHERE `user_id` = $this->$user_id;";
-		$result = $Database->query($sql);
+		//Require database header
+		require_once "../includes/scripts/dbh.inc.php";
+
+		$id = $this->user_id;
+		$result = $Database->query("DELETE FROM `cart` WHERE user_id = $id");
 		return $result;
 	}
 
