@@ -58,3 +58,22 @@ Pages:
 		- telephone number
 		- email
 		- phone number
+
+	Cart
+			-Header
+				-Product Image
+				-Name
+				-Price
+				-Quantity
+		Admin Account List
+			-Header
+				-Account Image
+				-Name
+				-Email
+				-Role
+		Super Admin Account List
+			-Header
+				-Account Image
+				-Name
+				-Email
+				-Role

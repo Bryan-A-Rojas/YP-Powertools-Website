@@ -203,6 +203,12 @@ hr{
 	height: 300px;
 }
 
+.product-image-size
+{
+	width: 250px;
+	height: 250px;
+}
+
 #jumbotron-margin{
 	margin: auto;
 }
