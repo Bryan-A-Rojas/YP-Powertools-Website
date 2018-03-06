@@ -70,7 +70,6 @@ Pages:
 				-Account Image
 				-Name
 				-Email
-				-Role
 		Super Admin Account List
 			-Header
 				-Account Image

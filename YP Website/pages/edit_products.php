@@ -6,7 +6,7 @@ include '../includes/header.inc.php';
 ?>
 
 <div class="jumbotron" id="jumbotron-margin">
-		<h2>Sign Up</h2>
+		<h2>Edit Products Page</h2>
 		<a href="index.php"><h4>&lt;Back to Home Page</h4></a>
 </div>
 
@@ -22,36 +22,29 @@ include '../includes/header.inc.php';
                 <h1 id="logo-text">Powertools</h1>
                 <div class="container" id="form-transbox">
                 <form action="../includes/scripts/signup.php" method="POST" enctype="multipart/form-data">
-	                <label for="uploading">Upload Profile Picture:</label>
+	                <h2>Add Product</h2>
+
+	                <label for="uploading">Upload Product Picture:</label>
 	                <br>
 	        		<input type="file" name="profile_image" accept="image/*" class="btn btn-primary">
 	        		<br />
 	        		<br />
-	        		<label for="Name">Full Name:</label>
+	        		<label for="product">Product Name:</label>
 					<br>
 	        		<input type="text" placeholder="Enter Full Name" name="txtfullname" required>
 	        		<br>
-	        		<label for="email">Email:</label>
+	        		<label for="price">Price:</label>
 					<br>
 	        		<input type="email" placeholder="Enter Email" name="txtemail" required>
-	        		<br>
-	        		<label for="password">Password:</label>
+ 					<br />
+	        		<label for="description">Description</label>
 	        		<br>
 	        		<input type="password" placeholder="Enter Password" name="txtpassword" required>
 	        		<br>
-	        		<label for="confirmpassword">Confirm Password:</label>
 	        		<br>
-	        		<input type="password" placeholder="Confirm Password" name="txtconfirmpassword" required>
-	        		<br>
-	        		<br>
-	        		<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+	        		<button type="submit" name="submit" class="btn btn-primary">Add</button>
 	        	</form>
-				<br>
-        		<p style="display:inline;">Already have an account? </p><a href="loginform.php" style="display:inline;">Login here</a>
-        		</div>
-            </div>
-	    </div>
-    </div>	
+	</div>
 </div>
 
 <?php 

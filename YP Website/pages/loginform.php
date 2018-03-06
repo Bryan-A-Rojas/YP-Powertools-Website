@@ -7,7 +7,7 @@ include '../includes/header.inc.php';
 
 <div class="jumbotron" id="jumbotron-margin">
 		<h2>Login</h2>
-		<a href="index.php"><h3>&lt;Back to Home Page</h3></a>
+		<a href="index.php"><h4>&lt;Back to Home Page</h4></a>
 </div>
 
 <!-- Parallax -->

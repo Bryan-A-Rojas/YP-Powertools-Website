@@ -24,7 +24,7 @@
             <ul class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Account List <i class="fas fa-users"></i></a>
+                        <a class="nav-link" href="accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Edit Pages <i class="fas fa-edit"></i></a>
