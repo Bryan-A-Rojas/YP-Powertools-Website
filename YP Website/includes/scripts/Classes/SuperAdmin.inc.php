@@ -8,10 +8,10 @@ class SuperAdmin{
 		$this->SuperAdmin_id = $id;
 	}
 
-	//Get all users
+	//Get all users and admins
 	function get_users_and_admins(){
 		//Require database header
-		require_once '../dbh.inc.php';
+		require_once '../includes/scripts/dbh.inc.php';
 
 		$sql = "SELECT id,profile_image,full_name,email,role FROM users WHERE `role` = 'User' OR `role` = 'Admin';";
 

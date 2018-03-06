@@ -23,6 +23,7 @@ function move_image($FilesArray, $folder_name){
 			if($fileSize < 4000000000){
 				//Change file name using uniqid('',true) then add a dot and lastly the file ext
 				$fileDestination = "../../images/$folder_name/". $fileName;
+				
 				move_uploaded_file($fileTmp, $fileDestination);
 				
 				return true;	

@@ -62,7 +62,7 @@ include $navbar;
 
 <!-- Search and Sort by -->
 <div class="container">
-    <div class="row" style="padding-left:20px">
+    <!-- <div class="row" style="padding-left:20px">
     	<form action="#" method="GET">
     		<input type="text" placeholder="Search Product" name="txtsearcproduct" required>
     		<select name="sortby">
@@ -73,7 +73,7 @@ include $navbar;
     		</select>
     		<input type="submit" name="submit" class="btn btn-dark">
     	</form>
-    </div>
+    </div> -->
     <br>
     <!-- Columns -->
     <div class="row">

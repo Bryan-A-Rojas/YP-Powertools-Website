@@ -4,6 +4,12 @@ session_start();
 include '../includes/header.inc.php';
 include '../includes/navbar_admin.inc.php';
 
+include '../includes/scripts/Classes/Admin.inc.php';
+
+$Admin = new Admin($_SESSION['id']);
+
+$users_array = $Admin->get_users();
+
 ?>
 
 <div class="container">
@@ -21,16 +27,21 @@ include '../includes/navbar_admin.inc.php';
   </thead>
   </tfoot>
   <tbody>
+
+    <?php foreach ($users_array as $user): ?>
     <tr>
-      <th scope="row"><img src="../images/profile_images/mangkanor.jpg" alt="product-img" class="product-image-size"></th>
-      <td>Mang Kanor</td>
-      <td>mk69@gmail.com</td>
+
+      <?php if($user['profile_image'] != NULL): ?>
+        <th scope="row"><img src="../images/profile_images/<?php echo $user['profile_image'] ?>" alt="product-img" class="product-image-size"></th>
+      <?php else: ?>
+        <th scope="row"><img src="../images/profile_images/sample-user.png"  alt="product-img" class="product-image-size"></th>
+      <?php endif ?>
+
+      <td><?php echo $user['full_name'] ?></td>
+      <td><?php echo $user['email'] ?></td>
     </tr>
-    <tr>
-      <th scope="row"><img src="../images/profile_images/jhdz.jpg" alt="product-img" class="product-image-size"></th>
-      <td>Jhepoy Dizon</td>
-      <td>jhdz@gmail.com</td>
-    </tr>
+    <?php endforeach ?>
+
   </tbody>
 </table>
 </div>

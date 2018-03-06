@@ -1,7 +1,5 @@
 <?php 
 
-require_once '../functions.inc.php';
-
 class Admin{
 
 	private $Admin_id;
@@ -13,7 +11,7 @@ class Admin{
 	//Get all users
 	function get_users(){
 		//Require database header
-		require_once '../dbh.inc.php';
+		require_once '../includes/scripts/dbh.inc.php';
 
 		$sql = "SELECT id,profile_image,full_name,email FROM users WHERE `role` = 'User';";
 
@@ -33,6 +31,8 @@ class Admin{
 	}
 
 	function add_product($image_array, $name, $price, $description){
+		require_once '../functions.inc.php';
+
 		move_image($image_array, "products");
 		$sql = "INSERT INTO `products`(`product_image`, `product_name`, `product_price`, `product_description`) VALUES ('$image','$name','$description')";
 		$result = $Database->query($sql);

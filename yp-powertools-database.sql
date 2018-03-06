@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2018 at 11:28 AM
+-- Generation Time: Mar 06, 2018 at 04:27 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -54,7 +54,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_image`, `product_name`, `product_price`, `product_description`) VALUES
-(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care');
+(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care'),
+(2, '20180217_153001.jpg', 'Total - Electric Drill 280W', 23000.5, 'This is our finest drill, it can even drill through diamonds!'),
+(3, '20180217_151735.jpg', 'Makute - Trimmer TR001', 5000.5, 'Top notch american based trimmer'),
+(4, '20180217_152633.jpg', 'Fujima - Air Die Grinder XQ-T02', 1000, 'Newly arrived Fujima Grinder');
 
 -- --------------------------------------------------------
 
@@ -76,10 +79,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `profile_image`, `full_name`, `email`, `password`, `role`) VALUES
-(1, '0iDdK3m.png', 'Test First Name', 'test@gmail.com', '$2y$10$2O3xzGmOnD4HeAlM4Rrj0OXpRArWVJrdjN1ceGcFErQzecdRfpASm', 'User'),
-(2, '0lxlmeqvpva01.png', 'test1', 'test1@gmail.com', '$2y$10$K94nyapkq5o8y1vbaMyNfOX/E14RHrSvdmJ1PEx0um5FAV4OS8Waq', 'User'),
-(3, '0fsic5fgu8b01.png', 'admin', 'admin@gmail.com', '$2y$10$NsJrlA8n3REFAy0.yJGtieHYIlBIoBEFwpn3Va3vZgAGtRz5lAgE.', 'Admin'),
-(4, '5g2zolsnlbb01.jpg', 'superadmin', 'superadmin@gmail.com', '$2y$10$wHOu42/7tAn8RQvEgEC6b.ak4b8WWMCbz.IOkxXKv.cdztTzTbB5u', 'SuperAdmin');
+(1, '2xn7aa8ct7b01.jpg', 'Test First Name', 'test@gmail.com', '$2y$10$2O3xzGmOnD4HeAlM4Rrj0OXpRArWVJrdjN1ceGcFErQzecdRfpASm', 'User'),
+(2, NULL, 'test1', 'test1@gmail.com', '$2y$10$K94nyapkq5o8y1vbaMyNfOX/E14RHrSvdmJ1PEx0um5FAV4OS8Waq', 'User'),
+(3, '01.png', 'admin', 'admin@gmail.com', '$2y$10$NsJrlA8n3REFAy0.yJGtieHYIlBIoBEFwpn3Va3vZgAGtRz5lAgE.', 'Admin'),
+(4, '1lqtvaic0sa01.png', 'superadmin', 'superadmin@gmail.com', '$2y$10$wHOu42/7tAn8RQvEgEC6b.ak4b8WWMCbz.IOkxXKv.cdztTzTbB5u', 'SuperAdmin');
 
 --
 -- Indexes for dumped tables
@@ -111,13 +114,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

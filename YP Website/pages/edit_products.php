@@ -21,28 +21,29 @@ include '../includes/header.inc.php';
                 <img src="../images/icons/yplogoblk.png" id="logo-padding-sm">
                 <h1 id="logo-text-sm">Powertools</h1>
                 <div class="container" id="form-transbox">
-                <form action="../includes/scripts/signup.php" method="POST" enctype="multipart/form-data">
+                	
+                <form action="../includes/scripts/add_product.php" method="POST" enctype="multipart/form-data">
 	                <h2>Add Product</h2>
 
 	                <label for="uploading">Upload Product Picture:</label>
 	                <br>
-	        		<input type="file" name="profile_image" accept="image/*" class="btn btn-primary">
+	        		<input type="file" name="product_image" accept="image/*" class="btn btn-primary">
 	        		<br />
 	        		<br />
 	        		<label for="product">Product Name:</label>
 					<br>
-	        		<input type="text" placeholder="Enter Full Name" name="txtfullname" required>
+	        		<input type="text" placeholder="" name="txtname" required>
 	        		<br>
 	        		<label for="price">Price:</label>
 					<br>
-	        		<input type="email" placeholder="Enter Email" name="txtemail" required>
+	        		<input type="text" placeholder="" name="txtprice" required>
  					<br />
 	        		<label for="description">Description</label>
 	        		<br>
-	        		<input type="password" placeholder="Enter Password" name="txtpassword" required>
+	        		<textarea name="txtdescription" cols="30" rows="5"></textarea>
 	        		<br>
 	        		<br>
-	        		<button type="submit" name="submit" class="btn btn-primary">Add</button>
+	        		<button type="submit" name="submit" class="btn btn-success">Add Product</button>
 	        	</form>
 	</div>
 </div>
