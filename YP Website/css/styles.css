@@ -173,6 +173,7 @@ hr{
 .product_page-product_price{
 	color:green;
 }
+
 #form-transbox {
   margin: auto;
   background-color: #ffffff;
@@ -183,6 +184,7 @@ hr{
   padding-top: 10px;
   margin-bottom:50px;
 }
+
 #profile-transbox {
   margin: auto;
   background-color: #ffffff;
@@ -193,6 +195,12 @@ hr{
   padding-top: 10px;
   padding-left: 100px;
   margin-bottom:50px;
+}
+
+#profile-image
+{
+	width: 300px;
+	height: 300px;
 }
 
 #jumbotron-margin{

@@ -12,7 +12,7 @@ include '../includes/navbar_user.inc.php';
 	<div class="row">
 		<div class="col-md-13" id="profile-transbox">
 			<h2>User's Profile</h2>	
-			<img src="../images/profile_images/sample-user.png" alt="userimage" class="img-circle">
+			<img src="../images/profile_images/sample-user.png" alt="userimage" id="profile-image">
 			<br />
 			<label for="uploading">Change Profile Picture:</label>
 			<br />
