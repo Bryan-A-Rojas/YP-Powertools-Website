@@ -24,16 +24,17 @@
             <ul class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Account List <i class="fa fa-user-plus"></i></a>
+                        <a class="nav-link" href="#">Account List <i class="fas fa-users"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Edit Pages</a></li>
+                        <a class="nav-link" href="#">Edit Pages <i class="fas fa-edit"></i></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../pages/admin_page.php">Profile <i class="fa fa-user"></i></a>
                     </li>
                     <li class="nav-item">
                         <form action="../includes/scripts/logout.php" method="POST">
-                            <input type="submit" name="submit" class="btn btn-danger" value="Logout">
+                            <button type="submit" name="submit" class="btn btn-danger">Logout <i class="fas fa-sign-out-alt"></i></button>
                         </form>
                     </li>
                 </ul>
