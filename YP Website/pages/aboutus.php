@@ -3,6 +3,7 @@
 session_start();
 include '../includes/header.inc.php';
 
+include '../includes/scripts/functions.inc.php';
 $navbar = "";
 
 if(isset($_SESSION['role'])){

@@ -85,12 +85,11 @@ function displayNavbar($role){
 	if((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "User"){
     	return '../includes/navbar_user.inc.php';
 	} else if ((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "Admin"){
-    	return '../includes/navbar.inc.php';
+    	return '../includes/navbar_admin.inc.php';
 	} else if ((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "SuperAdmin"){
-    	return '../includes/navbar.inc.php';
+    	return '../includes/navbar_superadmin.inc.php';
     }
 }
-
 
 //Experimental code
 // function open_database_connection(){
