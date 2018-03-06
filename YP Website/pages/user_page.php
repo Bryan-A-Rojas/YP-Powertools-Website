@@ -1,8 +1,8 @@
 <?php 
 
+session_start();
 if(isset($_SESSION['role'])){
 
-session_start();
 include '../includes/header.inc.php';
 include '../includes/navbar_user.inc.php';
 
