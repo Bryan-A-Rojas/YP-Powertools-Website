@@ -76,3 +76,10 @@ Pages:
 				-Name
 				-Email
 				-Role
+
+	Defense Changes:
+		- Change cart to combine a products quantity if they add the same product
+		- admin & superadmin should see the orders from users
+		- Doing anything in the admin and superadmin menu would require a password (Example: Deleting a user, adding a product, etc.) and would also record it in the database
+		- Should also display log of the actions happening like who bought something, the order number, statistics, what they bought , and etc.
+		
