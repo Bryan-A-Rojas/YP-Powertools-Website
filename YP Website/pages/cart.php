@@ -25,7 +25,7 @@ $cart_items = $cart->display_cart();
     <tr>
       <th scope="col">Product Image</th>
       <th scope="col">Name</th>
-      <th scope="col">Price</th>
+      <th scope="col">Price/Piece</th>
       <th scope="col">Quantity</th>
       <th scope="col">Description</th>
     </tr>

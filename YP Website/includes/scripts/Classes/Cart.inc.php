@@ -12,11 +12,12 @@ class Cart{
 		//Require database header
 		require_once "../includes/scripts/dbh.inc.php";
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT product_image, product_name, product_price, quantity, product_description 
-			FROM products
-			inner join cart
-			on products.product_id = cart.product_id
-			WHERE cart.user_id = $this->user_id";
+		$sql = "SELECT product_image, product_name, product_price, SUM(quantity) as quantity, product_description 
+				FROM products
+				inner join cart
+				ON products.product_id = cart.product_id
+				WHERE cart.user_id = $this->user_id
+            	GROUP BY product_image, product_name, product_price, product_description";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -31,10 +32,10 @@ class Cart{
 
 
 		$sql = "SELECT SUM(product_price * quantity)
-		FROM products
-		INNER JOIN cart
-		ON products.product_id = cart.product_id
-		WHERE cart.user_id = $this->user_id";
+				FROM products
+				INNER JOIN cart
+				ON products.product_id = cart.product_id
+				WHERE cart.user_id = $this->user_id";
 
 		//Query sql string
 		$result = $Database->query($sql);
