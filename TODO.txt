@@ -60,25 +60,25 @@ Pages:
 		- phone number
 
 	Cart
-			-Header
-				-Product Image
-				-Name
-				-Price
-				-Quantity
-		Admin Account List
-			-Header
-				-Account Image
-				-Name
-				-Email
-		Super Admin Account List
-			-Header
-				-Account Image
-				-Name
-				-Email
-				-Role
+			0-Header
+				0-Product Image
+				0-Name
+				0-Price
+				0-Quantity
+	0-Admin Account List
+			0-Header
+				0-Account Image
+				0-Name
+				0-Email
+	0-Super Admin Account List
+			0-Header
+				0-Account Image
+				0-Name
+				0-Email
+				0-Role
 
 	Defense Changes:
-		- Change cart to combine a products quantity if they add the same product
+		0- Change cart to combine a products quantity if they add the same product
 		- admin & superadmin should see the orders from users
 		- Doing anything in the admin and superadmin menu would require a password (Example: Deleting a user, adding a product, etc.) and would also record it in the database
 		- Should also display log of the actions happening like who bought something, the order number, statistics, what they bought , and etc.
