@@ -13,7 +13,9 @@ class Admin{
 		//Require database header
 		require_once '../includes/scripts/dbh.inc.php';
 
-		$sql = "SELECT id,profile_image,full_name,email FROM users WHERE `role` = 'User';";
+		$sql = "SELECT id,profile_image,full_name,email 
+				FROM users 
+				WHERE `role` = 'User';";
 
 		//Query sql string
 		$result = $Database->query($sql);
