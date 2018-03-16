@@ -1,7 +1,8 @@
 <?php 
 
-session_start();
-include '../includes/header.inc.php';
+require_once '../config.php';
+
+require_once INCLUDES . 'header.inc.php';
 
 ?>
 
@@ -41,11 +42,11 @@ include '../includes/header.inc.php';
 				</div>
             </div>
 	    </div>
-    </div>	
+    </div>
 </div>
 
 <?php 
 
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 ?>

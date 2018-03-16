@@ -1,7 +1,7 @@
 <?php
 
-include '../../../config.php';
-include CLASSES . 'Person.php';
+require_once '../../../config.php';
+require_once CLASSES . 'Person.php';
 
 class User extends Person{
 
@@ -12,14 +12,14 @@ class User extends Person{
 		$this->getInfo();
 
 		//include cart class
-		include CLASSES . 'Cart.inc.php';
+		require_once CLASSES . 'Cart.inc.php';
 
 		$this->cart = new Cart($this->id);
 	}
 
 	private function getInfo(){
 		//Require Database connection
-		include SCRIPTS . 'dbh.inc.php';
+		require_once SCRIPTS . 'dbh.inc.php';
 		
 		//SQL statement
 		$sql = "SELECT * 
@@ -39,7 +39,7 @@ class User extends Person{
 
 	public static function login($email = "", $password = ""){
 		//Require Database connection
-		include SCRIPTS . 'dbh.inc.php';
+		require_once SCRIPTS . 'dbh.inc.php';
 		
 		//SQL statement
 		$sql = "SELECT password 

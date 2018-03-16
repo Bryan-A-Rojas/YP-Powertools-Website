@@ -1,10 +1,11 @@
 <?php 
 
-session_start();
+require_once '../config.php';
+
 if(isset($_SESSION['role'])){
 
-include '../includes/header.inc.php';
-include '../includes/navbar_user.inc.php';
+require_once INCLUDES . 'header.inc.php';
+require_once INCLUDES . 'navbar_user.inc.php';
 
 ?>
 
@@ -39,7 +40,7 @@ include '../includes/navbar_user.inc.php';
 
 <?php 
 
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 } else {
 	header("Location: index.php");
 	exit();

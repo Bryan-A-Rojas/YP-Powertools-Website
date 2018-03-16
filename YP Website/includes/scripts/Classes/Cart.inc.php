@@ -10,7 +10,7 @@ class Cart{
 
 	function display_cart(){
 		//Require database header
-		include SCRIPTS . "dbh.inc.php";
+		require_once SCRIPTS . "dbh.inc.php";
 
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
 		$sql = "SELECT product_image, product_name, 
@@ -51,7 +51,7 @@ class Cart{
 
 	function add_to_cart($product_id, $quantity){
 		//include database header
-		include SCRIPTS . "dbh.inc.php";
+		require_once SCRIPTS . "dbh.inc.php";
 
 		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) 
 				VALUES ($this->user_id, $product_id, $quantity);";
@@ -61,7 +61,7 @@ class Cart{
 
 	function remove_from_cart($cart_id){
 		//include database header
-		include SCRIPTS . "dbh.inc.php";
+		require_once SCRIPTS . "dbh.inc.php";
 		
 		$sql = "DELETE FROM cart 
 				WHERE `cart_id` = $cart_id;";
@@ -71,7 +71,7 @@ class Cart{
 
 	function clear_cart(){
 		//include database header
-		include SCRIPTS . "dbh.inc.php";
+		require_once SCRIPTS . "dbh.inc.php";
 
 		$sql = "DELETE FROM `cart` 
 				WHERE user_id = $this->user_id;";

@@ -1,10 +1,11 @@
 <?php 
 
-session_start();
-include '../includes/header.inc.php';
-include '../includes/navbar_user.inc.php';
+require_once '../config.php';
 
-require_once '../includes/scripts/classes/Cart.inc.php';
+require_once INCLUDES . 'header.inc.php';
+require_once INCLUDES . 'navbar_user.inc.php';
+
+require_once CLASSES . 'Cart.inc.php';
 
 $cart = new Cart($_SESSION['id']);
 
@@ -59,7 +60,7 @@ $cart_items = $cart->display_cart();
 
 <?php 
 
-include '../includes/footer.inc.php';
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'footer.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 ?>

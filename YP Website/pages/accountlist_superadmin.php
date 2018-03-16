@@ -1,10 +1,11 @@
 <?php 
 
-session_start();
-include '../includes/header.inc.php';
-include '../includes/navbar_superadmin.inc.php';
+require_once '../config.php';
 
-include '../includes/scripts/Classes/SuperAdmin.inc.php';
+require_once INCLUDES . 'header.inc.php';
+require_once INCLUDES . 'navbar_superadmin.inc.php';
+
+require_once CLASSES . 'SuperAdmin.inc.php';
 
 $Admin = new SuperAdmin($_SESSION['id']);
 
@@ -50,7 +51,7 @@ $users_array = $Admin->get_users_and_admins();
 
 <?php 
 
-include '../includes/footer.inc.php';
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'footer.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 ?>

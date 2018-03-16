@@ -1,8 +1,9 @@
 <?php 
 
-session_start();
-include '../includes/header.inc.php';
-include '../includes/navbar_superadmin.inc.php';
+require_once '../config.php';
+
+require_once INCLUDES . 'header.inc.php';
+require_once INCLUDES . 'navbar_superadmin.inc.php';
 
 ?>
 
@@ -36,6 +37,6 @@ include '../includes/navbar_superadmin.inc.php';
 
 <?php 
 
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 ?>

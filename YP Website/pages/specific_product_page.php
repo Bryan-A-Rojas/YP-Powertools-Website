@@ -3,10 +3,11 @@
 //If the user does not enter this link with a product id then redirect to products page
 if(isset($_GET['productid'])){
 
-session_start();
-include '../includes/header.inc.php';
+require_once '../config.php';
 
-include '../includes/scripts/functions.inc.php';
+require_once INCLUDES . 'header.inc.php';
+
+require_once SCRIPTS . 'functions.inc.php';
 $navbar = "";
 
 if(isset($_SESSION['role'])){
@@ -15,10 +16,10 @@ if(isset($_SESSION['role'])){
     $navbar = '../includes/navbar.inc.php';
 }
 
-include $navbar;
+require_once $navbar;
 
 
-require_once "../includes/scripts/functions.inc.php";
+require_once SCRIPTS . "functions.inc.php";
 
 $product_information = get_specific_product($_GET['productid']);
 $product_information = $product_information[0];
@@ -49,8 +50,8 @@ $product_information = $product_information[0];
 
 <?php 
 
-include '../includes/footer.inc.php';
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'footer.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 } else {
 	header("Location: products.php");

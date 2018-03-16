@@ -1,19 +1,18 @@
 <?php 
 
-session_start();
-include '../includes/header.inc.php';
+require_once '../config.php';
+require_once INCLUDES . 'header.inc.php';
+require_once SCRIPTS . 'functions.inc.php';
 
-include '../includes/scripts/functions.inc.php';
 $navbar = "";
 
 if(isset($_SESSION['role'])){
     $navbar = displayNavbar($_SESSION['role']);
 }else{
-    $navbar = '../includes/navbar.inc.php';
+    $navbar = INCLUDES . 'navbar.inc.php';
 }
 
-include $navbar;
-
+require_once $navbar;
 
 ?>
 
@@ -51,7 +50,7 @@ include $navbar;
  -->
 <?php 
 
-include '../includes/footer.inc.php';
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'footer.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 ?>

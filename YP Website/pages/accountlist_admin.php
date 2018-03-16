@@ -1,10 +1,10 @@
 <?php 
 
-session_start();
-include '../includes/header.inc.php';
-include '../includes/navbar_admin.inc.php';
+require_once '../config.php';
+require_once INCLUDES . 'header.inc.php';
+require_once INCLUDES . 'navbar_admin.inc.php';
 
-include '../includes/scripts/Classes/Admin.inc.php';
+require_once CLASSES . 'Admin.inc.php';
 
 $Admin = new Admin($_SESSION['id']);
 
@@ -48,7 +48,7 @@ $users_array = $Admin->get_users();
 
 <?php 
 
-include '../includes/footer.inc.php';
-include '../includes/endtags.inc.php';
+require_once INCLUDES . 'footer.inc.php';
+require_once INCLUDES . 'endtags.inc.php';
 
 ?>
