@@ -10,14 +10,16 @@ class Cart{
 
 	function display_cart(){
 		//Require database header
-		require_once "../includes/scripts/dbh.inc.php";
+		include SCRIPTS . "dbh.inc.php";
+
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT product_image, product_name, product_price, SUM(quantity) as quantity, product_description 
+		$sql = "SELECT product_image, product_name, 
+					   product_price, SUM(quantity) as quantity, product_description 
 				FROM products
-				inner join cart
+				INNER JOIN cart
 				ON products.product_id = cart.product_id
 				WHERE cart.user_id = $this->user_id
-            	GROUP BY product_image, product_name, product_price, product_description";
+            	GROUP BY product_image, product_name, product_price, product_description;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -30,17 +32,17 @@ class Cart{
 	        $resultsArray[] = $row;
 	   	}
 
-
+	   	//Store query in string
 		$sql = "SELECT SUM(product_price * quantity)
 				FROM products
 				INNER JOIN cart
 				ON products.product_id = cart.product_id
-				WHERE cart.user_id = $this->user_id";
+				WHERE cart.user_id = $this->user_id;";
 
-		//Query sql string
+		//Execute Query
 		$result = $Database->query($sql);
 
-		//loop through information
+		//Get total price
 	    $resultsArray['Total Price'] = $result->fetch_assoc();
 
 		//return array
@@ -48,26 +50,32 @@ class Cart{
 	}
 
 	function add_to_cart($product_id, $quantity){
-		//Require database header
-		require_once "dbh.inc.php";
+		//include database header
+		include SCRIPTS . "dbh.inc.php";
 
-		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) VALUES ($this->user_id, $product_id, $quantity);";
+		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) 
+				VALUES ($this->user_id, $product_id, $quantity);";
 		$result = $Database->query($sql);
 		return $result;
 	}
 
 	function remove_from_cart($cart_id){
-		$sql = "DELETE FROM cart WHERE `cart_id` = $cart_id;";
+		//include database header
+		include SCRIPTS . "dbh.inc.php";
+		
+		$sql = "DELETE FROM cart 
+				WHERE `cart_id` = $cart_id;";
 		$result = $Database->query($sql);
 		return $result;
 	}
 
 	function clear_cart(){
-		//Require database header
-		require_once "dbh.inc.php";
+		//include database header
+		include SCRIPTS . "dbh.inc.php";
 
-		$id = $this->user_id;
-		$result = $Database->query("DELETE FROM `cart` WHERE user_id = $id");
+		$sql = "DELETE FROM `cart` 
+				WHERE user_id = $this->user_id;";
+		$result = $Database->query($sql);
 		return $result;
 	}
 

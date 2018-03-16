@@ -1,12 +1,37 @@
 <?php
 	
-	require 'Cart.inc.php';
+	//Basic pagination with no error checking
 
-	$cart = new Cart(1);
+	require_once '../../../config.php';
+	require_once SCRIPTS . 'dbh.inc.php';
 
-	$array = $cart->display_cart();
+	//Number of items per page
+	$limit = 2;
 
-	echo "<pre>";
-	print_r($array);
-	echo "</pre>";
+	//First found out the number of items in the database
+	$sql = "SELECT COUNT(product_id)
+			FROM products;";
+
+	$result = $Database->query($sql);
+
+	$num_of_products = $result->fetch_assoc();
+	$num_of_products = $num_of_products[0];
+
+	echo $num_of_products;
+
+	//Query String
+	$sql = "";
+
+	//if()
+	$sql = "SELECT *
+			FROM products
+			LIMIT 0, $limit";
+
+	$result = $Database->query($sql);
+
+	while($row = $result->fetch_assoc()){
+		echo "<pre>";
+		print_r($row);
+		echo "</pre>";
+	}
 ?>
