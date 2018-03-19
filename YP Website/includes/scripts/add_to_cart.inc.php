@@ -1,8 +1,9 @@
 <?php
-session_start();
+
+require_once '../../config.php';
 
 	if(isset($_POST['add_to_cart'])){
-		require_once 'classes/Cart.inc.php';
+		require_once CLASSES . 'Cart.inc.php';
 
 		$cart = new Cart($_SESSION['id']);
 		
