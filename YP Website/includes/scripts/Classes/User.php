@@ -1,6 +1,5 @@
 <?php
 
-require_once '../../../config.php';
 require_once CLASSES . 'Person.php';
 
 class User extends Person{
@@ -19,11 +18,11 @@ class User extends Person{
 
 	private function getInfo(){
 		//Require Database connection
-		require_once SCRIPTS . 'dbh.inc.php';
+		require SCRIPTS . 'dbh.inc.php';
 		
 		//SQL statement
 		$sql = "SELECT * 
-				FROM users 
+				FROM accounts 
 				WHERE email = '$this->email';";
 
 		$result = $Database->query($sql);
@@ -31,19 +30,19 @@ class User extends Person{
 		//Get results
 		$row = $result->fetch_assoc();
 
-		$this->id = $row['id'];
+		$this->id = $row['account_id'];
 		$this->profile_image = $row['profile_image'];
-		$this->name = $row['full_name'];
+		$this->name = $row['name'];
 		$this->email = $row['email'];
 	}
 
 	public static function login($email = "", $password = ""){
 		//Require Database connection
-		require_once SCRIPTS . 'dbh.inc.php';
+		require SCRIPTS . 'dbh.inc.php';
 		
 		//SQL statement
 		$sql = "SELECT password 
-				FROM users 
+				FROM accounts 
 				WHERE email = '$email';";
 
 		//Run query
@@ -83,14 +82,14 @@ class User extends Person{
 
 
 //Handler
-if(($message = User::login("test@gmail.com", "test")) === true){
-	$user = new User("test@gmail.com");
-	$_SESSION['user'] = $user;
-	echo $_SESSION['user']->getName();
+// if(($message = User::login("test@gmail.com", "test")) === true){
+// 	$user = new User("test@gmail.com");
+// 	$_SESSION['user'] = $user;
+// 	echo $_SESSION['user']->getName();
 
-	//$_SESSION['user']->useCart()->add_to_cart(2, 2);
+// 	//$_SESSION['user']->useCart()->add_to_cart(2, 2);
 
-	$_SESSION['user']->logout();
-} else {
-	echo $message;
-}
+// 	$_SESSION['user']->logout();
+// } else {
+// 	echo $message;
+// }

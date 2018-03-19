@@ -1,6 +1,6 @@
 <?php
 	
-session_start();
+require_once '../../config.php';
 
 	if(isset($_POST['submit'])){
 		//Require Database connection
@@ -15,7 +15,8 @@ session_start();
 			exit();
 		} else {
 			//SQL insert statement
-			$sql = "SELECT * FROM users WHERE email = '$email';";
+			$sql = "SELECT * FROM accounts 
+					WHERE email = '$email';";
 			$result = mysqli_query($Database, $sql);
 			$resultCheck = mysqli_num_rows($result);
 			
@@ -29,24 +30,32 @@ session_start();
 						header("Location: ../../pages/LoginForm.php?login=error");
 						exit();
 					}else{
-						$_SESSION['id'] = $row['id'];
-						$_SESSION['username'] = $row['username'];
-						$_SESSION['email'] = $row['email'];
-						$_SESSION['name'] = $row['name'];
-						$_SESSION['role'] = $row['role'];
-						$_SESSION['profile_image'] = $row['profile_image'];
+					
+						require_once CLASSES . 'User.php';
 
-						if($_SESSION['role'] == "SuperAdmin"){
-							header("Location: ../../pages/superadmin_page.php");
-							exit();
-						} else if($_SESSION['role'] == "Admin"){
-							header("Location: ../../pages/admin_page.php");
-							exit();
-						} else {
-							header("Location: ../../pages/user_page.php");
-							exit();
+						$_SESSION['user'] = new User($row['email']);
+
+						switch ($_SESSION['user']){
+							case "user":
+								header("Location: ../../pages/user_page.php");
+								exit();
+								break;
+							case "admin":
+								header("Location: ../../pages/admin_page.php");
+								exit();
+								break;
+							case "superadmin":
+								header("Location: ../../pages/superadmin_page.php");
+								exit();
+								break;
+							default:
+								header("Location: ../../pages/user_page.php");
+								exit();
+								break;
+								// header("Location: ../../pages/index.php?login=invalid_role");
+								// exit();
+								// break;
 						}
-
 					}
 				}
 			}

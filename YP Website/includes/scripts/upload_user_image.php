@@ -11,8 +11,9 @@ session_start();
 		} else {
 				$image_name = $_FILES['profile_image']['name'];
 
-				$id = $_SESSION['id'];
-				$sql = "UPDATE `users` SET `profile_image` = '$image_name' WHERE `id` = $id;";
+				$id = $_SESSION['account_id'];
+				$sql = "UPDATE `users` SET `profile_image` = '$image_name' 
+						WHERE `account_id` = $id;";
 
 				if ($Database->query($sql) === TRUE) {
 					$_SESSION['profile_image'] = $image_name; 

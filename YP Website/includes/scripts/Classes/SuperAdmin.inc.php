@@ -11,9 +11,11 @@ class SuperAdmin{
 	//Get all users and admins
 	function get_users_and_admins(){
 		//Require database header
-		require_once '../includes/scripts/dbh.inc.php';
+		require_once SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT id,profile_image,full_name,email,role FROM users WHERE `role` = 'User' OR `role` = 'Admin';";
+		$sql = "SELECT account_id, profile_image, name, email, role 
+				FROM accounts 
+				WHERE `role` = 'user' OR `role` = 'admin';";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -32,7 +34,8 @@ class SuperAdmin{
 
 	function add_product($image_array, $name, $price, $description){
 		move_image($image_array, "products");
-		$sql = "INSERT INTO `products`(`product_image`, `product_name`, `product_price`, `product_description`) VALUES ('$image','$name','$description')";
+		$sql = "INSERT INTO `products`(`image`, `name`, `price`, `description`) 
+				VALUES ('$image','$name','$description')";
 		$result = $Database->query($sql);
 		return $result;
 	}

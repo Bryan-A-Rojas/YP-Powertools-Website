@@ -7,7 +7,7 @@ class Products{
 
 	function get_products(){
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT * FROM products";
+		$sql = "SELECT * FROM products;";
 		//Query sql string
 		$result = $Database->query($sql);
 
@@ -25,7 +25,7 @@ class Products{
 
 	function get_specific_product($product_id){
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT * FROM products WHERE product_id = $product_id";
+		$sql = "SELECT * FROM products WHERE product_id = $product_id;";
 		//Query sql string
 		$result = $Database->query($sql);
 

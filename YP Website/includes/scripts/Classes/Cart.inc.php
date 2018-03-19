@@ -13,13 +13,13 @@ class Cart{
 		require_once SCRIPTS . "dbh.inc.php";
 
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT product_image, product_name, 
-					   product_price, SUM(quantity) as quantity, product_description 
+		$sql = "SELECT image, name, 
+					   price, SUM(quantity) as quantity, description 
 				FROM products
 				INNER JOIN cart
 				ON products.product_id = cart.product_id
-				WHERE cart.user_id = $this->user_id
-            	GROUP BY product_image, product_name, product_price, product_description;";
+				WHERE cart.account_id = $this->user_id
+            	GROUP BY products.image, products.name, products.price, products.description;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -33,11 +33,11 @@ class Cart{
 	   	}
 
 	   	//Store query in string
-		$sql = "SELECT SUM(product_price * quantity)
+		$sql = "SELECT SUM(products.price * cart.quantity)
 				FROM products
 				INNER JOIN cart
 				ON products.product_id = cart.product_id
-				WHERE cart.user_id = $this->user_id;";
+				WHERE cart.account_id = $this->user_id;";
 
 		//Execute Query
 		$result = $Database->query($sql);
@@ -53,7 +53,7 @@ class Cart{
 		//include database header
 		require_once SCRIPTS . "dbh.inc.php";
 
-		$sql = "INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) 
+		$sql = "INSERT INTO `cart` (`account_id`, `product_id`, `quantity`) 
 				VALUES ($this->user_id, $product_id, $quantity);";
 		$result = $Database->query($sql);
 		return $result;
@@ -74,7 +74,7 @@ class Cart{
 		require_once SCRIPTS . "dbh.inc.php";
 
 		$sql = "DELETE FROM `cart` 
-				WHERE user_id = $this->user_id;";
+				WHERE account_id = $this->user_id;";
 		$result = $Database->query($sql);
 		return $result;
 	}

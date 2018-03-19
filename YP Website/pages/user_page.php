@@ -2,10 +2,11 @@
 
 require_once '../config.php';
 
-if(isset($_SESSION['role'])){
+if(isset($_SESSION['user'])){
 
 require_once INCLUDES . 'header.inc.php';
-require_once INCLUDES . 'navbar_user.inc.php';
+
+require_once INCLUDES . 'navbar.inc.php';
 
 ?>
 

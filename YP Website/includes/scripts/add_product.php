@@ -20,7 +20,8 @@
 		} else {
 			$image_name = $_FILES['product_image']['name'];
 
-			$sql = "INSERT INTO `products` (`product_image`, `product_name`, `product_price`, `product_description`) VALUES ('$image_name', '$txtname', $price, '$description')";
+			$sql = "INSERT INTO `products` (`image`, `name`, `price`, `description`)
+					VALUES ('$image_name', '$txtname', $price, '$description');";
 
 			if ($Database->query($sql) === TRUE) {
 				header("Location: ../../pages/edit_products.php?add_product=success");

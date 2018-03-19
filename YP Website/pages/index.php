@@ -6,15 +6,7 @@ require_once INCLUDES . 'header.inc.php';
 
 require_once SCRIPTS . 'functions.inc.php';
 
-$navbar = "";
-
-if(isset($_SESSION['role'])){
-    $navbar = displayNavbar($_SESSION['role']);
-}else{
-    $navbar = '../includes/navbar.inc.php';
-}
-
-require_once $navbar;
+require_once INCLUDES . 'navbar.inc.php';
 
 ?>
 

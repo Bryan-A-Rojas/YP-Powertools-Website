@@ -41,57 +41,6 @@ function move_image($FilesArray, $folder_name){
 	}
 }
 
-function get_all_products(){
-	//Require database header
-	require_once 'dbh.inc.php';
-	//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-	$sql = "SELECT * FROM products";
-	//Query sql string
-	$result = $Database->query($sql);
-
-	//Array to store results
-	$resultsArray = array();
-
-	//loop through information
-    while($row = $result->fetch_assoc()) {
-        $resultsArray[] = $row;
-    }
-
-	//return array
-	return $resultsArray;
-}
-
-function get_specific_product($product_id){
-	//Require database header
-	require_once 'dbh.inc.php';
-	//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-	$sql = "SELECT * FROM products WHERE product_id = $product_id";
-	//Query sql string
-	$result = $Database->query($sql);
-
-	//Array to store results
-	$resultsArray = array();
-
-	//loop through information
-    while($row = $result->fetch_assoc()) {
-        $resultsArray[] = $row;
-    }
-
-	//return array
-	return $resultsArray;
-}
-
-function displayNavbar($role){
-
-	if((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "User"){
-    	return '../includes/navbar_user.inc.php';
-	} else if ((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "Admin"){
-    	return '../includes/navbar_admin.inc.php';
-	} else if ((isset($_SESSION['role']) && isset($_SESSION['id'])) && $_SESSION['role'] == "SuperAdmin"){
-    	return '../includes/navbar_superadmin.inc.php';
-    }
-}
-
 //Experimental code
 // function open_database_connection(){
 //     $connection = new PDO("mysql:host=localhost;dbname=yp_powertools_database", 'root', '');

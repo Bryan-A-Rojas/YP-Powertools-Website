@@ -3,11 +3,10 @@
 require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
-require_once INCLUDES . 'navbar_user.inc.php';
 
-require_once CLASSES . 'Cart.inc.php';
+require_once INCLUDES . 'navbar.inc.php';
 
-$cart = new Cart($_SESSION['id']);
+$cart = $_SESSION['user']->useCart();
 
 $cart_items = $cart->display_cart();
 

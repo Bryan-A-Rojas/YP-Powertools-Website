@@ -39,7 +39,8 @@
 					$sql = "";
 					//if profile image is not uploaded then use different insert
 					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
-						$sql = "INSERT INTO `users` (`full_name`, `email`, `password`) VALUES ('$full_name', '$email', '$HashedPassword')";
+						$sql = "INSERT INTO `accounts` (`name`, `email`, `password`) 
+								VALUES ('$full_name', '$email', '$HashedPassword')";
 					} else {
 						//else move profile image to a folder
 						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
@@ -47,7 +48,8 @@
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
-							$sql = "INSERT INTO `users` (`profile_image`, `full_name`, `email`, `password`) VALUES ('$image_name', '$full_name', '$email', '$HashedPassword')";
+							$sql = "INSERT INTO `accounts` (`profile_image`, `name`, `email`, `password`) 
+									VALUES ('$image_name', '$full_name', '$email', '$HashedPassword')";
 						}
 					}
 
@@ -56,7 +58,7 @@
 						$id = $Database->insert_id;
 						
 						//Store ID in session
-						$_SESSION['id'] = $id;
+						$_SESSION['account_id'] = $id;
 						
 					    header("Location: ../../pages/signupform.php?signup=success");
 					    exit();
