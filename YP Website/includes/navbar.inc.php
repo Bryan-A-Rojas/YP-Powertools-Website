@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="bg-dark">
    		<a class="navbar-brand" href="../pages/index.php">
    			<img src="../images/icons/yplogowh.png" width="30" height="30" alt="">	Powertools
    		</a>

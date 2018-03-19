@@ -52,6 +52,7 @@ hr{
 	 font-size: 3.8em;
 	 font-family: 'Plaster';
 	 padding-bottom: 15%;
+	 color: white;
 }
 
 #logo-text-sm{
@@ -103,7 +104,7 @@ hr{
 }
 
 #bg-dark{
-	background-color: #000!important;
+	background-color: #dc3545!important;
 }
 
 .arrow-size{
@@ -148,7 +149,7 @@ hr{
 
 #front-page-background{
 	/* The image used */
-    background-image: url("../images/front-page-background.png");
+    background-image: url("../images/front-page-background.jpg");
 }
 
 .icon-size{
@@ -170,7 +171,7 @@ hr{
 }
 
 #footer-black{
-	background-color: black;
+	background-color: #dc3545!important;
 	color: white;
 }
 

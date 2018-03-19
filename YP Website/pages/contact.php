@@ -33,13 +33,20 @@ include $navbar;
 <div class="col-lg-6 col-sm-6">        
         <h2>Contact Numbers:</h2>
         <ul>
-            <li>0909034043545</li>
-            <li>8090492340924</li>
-            <li>65453445345453</li>
+            <li>0906254206</li>
+            <li>09772007355</li>
+            <li>0928452301</li>
         </ul>
 
         <h2>Email:</h2>
         <p>yp_powertools@gmail.com</p>
+
+        <h2>Opening Hours:</h2>
+        <ul>
+            <li>MW 10:00 am - 6:00 pm</li>
+            <li>TTH 9:00 am - 5:00 pm</li>
+            <li>F 12:00 am - 3:00 pm</li>
+        </ul>
 </div>
 
 <div class="col-lg-6 col-sm-12">

@@ -2,6 +2,10 @@ TODO:
 	0- Logo
 	0- Header should have navbar
 	0- Footer should have copyright
+	- Add legit phone numbers in contact page
+	- Ask for time and days of schedule and change contact page
+	- Change parallax size
+	- Edit carousel
 
 	0-SIGNUP PAGE
 	0-LOGIN PAGE

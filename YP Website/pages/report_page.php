@@ -142,10 +142,11 @@ $users_array = $Admin->get_users();
 		<a href="index.php"><h4>&lt;Back to Home Page</h4></a>
 </div>
 
+<div id="areachart" style="height: 300px; width: 100%;"></div>
 <div id="columnchart" style="height: 300px; width: 100%;"></div>
 <div id="linechart" style="height: 300px; width: 100%;"></div>
 <div id="piechart" style="height: 300px; width: 100%;"></div>
-<div id="areachart" style="height: 300px; width: 100%;"></div>
+
 
 <table class="table table-hover table-dark">
   <thead>
