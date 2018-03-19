@@ -21,10 +21,19 @@ require_once $navbar;
 		<div class="row">
 		<h1>About Us</h1>
 		</div>
+	</div>
+</div>
+		<div class="container">
+			<div class="row">
+
+		<div class="col-lg-4 col-sm-3">
 			<h2>Meaning of YP?</h2>
 			<p>YP Stands for Yuan and Paul, they are the owners of this business</p>
 			<h2>History</h2>
 			<p>YP Powertools registered as a business on Jan 2017, to cater the online market. a subsidiary of Tools4hobby Enterprises located along Alabang Zapote Road Barangay Almanza I Las Pinas</p>
+		</div>
+
+		<div class="col-lg-4 col-sm-3">
 			<h2>Mission</h2>
 			<ul>
 				<li>To develop solutions, which would maximise wealth for our shareholders.</li>
@@ -32,7 +41,9 @@ require_once $navbar;
 				<li>To serve the community by understanding our responsibility towards the society and living up to them.</li>
 				<li>To give the customer - value for money.</li>
 			</ul>
-			
+		</div>
+		
+		<div class="col-lg-4 col-sm-3">
 			<h2>Vision</h2>
 				<ul>
 					<li>To be rated best amongst quality and service for the solutions that we provide to our customers.</li>
@@ -40,8 +51,10 @@ require_once $navbar;
 					<li>To lead in the Industrial Power Tools, Pneumatic Tools, Welding Machines and Special Purpose Motors</li>
 					<li>To cater to 100% needs of the customers by introducing total range of products in each segment.</li>
 				</ul>
-	</div>
-</div>
+		</div>		
+
+				</div>
+		</div>
 
 <!-- - meaning of yp
 		- mission and vision

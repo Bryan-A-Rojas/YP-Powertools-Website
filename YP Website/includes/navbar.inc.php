@@ -3,7 +3,7 @@
    			<img src="../images/icons/yplogowh.png" width="30" height="30" alt="">	Powertools
    		</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-   			<span class="navbar-toggler-icon"><i class="fas fa-list"></i></span>
+   			<span class="navbar-toggler-icon"></span>
   		</button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
