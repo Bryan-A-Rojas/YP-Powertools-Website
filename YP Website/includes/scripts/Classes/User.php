@@ -4,16 +4,16 @@ require_once CLASSES . 'Person.php';
 
 class User extends Person{
 
-	private $cart;
+	//private $cart;
 
 	public function __construct($email){
 		$this->email = $email;
 		$this->getInfo();
 
 		//include cart class
-		require_once CLASSES . 'Cart.inc.php';
+		//require_once CLASSES . 'Cart.inc.php';
 
-		$this->cart = new Cart($this->id);
+		//$this->cart = new Cart($this->id);
 	}
 
 	private function getInfo(){
@@ -64,18 +64,18 @@ class User extends Person{
 		return true;
 	}
 
-	public function logout(){
-		if(!isset($_SESSION)){
-			session_start();
-		}
+	// public function logout(){
+	// 	if(!isset($_SESSION)){
+	// 		session_start();
+	// 	}
 
-		session_unset();
-		session_destroy();
-	}
+	// 	session_unset();
+	// 	session_destroy();
+	// }
 
-	public function useCart(){
-		return $this->cart;
-	}
+	// public function useCart(){
+	// 	return $this->cart;
+	// }
 	
 }
 

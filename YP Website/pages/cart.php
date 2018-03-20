@@ -6,7 +6,9 @@ require_once INCLUDES . 'header.inc.php';
 
 require_once INCLUDES . 'navbar.inc.php';
 
-$cart = $_SESSION['user']->useCart();
+require_once CLASSES . 'Cart.inc.php';
+
+$cart = new Cart($_SESSION['account_id']);
 
 $cart_items = $cart->display_cart();
 
@@ -37,11 +39,11 @@ $cart_items = $cart->display_cart();
       
     <?php if($item != end($cart_items)): ?>
       <tr>
-        <th scope="row"><img src="../images/products/<?php echo $item['product_image'] ?>" class="product-image-size"></th>
-        <td><?php echo $item['product_name'] ?></td>
-        <td><?php echo $item['product_price'] ?></td>
+        <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
+        <td><?php echo $item['name'] ?></td>
+        <td><?php echo $item['price'] ?></td>
         <td><?php echo $item['quantity'] ?></td>
-        <td><?php echo $item['product_description'] ?></td>
+        <td><?php echo $item['description'] ?></td>
       </tr>
     <?php endif ?>
 
@@ -51,7 +53,7 @@ $cart_items = $cart->display_cart();
   <tfoot>
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
       <td>Total</td>
-      <td><?php echo $cart_items['Total Price']['SUM(product_price * quantity)'] ?></td>
+      <td><?php echo $cart_items['Total Price']['Total'] ?></td>
     </tr>
   </tfoot>
 </table>

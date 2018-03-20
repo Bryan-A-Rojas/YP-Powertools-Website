@@ -2,11 +2,13 @@
 
 require_once '../config.php';
 
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['role'])){
 
-require_once INCLUDES . 'header.inc.php';
+	if($_SESSION['role'] == "user"){
 
-require_once INCLUDES . 'navbar.inc.php';
+		require_once INCLUDES . 'header.inc.php';
+
+		require_once INCLUDES . 'navbar.inc.php';
 
 ?>
 
@@ -41,9 +43,14 @@ require_once INCLUDES . 'navbar.inc.php';
 
 <?php 
 
-require_once INCLUDES . 'endtags.inc.php';
+		require_once INCLUDES . 'endtags.inc.php';
+	} else {
+		header("Location: index.php");
+		exit();
+	}
 } else {
 	header("Location: index.php");
 	exit();
 }
+
 ?>

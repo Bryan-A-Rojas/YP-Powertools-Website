@@ -33,7 +33,7 @@ class Cart{
 	   	}
 
 	   	//Store query in string
-		$sql = "SELECT SUM(products.price * cart.quantity)
+		$sql = "SELECT SUM(products.price * cart.quantity) AS Total
 				FROM products
 				INNER JOIN cart
 				ON products.product_id = cart.product_id

@@ -45,6 +45,7 @@ require_once INCLUDES . 'navbar.inc.php';
 		</div>		
 	</div>
 </div>
+
 <?php 
 
 require_once INCLUDES . 'footer.inc.php';

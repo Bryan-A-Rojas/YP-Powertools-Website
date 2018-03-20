@@ -5,18 +5,10 @@ require_once '../config.php';
 require_once INCLUDES . 'header.inc.php';
 
 require_once SCRIPTS . 'functions.inc.php';
-$navbar = "";
 
-if(isset($_SESSION['role'])){
-    $navbar = displayNavbar($_SESSION['role']);
-}else{
-    $navbar = INCLUDES . 'navbar.inc.php';
-}
-
-include $navbar;
+require_once INCLUDES . 'navbar.inc.php';
 
 ?>
-
 
 <div class="jumbotron">
     <div class="container">

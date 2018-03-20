@@ -12,7 +12,7 @@ session_start();
 				$image_name = $_FILES['profile_image']['name'];
 
 				$id = $_SESSION['account_id'];
-				$sql = "UPDATE `users` SET `profile_image` = '$image_name' 
+				$sql = "UPDATE `accounts` SET `profile_image` = '$image_name' 
 						WHERE `account_id` = $id;";
 
 				if ($Database->query($sql) === TRUE) {

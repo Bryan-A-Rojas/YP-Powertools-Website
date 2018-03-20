@@ -17,25 +17,28 @@ require_once '../../config.php';
 			//SQL insert statement
 			$sql = "SELECT * FROM accounts 
 					WHERE email = '$email';";
-			$result = mysqli_query($Database, $sql);
-			$resultCheck = mysqli_num_rows($result);
+			$result = $Database->query($sql);
 			
-			if($resultCheck < 1){
+			if($result->num_rows < 1){
 				header("Location: ../../pages/LoginForm.php?login=error");
 				exit();
 			} else {
-				if($row = mysqli_fetch_assoc($result)){
+				if($row = $result->fetch_assoc()){
 
 					if(!password_verify($password, $row['password'])){
 						header("Location: ../../pages/LoginForm.php?login=error");
 						exit();
 					}else{
 					
-						require_once CLASSES . 'User.php';
+						$_SESSION['account_id'] = $row['account_id'];
+						$_SESSION['username'] = $row['username'];
+						$_SESSION['email'] = $row['email'];
+						$_SESSION['name'] = $row['name'];
+						$_SESSION['role'] = $row['role'];
+						$_SESSION['profile_image'] = $row['profile_image'];
 
-						$_SESSION['user'] = new User($row['email']);
 
-						switch ($_SESSION['user']){
+						switch ($_SESSION['role']){
 							case "user":
 								header("Location: ../../pages/user_page.php");
 								exit();
@@ -52,9 +55,6 @@ require_once '../../config.php';
 								header("Location: ../../pages/user_page.php");
 								exit();
 								break;
-								// header("Location: ../../pages/index.php?login=invalid_role");
-								// exit();
-								// break;
 						}
 					}
 				}

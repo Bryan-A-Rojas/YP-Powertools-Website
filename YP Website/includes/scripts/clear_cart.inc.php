@@ -1,12 +1,12 @@
 <?php
 	
-	require_once '../../config.php';
+	require '../../config.php';
 
 	if(isset($_POST['clear_cart'])){
 
 		require_once CLASSES . 'Cart.inc.php';
 
-		$cart = new Cart($_SESSION['id']);
+		$cart = new Cart($_SESSION['account_id']);
 		
 		if($cart->clear_cart()){
 			header("Location: ../../pages/cart.php?cart=cleared");

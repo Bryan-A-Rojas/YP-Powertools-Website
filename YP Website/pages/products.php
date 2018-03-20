@@ -6,16 +6,7 @@ require_once INCLUDES . 'header.inc.php';
 
 require_once SCRIPTS . 'functions.inc.php';
 
-$navbar = "";
-
-if(isset($_SESSION['role'])){
-    $navbar = displayNavbar($_SESSION['role']);
-}else{
-    $navbar = '../includes/navbar.inc.php';
-}
-
-require_once $navbar;
-
+require_once INCLUDES . 'navbar.inc.php';
 
 ?>
 
@@ -79,19 +70,19 @@ require_once $navbar;
     <!-- Columns -->
     <div class="row">
         <?php
-            require_once '../includes/scripts/functions.inc.php';
+            require_once CLASSES . 'Products.inc.php';
 
-            $products_array = get_all_products();
+            $products_array = Products::get_products();
         ?>
 
         <?php foreach ($products_array as $product): ?>
             <div class='col-lg-4 col-sm-6'>
                 <a href='../pages/specific_product_page.php?productid=<?php echo $product['product_id']?>' type='button' class='btn btn-link product-button'>
-                <img class='rounded-square-size img-rounded img-fluid' src='../images/products/<?php echo $product['product_image']?>'>
+                <img class='rounded-square-size img-rounded img-fluid' src='../images/products/<?php echo $product['image']?>'>
                 </a>
                 
-                <h2><?php echo $product['product_name'] ?></h2>
-                <p style="color:green;">PHP <?php echo $product['product_price'] ?></p>
+                <h2><?php echo $product['name'] ?></h2>
+                <p style="color:green;">PHP <?php echo $product['price'] ?></p>
             </div>
         <?php endforeach ?>
 

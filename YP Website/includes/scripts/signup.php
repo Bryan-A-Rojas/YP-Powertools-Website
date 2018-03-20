@@ -1,12 +1,13 @@
 <?php
-	session_start();
+	
+	require '../../config.php';
 
-	require_once 'functions.inc.php';
+	require_once SCRIPTS . 'functions.inc.php';
 
 	//Check if they used the button
 	if(isset($_POST['submit'])){
 		//connect to database
-		require_once 'dbh.inc.php';
+		require_once SCRIPTS . 'dbh.inc.php';
 
 		//Get all post data and sanitize input
 		//profile_image,full_name, email, password, confirm password
@@ -57,8 +58,18 @@
 						//Get last inserted id
 						$id = $Database->insert_id;
 						
-						//Store ID in session
-						$_SESSION['account_id'] = $id;
+						$result = $Database->query("SELECT *
+										  			FROM accounts
+										  			WHERE account_id = $id");
+
+						$row = $result->fetch_assoc();
+
+						$_SESSION['id'] = $row['id'];
+						$_SESSION['username'] = $row['username'];
+						$_SESSION['email'] = $row['email'];
+						$_SESSION['name'] = $row['name'];
+						$_SESSION['role'] = $row['role'];
+						$_SESSION['profile_image'] = $row['profile_image'];
 						
 					    header("Location: ../../pages/signupform.php?signup=success");
 					    exit();

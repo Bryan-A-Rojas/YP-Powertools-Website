@@ -1,11 +1,11 @@
 <?php 
 
-//Require database header
-require_once 'dbh.inc.php';
-
 class Products{
 
-	function get_products(){
+	static function get_products(){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
 		$sql = "SELECT * FROM products;";
 		//Query sql string
@@ -23,7 +23,10 @@ class Products{
 		return $resultsArray;
 	}
 
-	function get_specific_product($product_id){
+	static function get_specific_product($product_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+		
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
 		$sql = "SELECT * FROM products WHERE product_id = $product_id;";
 		//Query sql string

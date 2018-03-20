@@ -11,16 +11,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="../pages/index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
-                
-                <?php if(!isset($_SESSION['admin']) OR !isset($_SESSION['superadmin'])):?>
-                
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/products.php">Products</a>
                 </li>
-                
-                <?php endif ?>
-
-                
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/aboutus.php">About Us</a>
                 </li>
@@ -28,14 +21,12 @@
                     <a class="nav-link" href="../pages/contact.php">Contact</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <div class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
 
-                <?php if(isset($_SESSION['user']) || 
-                         isset($_SESSION['admin'])|| 
-                         isset($_SESSION['superadmin'])): ?>
+                <?php if(isset($_SESSION['role'])): ?>
                     
-                    <?php if(isset($_SESSION['user'])): ?>
+                    <?php if($_SESSION['role'] == "user"): ?>
 
                         <li class="nav-item">
                             <a class="nav-link" href="../pages/cart.php">Cart <i class="fas fa-shopping-cart"></i></a>
@@ -43,19 +34,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../pages/user_page.php">Profile <i class="fa fa-user"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <form action="../includes/scripts/logout.php" method="POST">
-                                <button type="submit" name="submit" class="btn btn-danger">Logout <i class="fas fa-sign-out-alt"></i></button>
-                            </form>
-                        </li>
 
-                    <?php elseif(isset($_SESSION['admin'])): ?>
+                    <?php elseif($_SESSION['role'] == "admin"): ?>
 
                         <li class="nav-item">
                             <a class="nav-link" href="accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="report_page.php">Reports  <i class="fas fa-users"></i></a>
+                            <a class="nav-link" href="report_page.php">Reports <i class="fas fa-users"></i></a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -70,13 +56,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../pages/admin_page.php">Profile <i class="fa fa-user"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <form action="../includes/scripts/logout.php" method="POST">
-                                <button type="submit" name="submit" class="btn btn-danger">Logout <i class="fas fa-sign-out-alt"></i></button>
-                            </form>
-                        </li>
 
-                    <?php elseif(isset($_SESSION['superadmin'])): ?>
+                    <?php elseif($_SESSION['role'] == "superadmin"): ?>
                         
                         <li class="nav-item">
                             <a class="nav-link" href="accountlist_superadmin.php">Account List <i class="fas fa-users"></i></a>
@@ -94,14 +75,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../pages/admin_page.php">Profile <i class="fa fa-user"></i></a>
                         </li>
-                        <li class="nav-item">
+
+                    <?php endif ?>
+                    
+					    <li class="nav-item">
                             <form action="../includes/scripts/logout.php" method="POST">
                                 <button type="submit" name="submit" class="btn btn-danger">Logout <i class="fas fa-sign-out-alt"></i></button>
                             </form>
                         </li>
 
-                    <?php endif ?>
-                    
                 <?php else: ?>
                     
                     <li class="nav-item">
@@ -113,6 +95,6 @@
                     
                 <?php endif; ?>
                 </ul>
-            </form>
+            </div>
         </div>
     </nav>
