@@ -17,6 +17,10 @@ $cart_items = $cart->display_cart();
 <div class="container">
 <div class="jumbotron">
   <h1>Cart</h1>
+    <form action="#">
+  <input type="Submit" value="Checkout" class="btn btn-success btn-lg float-right">
+  </form>
+
   <form action="../includes/scripts/clear_cart.inc.php" method="POST">
     <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
   </form>
@@ -44,6 +48,7 @@ $cart_items = $cart->display_cart();
         <td><?php echo $item['price'] ?></td>
         <td><?php echo $item['quantity'] ?></td>
         <td><?php echo $item['description'] ?></td>
+        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
       </tr>
     <?php endif ?>
 
