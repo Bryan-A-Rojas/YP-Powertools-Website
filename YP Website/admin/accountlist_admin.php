@@ -1,12 +1,13 @@
 <?php 
 
-require_once '../config.php';
+require_once 'config_admin.php';
 require_once INCLUDES . 'header.inc.php';
-require_once INCLUDES . 'navbar_admin.inc.php';
 
-require_once CLASSES . 'Admin.inc.php';
+require_once INCLUDES . 'navbar.inc.php';
 
-$Admin = new Admin($_SESSION['id']);
+require_once ADMIN_CLASSES . 'Admin.inc.php';
+
+$Admin = new Admin($_SESSION['account_id']);
 
 $users_array = $Admin->get_users();
 
@@ -37,7 +38,7 @@ $users_array = $Admin->get_users();
         <th scope="row"><img src="../images/profile_images/sample-user.png"  alt="product-img" class="product-image-size"></th>
       <?php endif ?>
 
-      <td><?php echo $user['full_name'] ?></td>
+      <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
     </tr>
     <?php endforeach ?>

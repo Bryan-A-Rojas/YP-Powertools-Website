@@ -131,7 +131,7 @@ require_once INCLUDES . 'header.inc.php';
 
 <div class="jumbotron" id="jumbotron-margin">
     <h2>Report Page</h2>
-    <a href="index.php"><h4>&lt;Back to Home Page</h4></a>
+    <a href="../pages/index.php"><h4>&lt;Back to Home Page</h4></a>
 </div>
 
 <div class="container">

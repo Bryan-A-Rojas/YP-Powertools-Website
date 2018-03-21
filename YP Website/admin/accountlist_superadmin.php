@@ -3,11 +3,11 @@
 require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
-require_once INCLUDES . 'navbar_superadmin.inc.php';
+require_once INCLUDES . 'navbar.inc.php';
 
 require_once CLASSES . 'SuperAdmin.inc.php';
 
-$Admin = new SuperAdmin($_SESSION['id']);
+$Admin = new SuperAdmin($_SESSION['account_id']);
 
 $users_array = $Admin->get_users_and_admins();
 
@@ -39,7 +39,7 @@ $users_array = $Admin->get_users_and_admins();
         <th scope="row"><img src="../images/profile_images/sample-user.png"  alt="product-img" class="product-image-size"></th>
       <?php endif ?>
 
-      <td><?php echo $user['full_name'] ?></td>
+      <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
       <td><?php echo $user['role'] ?></td>
     </tr>

@@ -3,7 +3,7 @@
 require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
-require_once INCLUDES . 'navbar_admin.inc.php';
+require_once INCLUDES . 'navbar.inc.php';
 
 ?>
 

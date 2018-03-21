@@ -11,11 +11,11 @@ class Admin{
 	//Get all users
 	function get_users(){
 		//Require database header
-		require_once '../includes/scripts/dbh.inc.php';
+		require_once SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT id,profile_image,full_name,email 
-				FROM users 
-				WHERE `role` = 'User';";
+		$sql = "SELECT account_id,profile_image,name,email 
+				FROM accounts 
+				WHERE `role` = 'user';";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -33,10 +33,11 @@ class Admin{
 	}
 
 	function add_product($image_array, $name, $price, $description){
-		require_once '../functions.inc.php';
+		require_once SCRIPTS . 'functions.inc.php';
 
 		move_image($image_array, "products");
-		$sql = "INSERT INTO `products`(`product_image`, `product_name`, `product_price`, `product_description`) VALUES ('$image','$name','$description')";
+		$sql = "INSERT INTO `products`(`image`, `name`, `price`, `description`) 
+				VALUES ('$image','$name','$description')";
 		$result = $Database->query($sql);
 		return $result;
 	}

@@ -38,10 +38,10 @@
                     <?php elseif($_SESSION['role'] == "admin"): ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
+                            <a class="nav-link" href="../admin/accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="report_page.php">Reports <i class="fas fa-users"></i></a>
+                            <a class="nav-link" href="../admin/report_page.php">Reports <i class="fas fa-users"></i></a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -49,18 +49,18 @@
                                     Edit Pages <i class="fas fa-edit"></i>
                                     </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="../pages/edit_products.php">Products</a>
+                                    <a class="dropdown-item" href="../admin/edit_products.php">Products</a>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/admin_page.php">Profile <i class="fa fa-user"></i></a>
+                            <a class="nav-link" href="../admin/admin_page.php">Profile <i class="fa fa-user"></i></a>
                         </li>
 
                     <?php elseif($_SESSION['role'] == "superadmin"): ?>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="accountlist_superadmin.php">Account List <i class="fas fa-users"></i></a>
+                            <a class="nav-link" href="../admin/accountlist_superadmin.php">Account List <i class="fas fa-users"></i></a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -68,12 +68,12 @@
                                     Edit Pages <i class="fas fa-edit"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="../pages/edit_products.php">Products</a>
+                                    <a class="dropdown-item" href="../admin/edit_products.php">Products</a>
                                     </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/admin_page.php">Profile <i class="fa fa-user"></i></a>
+                            <a class="nav-link" href="../admin/admin_page.php">Profile <i class="fa fa-user"></i></a>
                         </li>
 
                     <?php endif ?>
