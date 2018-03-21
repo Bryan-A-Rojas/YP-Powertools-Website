@@ -46,7 +46,6 @@ require_once INCLUDES . 'header.inc.php';
       }
       ]
     });
-
         var chart2 = new CanvasJS.Chart("linechart2",
     {
 
