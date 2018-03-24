@@ -31,11 +31,20 @@ require_once '../../config.php';
 					}else{
 
 						$_SESSION['account_id'] = $row['account_id'];
-						$_SESSION['username'] = $row['username'];
 						$_SESSION['email'] = $row['email'];
 						$_SESSION['name'] = $row['name'];
 						$_SESSION['role'] = $row['role'];
 						$_SESSION['profile_image'] = $row['profile_image'];
+
+						$id = $_SESSION['account_id'];
+
+						$result = $Database->query("SELECT * 
+													FROM addresses 
+													WHERE account_id = $id;");
+						$row = $result->fetch_assoc();
+
+						$_SESSION['full_address'] = $row['full_address'];
+						$_SESSION['city'] = $row['city'];
 
 						header("Location: ../../pages/user_page.php");
 						exit();

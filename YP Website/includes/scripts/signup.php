@@ -16,8 +16,16 @@
 		$email = $Database->real_escape_string($_POST['txtemail']);
 		$password = $Database->real_escape_string($_POST['txtpassword']);
 		$confirm_password = $Database->real_escape_string($_POST['txtconfirmpassword']);
+		$full_address = $Database->real_escape_string($_POST['txtfulladdress']);
+		$city = $Database->real_escape_string($_POST['txtcity']);
 
-		if(empty($full_name) || empty($email) || empty($password) || empty($confirm_password)){
+		if(empty($full_name) 		||
+		   empty($email) 	 		|| 
+		   empty($password)  		|| 
+		   empty($confirm_password) || 
+		   empty($full_address) 	|| 
+		   empty($city)){
+
 			//Fields are empty
 			header("Location: ../../pages/signupform.php?signup=empty");
 			exit();
@@ -58,6 +66,10 @@
 						//Get last inserted id
 						$id = $Database->insert_id;
 						
+						$sql = "INSERT INTO `addresses`(`account_id`, `full_address`, `city`) 
+								VALUES ($id, '$full_address','$city');";
+						$Database->query($sql);
+
 						$result = $Database->query("SELECT *
 										  			FROM accounts
 										  			WHERE account_id = $id");
@@ -70,6 +82,14 @@
 						$_SESSION['name'] = $row['name'];
 						$_SESSION['role'] = $row['role'];
 						$_SESSION['profile_image'] = $row['profile_image'];
+
+						$result = $Database->query("SELECT * 
+													FROM addresses 
+													WHERE account_id = $id;");
+						$row = $result->fetch_assoc();
+
+						$_SESSION['full_address'] = $row['full_address'];
+						$_SESSION['city'] = $row['city'];
 						
 					    header("Location: ../../pages/signupform.php?signup=success");
 					    exit();

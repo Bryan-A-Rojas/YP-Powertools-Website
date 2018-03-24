@@ -42,8 +42,8 @@ $users_array = $Admin->get_users();
 
       <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
-      <td>City</td>
-      <td>Address</td>
+      <td><?php echo $user['city'] ?></td>
+      <td><?php echo $user['full_address'] ?></td>
     </tr>
     <?php endforeach ?>
 

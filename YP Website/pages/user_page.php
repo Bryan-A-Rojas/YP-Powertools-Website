@@ -9,7 +9,6 @@ if(isset($_SESSION['role'])){
 		require_once INCLUDES . 'header.inc.php';
 
 		require_once INCLUDES . 'navbar.inc.php';
-
 ?>
 
 <div class="container">
@@ -37,10 +36,10 @@ if(isset($_SESSION['role'])){
 			<p><?php echo $_SESSION['email'] ?></p>
 			
 			<label for="city">City:</label>
-			<p>City should appear here</p>
+			<p><?php echo $_SESSION['city']?></p>
 
 			<label for="fulladdress">Address:</label>
-			<p>Address should appear here</p>
+			<p><?php echo $_SESSION['full_address']?></p>
 		</div>
 	</div>
 </div>

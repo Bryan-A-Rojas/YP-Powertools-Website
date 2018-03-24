@@ -13,8 +13,10 @@ class Admin{
 		//Require database header
 		require_once SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT account_id,profile_image,name,email 
+		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address
 				FROM accounts 
+				LEFT JOIN addresses
+				ON accounts.account_id = addresses.account_id
 				WHERE `role` = 'user';";
 
 		//Query sql string

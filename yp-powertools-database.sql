@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2018 at 01:41 PM
+-- Generation Time: Mar 24, 2018 at 02:32 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -34,7 +34,7 @@ CREATE TABLE `accounts` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL DEFAULT 'User'
+  `role` varchar(255) NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -45,7 +45,28 @@ INSERT INTO `accounts` (`account_id`, `profile_image`, `name`, `email`, `passwor
 (1, '39dyylqmqxa01.png', 'Test First Name', 'test@gmail.com', '$2y$10$2O3xzGmOnD4HeAlM4Rrj0OXpRArWVJrdjN1ceGcFErQzecdRfpASm', 'user'),
 (2, NULL, 'test1', 'test1@gmail.com', '$2y$10$K94nyapkq5o8y1vbaMyNfOX/E14RHrSvdmJ1PEx0um5FAV4OS8Waq', 'user'),
 (3, '01.png', 'admin', 'admin@gmail.com', '$2y$10$NsJrlA8n3REFAy0.yJGtieHYIlBIoBEFwpn3Va3vZgAGtRz5lAgE.', 'admin'),
-(4, '1lqtvaic0sa01.png', 'superadmin', 'superadmin@gmail.com', '$2y$10$wHOu42/7tAn8RQvEgEC6b.ak4b8WWMCbz.IOkxXKv.cdztTzTbB5u', 'superadmin');
+(4, '1lqtvaic0sa01.png', 'superadmin', 'superadmin@gmail.com', '$2y$10$wHOu42/7tAn8RQvEgEC6b.ak4b8WWMCbz.IOkxXKv.cdztTzTbB5u', 'superadmin'),
+(5, 'aE9vBTqvT2XvmkkQUX8s_Us6AWnfgD5ByjZlYlU5WJg.png', 'test2', 'test2@gmail.com', '$2y$10$jT3Rew5mZOUtIkn.zPeyAuqAMu6stu2npftJQWflBNFZlL4OI.08y', 'user');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addresses`
+--
+
+CREATE TABLE `addresses` (
+  `account_id` int(11) NOT NULL,
+  `full_address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`account_id`, `full_address`, `city`) VALUES
+(1, 'Equitable Village Talon 5 Las Pinas City', 'Las Pinas City'),
+(5, 'Alabang Hills, SBCA, Muntinlupa City', 'Muntinlupa City');
 
 -- --------------------------------------------------------
 
@@ -190,7 +211,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart`

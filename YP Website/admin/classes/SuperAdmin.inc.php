@@ -13,8 +13,10 @@ class SuperAdmin{
 		//Require database header
 		require_once SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT account_id, profile_image, name, email, role 
+		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address, role
 				FROM accounts 
+				LEFT JOIN addresses
+				ON accounts.account_id = addresses.account_id
 				WHERE `role` = 'user' OR `role` = 'admin';";
 
 		//Query sql string
