@@ -21,40 +21,80 @@ require_once INCLUDES . 'header.inc.php';
                 <h1 id="logo-text-sm">Powertools</h1>
                 <div class="container" id="form-transbox">
                 <div class="row">
-                <form action="../includes/scripts/add_product.php" method="POST" enctype="multipart/form-data">
-	                <h2>Add Product</h2>
+				<h2>Add Products</h2>
 
-	                <label for="uploading">Upload Product Picture:</label>
-	                <br>
-	        		<input type="file" name="product_image" accept="image/*" class="btn btn-primary">
-	        		<br />
-	        		<br />
-	        		<div class="col-md-6">
-	        		<label for="product">Product Name:</label>
-					<br>
-	        		<input type="text" placeholder="" name="txtname" required>
-	        		<br>
-	        		</div>
-	        		<div class="col-md-6">
-	        		<label for="price">Price:</label>
-					<br>
-	        		<input type="text" placeholder="" name="txtprice" required>
- 					<br />
- 					</div>
- 					</div>
- 					<div class="col-md-6">
-	        		<label for="description">Description</label>
-	        		<br>
-	        		<textarea name="txtdescription" cols="30" rows="5"></textarea>
-	        		</div>
-	        		<br>
-	        		<br>
-	        		<button type="submit" name="submit" class="btn btn-success">Add Product</button>
-	        	</form>
-	        	</div>
+				<form action="../includes/scripts/add_product.php" method="POST" enctype="multipart/form-data">
+				  <div class="form-group">
+				    <label for="uploading">Upload Product Picture:</label>
+				    <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+				  </div>
+
+				  <div class="form-row">
+				    <div class="col">
+				      <label for="product">Product Name:</label>
+				      <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" required>
+				    </div>
+				    <div class="col">
+				      <label for="price">Price:</label>
+				      <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" required>
+				    </div>
+				  </div>
+
+				  <div class="form-group">
+				    <label for="description">Description</label>
+				    <textarea class="form-control" id="exampleFormControlTextarea1" name="txtdescription" cols="30" rows="5"></textarea>
+				  </div>
+
+				  <button type="submit" name="submit" class="btn btn-success">Add Product</button>
+				</form>
+		      </div>
+		</div>
 	</div>
-</div>
-</div>
+	</div>
+
+      <div class="row">
+  	<h2>Remove Products</h2>
+  </div>
+  <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>Item#1 Name</td>
+        <td class="alert alert-danger">Unavailable</td>
+        <td>Nov 18</td>
+        <td>Price </td>
+        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
+      </tr>
+  </tbody>
+
+    <tbody>
+      <tr>
+        <td>Item#2 Name</td>
+        <td class="alert alert-success">Available</td>
+        <td>Nov 18</td>
+        <td>Price </td>
+        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
+      </tr>
+  </tbody>
+
+    <tbody>
+      <tr>
+        <td>Item#3 Name</td>
+        <td class="alert alert-warning">New</td>
+        <td>Nov 18</td>
+        <td>Price </td>
+        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
+      </tr>
+  </tbody>
+
+</table>
 </div>
 
 <?php 

@@ -75,7 +75,6 @@ hr{
 	padding-top: 13%;
 	display: block; 
 	margin: 0 auto;
-	width: 180px;
 	height: 200px;
 }
 
@@ -158,6 +157,10 @@ hr{
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
+/*.icon-shadow{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}*/
 
 .pointer{
 	cursor: pointer;

@@ -43,6 +43,14 @@ require_once INCLUDES . 'header.inc.php';
 	        		<br>
 	        		<input type="password" placeholder="Confirm Password" name="txtconfirmpassword" required>
 	        		<br>
+	        		<label for="fulladdress">Enter Full Address:</label>
+	        		<br>
+	        		<input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress">
+					<br>
+	        		<label for="city">City:</label>
+	        		<br>
+	        		<input type="city" placeholder="Enter City" name="txtcity" required>
+	        		<br>
 	        		<br>
 	        		<button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
 	        	</form>
