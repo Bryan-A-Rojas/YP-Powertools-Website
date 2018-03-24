@@ -45,7 +45,12 @@ $cart_items = $cart->display_cart();
         <td><?php echo $item['price'] ?></td>
         <td><?php echo $item['quantity'] ?></td>
         <td><?php echo $item['description'] ?></td>
-        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
+        <td>
+          <form action="../includes/scripts/remove_cart_item.php" method="POST">
+            <input type="Submit" name="Remove" value="Remove" class="btn btn-danger btn-lg float-right">
+            <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
+          </form>
+        </td>
       </tr>
     <?php endif ?>
 
@@ -59,9 +64,11 @@ $cart_items = $cart->display_cart();
       <td></td>
       <td></td>
       <td></td>
-      <td><form action="#">
-  <input type="Submit" value="Checkout" class="btn btn-success btn-lg" style="float: right;">
-  </form></td>
+      <td>
+        <form action="#">
+          <input type="Submit" value="Checkout" class="btn btn-success btn-lg" style="float: right;">
+        </form>
+      </td>
     </tr>
   </tfoot>
 </table>

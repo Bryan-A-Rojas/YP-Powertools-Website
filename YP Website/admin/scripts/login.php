@@ -15,7 +15,8 @@ require_once '../../config.php';
 			exit();
 		} else {
 			//SQL insert statement
-			$sql = "SELECT * FROM accounts 
+			$sql = "SELECT * 
+					FROM accounts 
 					WHERE email = '$email' AND (role = 'admin' OR role = 'superadmin');";
 			$result = $Database->query($sql);
 			

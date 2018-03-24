@@ -1,7 +1,7 @@
 <?php
-	session_start();
+	require_once '../config_admin.php'
 
-	require_once 'functions.inc.php';
+	require_once SCRIPTS . 'functions.inc.php';
 
 	//Check if they used the button
 	if(isset($_POST['submit'])){
@@ -15,7 +15,7 @@
 		$description  = $Database->real_escape_string($_POST['txtdescription']);
 
 		if($error = move_image($product_image, "products") !== true){
-			header("Location: ../../pages/edit_products.php?$error");
+			header("Location: ../edit_products.php?$error");
 			exit();
 		} else {
 			$image_name = $_FILES['product_image']['name'];
@@ -24,15 +24,15 @@
 					VALUES ('$image_name', '$txtname', $price, '$description');";
 
 			if ($Database->query($sql) === TRUE) {
-				header("Location: ../../pages/edit_products.php?add_product=success");
+				header("Location: ../edit_products.php?add_product=success");
 				exit();
 			} else {
-				header("Location: ../../pages/edit_products.php?add_product=failed_database");
+				header("Location: ../edit_products.php?add_product=failed_database");
 				exit();
 			}
 		}
 	} else {
 		//User did not click the button
-		header("Location: ../../pages/edit_products.php?add_product=used_get");
+		header("Location: ../edit_products.php?add_product=used_get");
 		exit();
 	}

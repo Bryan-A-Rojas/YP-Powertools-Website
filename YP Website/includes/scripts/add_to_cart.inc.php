@@ -20,6 +20,7 @@ require_once '../../config.php';
 			header("Location: ../../pages/cart.php?cart=fail_add");
 			exit();
 		}
+		
 	} else {
 		header("Location: ../../pages/cart.php?cart=used_get");
 		exit();

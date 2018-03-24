@@ -28,7 +28,10 @@ class Products{
 		require SCRIPTS . 'dbh.inc.php';
 		
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT * FROM products WHERE product_id = $product_id;";
+		$sql = "SELECT * 
+				FROM products 
+				WHERE product_id = $product_id;";
+				
 		//Query sql string
 		$result = $Database->query($sql);
 

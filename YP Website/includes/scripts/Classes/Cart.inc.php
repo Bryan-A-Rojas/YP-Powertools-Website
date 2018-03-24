@@ -13,7 +13,7 @@ class Cart{
 		require_once SCRIPTS . "dbh.inc.php";
 
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
-		$sql = "SELECT image, name, 
+		$sql = "SELECT cart.product_id,image, name, 
 					   price, SUM(quantity) as quantity, description 
 				FROM products
 				INNER JOIN cart
@@ -45,6 +45,11 @@ class Cart{
 		//Get total price
 	    $resultsArray['Total Price'] = $result->fetch_assoc();
 
+	    //Insert for logging
+		$sql = "INSERT INTO `log` (`account_id`, `description`) 
+				VALUES ($this->user_id, 'viewed their cart');";
+		$result = $Database->query($sql);	
+
 		//return array
 		return $resultsArray;
 	}
@@ -56,16 +61,54 @@ class Cart{
 		$sql = "INSERT INTO `cart` (`account_id`, `product_id`, `quantity`) 
 				VALUES ($this->user_id, $product_id, $quantity);";
 		$result = $Database->query($sql);
+
+		$sql = "SELECT name FROM products WHERE product_id = $product_id";
+		$result = $Database->query($sql);
+		$result = $result->fetch_assoc();
+		$result = $result['name'];
+
+		//Insert for logging
+		$sql = "INSERT INTO `log` (`account_id`, `description`) 
+				VALUES ($this->user_id, 'added $quantity pieces of $result to cart');";
+		$result = $Database->query($sql);		
+
 		return $result;
 	}
 
-	function remove_from_cart($cart_id){
+	// function remove_from_cart($cart_id){
+	// 	//include database header
+	// 	require_once SCRIPTS . "dbh.inc.php";
+		
+	// 	$sql = "DELETE FROM cart 
+	// 			WHERE `cart_id` = $cart_id;";
+	// 	$result = $Database->query($sql);
+
+	// 	//Insert for logging
+	// 	$sql = "INSERT INTO `log` (`account_id`, `description`) 
+	// 			VALUES ($this->user_id, 'removed $quantity $result to cart');";
+	// 	$result = $Database->query($sql);	
+
+	// 	return $result;
+	// }
+
+	function remove_item($product_id){
 		//include database header
 		require_once SCRIPTS . "dbh.inc.php";
 		
 		$sql = "DELETE FROM cart 
-				WHERE `cart_id` = $cart_id;";
+				WHERE `account_id` = $this->user_id AND `product_id` = $product_id;";
 		$result = $Database->query($sql);
+
+		$sql = "SELECT name FROM products WHERE product_id = $product_id";
+		$result = $Database->query($sql);
+		$result = $result->fetch_assoc();
+		$result = $result['name'];
+
+		//Insert for logging
+		$sql = "INSERT INTO `log` (`account_id`, `description`) 
+				VALUES ($this->user_id, 'removed $result from cart');";
+		$result = $Database->query($sql);	
+
 		return $result;
 	}
 
@@ -76,6 +119,12 @@ class Cart{
 		$sql = "DELETE FROM `cart` 
 				WHERE account_id = $this->user_id;";
 		$result = $Database->query($sql);
+
+		//Insert for logging
+		$sql = "INSERT INTO `log` (`account_id`, `description`) 
+				VALUES ($this->user_id, 'cleared their cart');";
+		$result = $Database->query($sql);	
+
 		return $result;
 	}
 
