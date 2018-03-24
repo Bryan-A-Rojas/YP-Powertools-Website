@@ -17,9 +17,6 @@ $cart_items = $cart->display_cart();
 <div class="container">
 <div class="jumbotron">
   <h1>Cart</h1>
-    <form action="#">
-  <input type="Submit" value="Checkout" class="btn btn-success btn-lg float-right">
-  </form>
 
   <form action="../includes/scripts/clear_cart.inc.php" method="POST">
     <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
@@ -59,6 +56,12 @@ $cart_items = $cart->display_cart();
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
       <td>Total</td>
       <td><?php echo $cart_items['Total Price']['Total'] ?></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><form action="#">
+  <input type="Submit" value="Checkout" class="btn btn-success btn-lg" style="float: right;">
+  </form></td>
     </tr>
   </tfoot>
 </table>

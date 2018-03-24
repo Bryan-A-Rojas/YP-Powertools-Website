@@ -45,7 +45,7 @@
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: black; color: white;">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
                                     Edit Pages <i class="fas fa-edit"></i>
                                     </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

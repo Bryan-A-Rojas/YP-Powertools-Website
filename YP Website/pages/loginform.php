@@ -1,18 +1,17 @@
 <?php 
 
 require_once '../config.php';
-
 require_once INCLUDES . 'header.inc.php';
 
 ?>
 
-<div class="jumbotron" id="jumbotron-margin">
+	<div class="container" style="margin-top: 10px; margin-left: 60px">
+		<div class="jumbotron" id="jumbotron-color">
 		<h2>Login</h2>
-		<a href="index.php"><h4>&lt;Back to Home Page</h4></a>
+			<a href="index.php"><h4>&lt;Back to Home Page</h4></a>
+	</div>
 </div>
 
-<!-- Parallax -->
-<div class="parallax" id="front-page-background">
     <div class="container">
         <div class="row">
         	<!-- Dividers to center logo -->
@@ -43,7 +42,6 @@ require_once INCLUDES . 'header.inc.php';
             </div>
 	    </div>
     </div>
-</div>
 
 <?php 
 

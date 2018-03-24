@@ -14,7 +14,7 @@ $users_array = $Admin->get_users();
 ?>
 
 <div class="container">
-<div class="jumbotron">
+<div class="jumbotron" id="jumbotron-color">
   <h1>Account List</h1>
 </div>
 

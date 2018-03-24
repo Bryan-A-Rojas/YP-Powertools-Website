@@ -10,7 +10,7 @@ require_once INCLUDES . 'navbar.inc.php';
 
 ?>
 
-<div class="jumbotron">
+<div class="jumbotron" id="jumbotron-color">
     <div class="container">
     	<div class="row">
         <h1>Contact</h1>

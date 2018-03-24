@@ -197,7 +197,7 @@ hr{
   margin: auto;
   background-color: #ffffff;
   border: 1px solid black;
-  width: 400px;
+  width: auto;
   height: auto;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -230,4 +230,8 @@ hr{
 
 #jumbotron-margin{
 	margin: auto;
+}
+
+#jumbotron-color{
+	background-color: white;
 }

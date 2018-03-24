@@ -11,8 +11,10 @@ require_once INCLUDES . 'navbar.inc.php';
 ?>
 
 <!-- Carousel -->
-<div class="jumbotron" id="jumbotron-margin" style="background-color: white;">
+<div class="container">
+<div class="jumbotron" id="jumbotron-color">
 <h1 style="padding-left:30px;">Best Sellers</h1>
+</div>
 </div>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding-top:auto;">

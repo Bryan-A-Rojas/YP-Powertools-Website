@@ -4,6 +4,8 @@ require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
 
+require_once INCLUDES . 'navbar.inc.php';
+
 ?>
   
 <!--  COLUMN CHART -->
@@ -129,12 +131,11 @@ require_once INCLUDES . 'header.inc.php';
 
  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<div class="jumbotron" id="jumbotron-margin">
-    <h2>Report Page</h2>
-    <a href="../pages/index.php"><h4>&lt;Back to Home Page</h4></a>
-</div>
-
 <div class="container">
+  <div class="jumbotron" id="jumbotron-color">
+    <h1>Report Page</h1>
+  </div>
+
   <div class="row">
     
     <div class="col-lg-6">
