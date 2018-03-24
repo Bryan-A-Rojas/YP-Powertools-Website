@@ -35,8 +35,12 @@ if(isset($_SESSION['role'])){
 			<br />
 			<label for="email">Email:</label>
 			<p><?php echo $_SESSION['email'] ?></p>
+			
+			<label for="city">City:</label>
+			<p>City should appear here</p>
 
-
+			<label for="fulladdress">Address:</label>
+			<p>Address should appear here</p>
 		</div>
 	</div>
 </div>

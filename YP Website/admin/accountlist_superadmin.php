@@ -24,6 +24,8 @@ $users_array = $Admin->get_users_and_admins();
       <th scope="col">Account Image</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
+      <th scope="col">City</th>
+      <th scope="col">Address</th>
       <th scope="col">Role</th>
     </tr>
   </thead>
@@ -41,6 +43,8 @@ $users_array = $Admin->get_users_and_admins();
 
       <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
+      <td>City</td>
+      <td>Address</td>
       <td><?php echo $user['role'] ?></td>
     </tr>
     <?php endforeach ?>

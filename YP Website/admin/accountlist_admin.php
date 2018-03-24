@@ -24,6 +24,8 @@ $users_array = $Admin->get_users();
       <th scope="col">Account Image</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
+      <th scope="col">City</th>
+      <th scope="col">Address</th>
     </tr>
   </thead>
   </tfoot>
@@ -40,6 +42,8 @@ $users_array = $Admin->get_users();
 
       <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
+      <td>City</td>
+      <td>Address</td>
     </tr>
     <?php endforeach ?>
 

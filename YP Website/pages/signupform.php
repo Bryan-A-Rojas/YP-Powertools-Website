@@ -45,7 +45,7 @@ require_once INCLUDES . 'header.inc.php';
 	        		<br>
 	        		<label for="fulladdress">Enter Full Address:</label>
 	        		<br>
-	        		<input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress">
+	        		<input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" required>
 					<br>
 	        		<label for="city">City:</label>
 	        		<br>
