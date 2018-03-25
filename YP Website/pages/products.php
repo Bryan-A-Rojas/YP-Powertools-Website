@@ -84,7 +84,7 @@ require_once INCLUDES . 'navbar.inc.php';
                 </a>
                 
                 <h2><?php echo $product['name'] ?></h2>
-                <p style="color:green;">PHP <?php echo $product['price'] ?></p>
+                <p style="color:green;">PHP <?php echo number_format((float)$product['price'], 2, '.', ''); ?></p>
             </div>
         <?php endforeach ?>
 

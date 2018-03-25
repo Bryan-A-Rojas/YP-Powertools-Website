@@ -23,7 +23,7 @@ require_once INCLUDES . 'header.inc.php';
                 <div class="row" style="margin-left:0px;">
 				<h2>Add Products</h2>
 
-				<form action="../includes/scripts/add_product.php" method="POST" enctype="multipart/form-data">
+				<form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
 				  <div class="form-group">
 				    <label for="uploading">Upload Product Picture:</label>
 				    <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">

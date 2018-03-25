@@ -1,12 +1,12 @@
 <?php
-	require_once '../config_admin.php'
+	require_once '../config_admin.php';
 
 	require_once SCRIPTS . 'functions.inc.php';
 
 	//Check if they used the button
 	if(isset($_POST['submit'])){
 		//connect to database
-		require_once 'dbh.inc.php';
+		require_once SCRIPTS . 'dbh.inc.php';
 
 		$product_image = $_FILES['product_image'];
 
