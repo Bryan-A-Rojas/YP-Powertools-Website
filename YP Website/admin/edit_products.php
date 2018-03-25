@@ -1,8 +1,12 @@
 <?php 
 
-require_once '../config.php';
+require_once 'config_admin.php';
 
 require_once INCLUDES . 'header.inc.php';
+
+require_once ADMIN_CLASSES . 'products.inc.php';
+
+$products = Products::get_products();
 
 ?>
 
@@ -52,49 +56,57 @@ require_once INCLUDES . 'header.inc.php';
 	</div>
 	</div>
 
-      <div class="row">
-  	<h2>Remove Products</h2>
+  <div class="row">
+  	<h2>Modify Products</h2>
   </div>
+
   <table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">Date</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
+    <thead>
       <tr>
-        <td>Item#1 Name</td>
-        <td class="alert alert-danger">Unavailable</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
+        <th scope="col">Product Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price/Piece</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Description</th>
+        <th scope="col">Availability</th>
+        <th scope="col"></th>
       </tr>
-  </tbody>
-
+    </thead>
     <tbody>
-      <tr>
-        <td>Item#2 Name</td>
-        <td class="alert alert-success">Available</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
-      </tr>
-  </tbody>
+      
+      <?php foreach ($products as $key => $item): ?>
+          <tr>
+            <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
+            <td><?php echo $item['name'] ?></td>
+            <td><?php echo number_format((float)$item['price'], 2, '.', ''); ?></td>
+            <td><?php echo $item['stock'] ?></td>
+            <td><?php echo $item['description'] ?></td>
 
-    <tbody>
-      <tr>
-        <td>Item#3 Name</td>
-        <td class="alert alert-warning">New</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-        <td><input type="Submit" value="Remove" class="btn btn-danger btn-lg float-right"></td>
-      </tr>
-  </tbody>
+            <?php 
+              $color = "";
+              $availability = strtoupper($item['availability']);
+              if($availability == "AVAILABLE"){
+                $color = "green";
+              } else {
+                $color = "red";
+              }
 
-</table>
+              echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;'>$availability<p></td>";
+            ?>
+
+            <td>
+              <form action="scripts/modify_cart_item.php" method="POST">
+                <input type="Submit" name="Edit" value="Edit" class="btn btn-info btn-lg float-right" style="width:106px">
+                <input type="Submit" name="Remove" value="Remove" class="btn btn-danger btn-lg float-right">
+                <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
+              </form>
+            </td>
+          </tr>
+      <?php endforeach ?>
+
+    </tbody>
+  </table>
+
 </div>
 
 <?php 

@@ -17,7 +17,6 @@ $cart_items = $cart->display_cart();
 <div class="container">
 <div class="jumbotron">
   <h1>Cart</h1>
-
   <form action="../includes/scripts/clear_cart.inc.php" method="POST">
     <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
   </form>
@@ -33,7 +32,6 @@ $cart_items = $cart->display_cart();
       <th scope="col">Description</th>
     </tr>
   </thead>
-  </tfoot>
   <tbody>
 
     <?php foreach ($cart_items as $key => $item): ?>
@@ -42,7 +40,7 @@ $cart_items = $cart->display_cart();
       <tr>
         <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
         <td><?php echo $item['name'] ?></td>
-        <td><?php echo $item['price'] ?></td>
+        <td><?php echo number_format((float)$item['price'], 2, '.', ''); ?></td>
         <td><?php echo $item['quantity'] ?></td>
         <td><?php echo $item['description'] ?></td>
         <td>
@@ -60,7 +58,7 @@ $cart_items = $cart->display_cart();
   <tfoot>
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
       <td>Total</td>
-      <td><?php echo $cart_items['Total Price']['Total'] ?></td>
+      <td><?php echo number_format((float)$cart_items['Total Price']['Total'], 2, '.', ''); ?></td>
       <td></td>
       <td></td>
       <td></td>
@@ -72,6 +70,7 @@ $cart_items = $cart->display_cart();
     </tr>
   </tfoot>
 </table>
+
 </div>
 
 <?php 
