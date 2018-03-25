@@ -56,6 +56,80 @@ $products = Products::get_products();
 	</div>
 	</div>
 
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Remove</button>
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Edit</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to remove?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="">
+      <div class="modal-body">
+        <div class="form-group">
+		    <label for="password">Password:</label>
+		    <div class="col-sm-6">
+		    <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+			</div>
+		  </div>
+      <div class="modal-footer">
+		<button type="submit" name="submit" class="btn btn-danger">Remove</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit page here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="">
+      <div class="modal-body">
+      	<div class="form-group">
+      		<img src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg" alt="sample image" class="modal-image-size">
+      	</div>
+        <div class="form-group">
+				    <label for="uploading">Upload New Product Picture:</label>
+				    <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+				  </div>
+
+				  <div class="form-row">
+				    <div class="col">
+				      <label for="product">Change Product Name:</label>
+				      <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" required>
+				    </div>
+				    <div class="col">
+				      <label for="price">Change Price:</label>
+				      <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" required>
+				    </div>
+				  </div>
+
+				  <div class="form-group">
+				    <label for="description">Change Description:</label>
+				    <textarea class="form-control" id="exampleFormControlTextarea1" name="txtdescription" cols="30" rows="5"></textarea>
+				  </div>
+      <div class="modal-footer">
+		<button type="submit" name="submit" class="btn btn-info">Edit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
   <div class="row">
   	<h2>Modify Products</h2>
   </div>

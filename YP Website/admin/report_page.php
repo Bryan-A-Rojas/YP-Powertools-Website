@@ -121,10 +121,37 @@ require_once INCLUDES . 'navbar.inc.php';
       }
       ]
     });
+        var chart4 = new CanvasJS.Chart("chartContainer",
+  {
+    title:{
+      text: "Gaming Consoles Sold in 2012"
+    },
+    legend: {
+      maxWidth: 350,
+      itemWidth: 120
+    },
+    data: [
+    {
+      type: "pie",
+      showInLegend: true,
+      legendText: "{indexLabel}",
+      dataPoints: [
+        { y: 4181563, indexLabel: "PlayStation 3" },
+        { y: 2175498, indexLabel: "Wii" },
+        { y: 3125844, indexLabel: "Xbox 360" },
+        { y: 1176121, indexLabel: "Nintendo DS"},
+        { y: 1727161, indexLabel: "PSP" },
+        { y: 4303364, indexLabel: "Nintendo 3DS"},
+        { y: 1717786, indexLabel: "PS Vita"}
+      ]
+    }
+    ]
+  });
 
     chart.render();
     chart2.render();
     chart3.render();
+    chart4.render();
   }
   </script>
 
@@ -138,98 +165,19 @@ require_once INCLUDES . 'navbar.inc.php';
 
   <div class="row">
     
-    <div class="col-lg-6">
-<h2>Sales Report</h2>
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">Date</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td>Item#1 Name</td>
-        <td class="alert alert-danger">Unavailable</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-    <tbody>
-      <tr>
-        <td>Item#2 Name</td>
-        <td class="alert alert-success">Available</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-    <tbody>
-      <tr>
-        <td>Item#3 Name</td>
-        <td class="alert alert-warning">New</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-    <tbody>
-      <tr>
-        <td>Item#4 Name</td>
-        <td class="alert alert-info">Used</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-      <tbody>
-      <tr>
-        <td>Item#5 Name</td>
-        <td class="alert alert-danger">Unavailable</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-      <tbody>
-      <tr>
-        <td>Item#6 Name</td>
-        <td class="alert alert-danger">Unavailable</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-      <tbody>
-      <tr>
-        <td>Item#7 Name</td>
-        <td class="alert alert-danger">Unavailable</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-  </tbody>
-
-      <tbody>
-      <tr>
-        <td>Item#8 Name</td>
-        <td class="alert alert-warning">New</td>
-        <td>Nov 18</td>
-        <td>Price </td>
-      </tr>
-      </tbody>
-
-</table>
-</div>
-
-    <div class="col-lg-6">
+        <div class="col-lg-8">
       <div id="linechart3" style="height: 500px; width: 100%;"></div>
     </div>
-    
-    <div class="col-lg-12">
+
+    <div class="col-lg-4">
+<div id="chartContainer" style="height: 450px; width: 100%;"></div>
+</div>
+
+        <div class="col-lg-6">
       <div id="linechart2" style="height: 500px; width: 100%;"></div>
+    </div>
+    
+    <div class="col-lg-6">
       <div id="linechart" style="height: 500px; width: 100%;"></div>
     </div>
 

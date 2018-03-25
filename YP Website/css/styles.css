@@ -231,6 +231,11 @@ hr{
 	height: 250px;
 }
 
+.modal-image-size{
+	width: 460px;
+	height: 250px;
+}
+
 #jumbotron-margin{
 	margin: auto;
 }

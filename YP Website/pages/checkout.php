@@ -11,6 +11,7 @@ require_once '../config.php';
 <div class="jumbotron" id="jumbotron-color">
 	<div class="container" style="margin-top: 10px; margin-left: 60px">
 		<h2>Checkout</h2>
+		<a href="products.php">&lt;Back to products page</a>
 	</div>
 </div>
 
@@ -30,8 +31,7 @@ require_once '../config.php';
 	</div>
 	<br />
 	<div class="row">
-		<div class="col-md-6"><a href="products.php">&lt;Back to products page</a></div>
-		<div class="col-md-6"><button type="submit" name="submit" class="btn btn-success float-right">Checkout</button></div>
+		<div class="col-md-12"><button type="submit" name="submit" class="btn btn-success float-right">Checkout</button></div>
 	</div>
 	
 </div>

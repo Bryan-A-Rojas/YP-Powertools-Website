@@ -22,16 +22,19 @@ require_once INCLUDES . 'header.inc.php';
                 <h1 id="logo-text-sm">Powertools</h1>
                 <div class="container" id="form-transbox">
                 <form action="../includes/scripts/login.php" method="POST">
-	                <label for="email">Email:</label>
-	                <br />
-					<input type="email" placeholder="Enter Email" name="txtemail" required>
-					<br />
+	                  <div class="form-group">
+					    <label for="email">Email:</label>
+					    <div class="col-sm-6">
+					    <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+						</div>
+					  </div>
 
-					<label for="password">Password:</label>
-					<br />
-
-					<input type="password" placeholder="Enter Password" name="txtpassword" required>
-					<br />
+					    <div class="form-group">
+					    <label for="password">Password:</label>
+					    <div class="col-sm-6">
+					    <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+						</div>
+					  </div>
 					<br />
 
 					<button type="submit" name="submit" class="btn btn-success">Log In</button>
