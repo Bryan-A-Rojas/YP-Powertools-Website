@@ -20,7 +20,7 @@ require_once INCLUDES . 'header.inc.php';
                 <img src="../images/icons/yplogoblk.png" id="logo-padding-sm">
                 <h1 id="logo-text-sm">Powertools</h1>
                 <div class="container" id="form-transbox">
-                <div class="row">
+                <div class="row" style="margin-left:0px;">
 				<h2>Add Products</h2>
 
 				<form action="../includes/scripts/add_product.php" method="POST" enctype="multipart/form-data">
