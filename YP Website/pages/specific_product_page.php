@@ -25,7 +25,7 @@ $product_information = $product_information[0];
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<img src="../images/products/<?php echo $product_information['image'] ?>" style="width:890px; height: 400px; padding-left: 200px">
+				<img src="../images/products/<?php echo $product_information['image'] ?>" style="width: 769px; height: 400px; margin-left: 180px; margin-bottom: 35px;">
 			</div>	
 
 		</div>
