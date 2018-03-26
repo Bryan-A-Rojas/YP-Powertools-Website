@@ -40,7 +40,7 @@ $cart_items = $cart->display_cart();
       <tr>
         <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
         <td><?php echo $item['name'] ?></td>
-        <td><?php echo number_format((float)$item['price'], 2, '.', ''); ?></td>
+        <td>&#x20B1;<?php echo number_format((float)$item['price'], 2, '.', ''); ?></td>
         <td><?php echo $item['quantity'] ?></td>
         <td><?php echo $item['description'] ?></td>
         <td>
@@ -58,12 +58,12 @@ $cart_items = $cart->display_cart();
   <tfoot>
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
       <td>Total</td>
-      <td><?php echo number_format((float)$cart_items['Total Price']['Total'], 2, '.', ''); ?></td>
+      <td>&#x20B1;<?php echo number_format((float)$cart_items['Total Price']['Total'], 2, '.', ''); ?></td>
       <td></td>
       <td></td>
       <td></td>
       <td>
-        <form action="#">
+        <form action="checkout.php" method="POST">
           <input type="Submit" value="Checkout" class="btn btn-success btn-lg" style="float: right;">
         </form>
       </td>

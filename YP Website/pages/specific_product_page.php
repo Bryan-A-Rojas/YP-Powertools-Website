@@ -30,26 +30,25 @@ $product_information = $product_information[0];
 
 		</div>
 		<h2><?php echo $product_information['name'] ?></h2>
-		<h4 class="product_page-product_price">Price: PHP <?php echo $product_information['price'] ?></h4>
+		<h4 class="product_page-product_price">Price: &#x20B1;<?php echo number_format((float)$product_information['price'], 2, '.', ''); ?></h4>
 		<h3>Description: <?php echo $product_information['description'] ?></h3>
 
 		<?php if(isset($_SESSION['role']) AND $_SESSION['role'] == 'user'): ?>
 			
-			<?php 
-				if($product_information['availability'] != 'available'){
-		            $availability = strtoupper($product_information['availability']);
-		            echo "<p style='background-color:red;border-radius: 5px; padding:8px;color:white; font-size: 25px; text-align:center;'>$availability<p>";
-		        } else {
-		   	?>
+			<?php if($product_information['availability'] != 'available' || $product_information['stock'] < 1): ?>
+
+		        <p class="unavailable-message">UNAVAILABLE<p>
+
+		    <?php else: ?>
 
 		   	<form action="../includes/scripts/add_to_cart.inc.php" method="POST">
 				<input type="hidden" name="product_id" value="<?php echo $product_information['product_id'] ?>">
-				<h2 style="display:inline;">Quantity: </h2><input type="number" name="quantity" min="1" max="10" value="1" style="font-size:30px">
+				<h2 style="display:inline;">Quantity: </h2>
+				<input type="number" name="quantity" min="1" max="<?php echo $product_information['stock']?>" value="1" style="font-size:30px">
 				<input type="submit" name="add_to_cart" value="Add to Cart" class="btn btn-success btn-lg">
 			</form>
 		    
-		    <?php } ?>
-
+		    <?php endif ?>
 
 		<?php endif ?>
 	</div>

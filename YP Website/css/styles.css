@@ -251,3 +251,12 @@ hr{
 #jumbotron-color{
 	background-color: white;
 }
+
+.unavailable-message{
+	background-color: red;
+	border-radius: 5px;
+	padding: 8px;
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}

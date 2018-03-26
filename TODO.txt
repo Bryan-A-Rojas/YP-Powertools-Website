@@ -4,7 +4,7 @@ TODO:
 	0- Footer should have copyright
 	- Add legit phone numbers in contact page
 	- Ask for time and days of schedule and change contact page
-	- Change parallax size
+	0- Change parallax size
 	- Edit carousel
 
 	0-SIGNUP PAGE
@@ -33,17 +33,17 @@ Pages:
 	- user page
 		0- has cart
 		0- can add to cart
-		- can remove from cart
+		0- can remove from cart
 		0- can clear cart
 
 	- admin
 		0- Should have custom navbar
 		- can change front page carousel photos
-		- can see all users
+		0- can see all users
 
 	- super admin
 		- can change front page carousel photos
-		- can see all users & admins
+		0- can see all users & admins
 
 	- products
 		0- search bar
@@ -51,17 +51,17 @@ Pages:
 		X- pagination
 		X- modal
 
-	- about us
-		- meaning of yp
-		- mission and vision
-		- year they started
-		- history
+	0- about us
+		0- meaning of yp
+		0- mission and vision
+		0- year they started
+		0- history
 
-	- contact us
-		- google maps of two branches
-		- telephone number
-		- email
-		- phone number
+	0- contact us
+		0- google maps of two branches
+		0- telephone number
+		0- email
+		0- phone number
 
 	Cart
 			0-Header
@@ -83,11 +83,11 @@ Pages:
 
 	Defense Changes:
 		0- Change cart to combine a products quantity if they add the same product
-		-Login for admin and useradmin should be in different pages and different database tables
-			-Also remove role column and role checking in script
-			-Edit structure of users table, add more for information like address and full name
+		0-Login for admin and useradmin should be in different pages and different database tables
+			0-Also remove role column and role checking in script
+			0-Edit structure of users table, add more for information like address and full name
 		- admin & superadmin should see the orders from users
-		- Doing anything in the admin and superadmin menu would require a password (Example: Deleting a user, adding a product, etc.) and would also record it in the database
-		- Should also display log of the actions happening like who bought something, the order number, statistics, what they bought , and etc.
+		0- Doing anything in the admin and superadmin menu would require a password (Example: Deleting a user, adding a product, etc.) and would also record it in the database
+		0- Should also display log of the actions happening like who bought something, the order number, statistics, what they bought , and etc.
 			0-Add log table for user,admin, & superadmin
 		
