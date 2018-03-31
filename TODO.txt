@@ -101,4 +101,5 @@ Pages:
 		- Users/admins/superadmins should have an edit button where they can edit any of their information
 		- Change the way the admin/superadmin sees the users addresses
 		- admin/superadmin should be able to activate/deactive/edit other accounts
+		0- money should be formatted with commas
 		

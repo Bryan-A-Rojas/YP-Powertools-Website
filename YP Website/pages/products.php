@@ -29,7 +29,7 @@ require_once INCLUDES . 'navbar.inc.php';
             <img class="d-block w-100" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
 	    		<h5>Chainsaw</h5>
-	    		<p>best productworld</p>
+	    		<p>The best product in our store</p>
     		</div>
         </div>
         <div class="carousel-item">
@@ -84,7 +84,7 @@ require_once INCLUDES . 'navbar.inc.php';
                 </a>
                 
                 <h2><?php echo $product['name'] ?></h2>
-                <p style="color:green;">&#x20B1;<?php echo number_format((float)$product['price'], 2, '.', ''); ?></p>
+                <p style="color:green;">&#x20B1;<?php echo commafy($product['price']); ?></p>
             </div>
         <?php endforeach ?>
 

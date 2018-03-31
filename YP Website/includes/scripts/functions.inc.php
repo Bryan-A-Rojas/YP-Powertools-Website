@@ -41,6 +41,11 @@ function move_image($FilesArray, $folder_name){
 	}
 }
 
+
+function commafy($money){
+	return number_format($money, 2, '.', ',');
+}
+
 //Experimental code
 // function open_database_connection(){
 //     $connection = new PDO("mysql:host=localhost;dbname=yp_powertools_database", 'root', '');

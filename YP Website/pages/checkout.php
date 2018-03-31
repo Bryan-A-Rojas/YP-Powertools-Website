@@ -12,6 +12,8 @@ $checkout = new Cart($_SESSION['account_id']);
 
 $checkout_items = $checkout->display_checkout();
 
+require_once SCRIPTS . 'functions.inc.php';
+
 ?>
 
 <div style="margin-top: 20px">
@@ -39,7 +41,7 @@ $checkout_items = $checkout->display_checkout();
 
           <tr>
             <td><?php echo $item['name'] ?></td>
-          	<td>&#x20B1;<?php echo number_format((float)$item['price'], 2, '.', '');?></td>
+          	<td>&#x20B1;<?php echo commafy($item['price']);?></td>
           	<td><?php echo $item['quantity'] ?></td>
           </tr>
         
@@ -49,7 +51,7 @@ $checkout_items = $checkout->display_checkout();
     </tbody>
      <tfoot>
       <tr align="justify" style="color: #00ff35; font-size: 25px;">
-        <td>Total: &#x20B1;<?php echo number_format((float)$checkout_items['Total Price']['Total'], 2, '.', ''); ?></td>
+        <td>Total: &#x20B1;<?php echo commafy($checkout_items['Total Price']['Total']); ?></td>
         <td></td>
         <td></td>
       </tr>
