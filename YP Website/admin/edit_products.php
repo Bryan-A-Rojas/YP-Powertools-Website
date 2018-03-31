@@ -1,8 +1,9 @@
 <?php 
 
 require_once 'config_admin.php';
-
 require_once INCLUDES . 'header.inc.php';
+
+require_once INCLUDES . 'navbar.inc.php';
 
 require_once ADMIN_CLASSES . 'products.inc.php';
 
@@ -15,16 +16,10 @@ require_once SCRIPTS . 'functions.inc.php';
 ?>
 
 <div class="jumbotron" id="jumbotron-color">
-		<h2>Edit Products Page</h2>
-		<a href="../pages/index.php"><h4>&lt;Back to Home Page</h4></a>
+		<h1>Edit Products Page</h1>
 </div>
 
 <div class="container">
-
-  <div class="row">
-  	<h2>Modify Products</h2>
-    
-  </div>
 
       <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal" data-target="#addModal" data-whatever="@mdo" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Add Product</button>
 
@@ -117,8 +112,12 @@ require_once SCRIPTS . 'functions.inc.php';
             <td>
               
               <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;margin-bottom: 10px;">Edit</button>
-              <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#removeModal<?php echo $modal_counter ?>" data-whatever="@mdo">Remove</button>
 
+              <?php if($item['availability'] == "available"): ?>
+                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#removeModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;">Remove</button>
+              <?php else: ?>
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#restoreModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;">Restore</button>
+              <?php endif ?>
             </td>
           </tr>
       
@@ -220,6 +219,33 @@ require_once SCRIPTS . 'functions.inc.php';
       </div>
     </div>
   </form>
+
+  <form action="scripts/modify_cart_item.php" method="POST">
+    <div class="modal fade" id="restoreModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to restore?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password:</label>
+                <div class="col-sm-6">
+                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="Restore" class="btn btn-success">Restore</button>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
   
   <?php $modal_counter++ ?>
   <?php endforeach ?>
@@ -228,6 +254,7 @@ require_once SCRIPTS . 'functions.inc.php';
 
 <?php 
 
+require_once INCLUDES . 'footer.inc.php';
 require_once INCLUDES . 'endtags.inc.php';
 
 ?>

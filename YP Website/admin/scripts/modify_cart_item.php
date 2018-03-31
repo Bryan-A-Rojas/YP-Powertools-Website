@@ -50,6 +50,37 @@ require_once '../config_admin.php';
 			exit();
 		}
 
+	} elseif(isset($_POST['Restore'])){
+
+		//Check if password is correct
+		require SCRIPTS . 'dbh.inc.php';
+
+		$email = $_SESSION['email'];
+
+		$sql = "SELECT password 
+				FROM accounts 
+				WHERE email = '$email';";
+		$result = $Database->query($sql);
+		$row = $result->fetch_assoc();
+
+		if(!password_verify($_POST['txtpassword'], $row['password'])){
+			header("Location: ../edit_products.php?products=wrong_password");
+			exit();
+		}
+
+		//Proceed if correct
+		require_once ADMIN_CLASSES . 'Products.inc.php';
+
+		$Products = new Products($_SESSION['account_id']);
+		
+		if($Products->restore_product($_POST['product_id'])){
+			header("Location: ../edit_products.php?products=restored");
+			exit();
+		} else {
+			header("Location: ../edit_products.php?products=fail_to_restore");
+			exit();
+		}
+
 	} elseif(isset($_POST['Remove'])) {
 
 		//Check if password is correct
