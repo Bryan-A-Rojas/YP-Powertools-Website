@@ -10,6 +10,8 @@ $products = Products::get_products();
 
 $modal_counter = 0;
 
+require_once SCRIPTS . 'functions.inc.php';
+
 ?>
 
 <div class="jumbotron" id="jumbotron-color">
@@ -101,7 +103,7 @@ $modal_counter = 0;
           <tr>
             <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
             <td><?php echo $item['name'] ?></td>
-            <td><?php echo number_format((float)$item['price'], 2, '.', ''); ?></td>
+            <td><?php echo commafy($item['price']); ?></td>
             <td><?php echo $item['stock'] ?></td>
             <td><?php echo $item['description'] ?></td>
 
@@ -109,12 +111,12 @@ $modal_counter = 0;
               $availability = strtoupper($item['availability']);
               $color = $availability == "AVAILABLE" ? "green" : "red";
 
-              echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;'>$availability<p></td>";
+              echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>$availability<p></td>";
             ?>
 
             <td>
               
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;">Edit</button>
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;margin-bottom: 10px;">Edit</button>
               <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#removeModal<?php echo $modal_counter ?>" data-whatever="@mdo">Remove</button>
 
             </td>

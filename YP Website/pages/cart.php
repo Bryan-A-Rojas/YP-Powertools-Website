@@ -12,6 +12,8 @@ $cart = new Cart($_SESSION['account_id']);
 
 $cart_items = $cart->display_cart();
 
+require_once SCRIPTS . 'functions.inc.php';
+
 ?>
 
 <div class="container">
@@ -46,7 +48,7 @@ $cart_items = $cart->display_cart();
       <tr>
         <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
         <td><?php echo $item['name'] ?></td>
-        <td>&#x20B1;<?php echo number_format((float)$item['price'], 2, '.', ''); ?></td>
+        <td>&#x20B1;<?php echo commafy($item['price']); ?></td>
         <td><?php echo $item['quantity'] ?></td>
         <td><?php echo $item['description'] ?></td>
         <td>
@@ -63,7 +65,7 @@ $cart_items = $cart->display_cart();
   </tbody>
   <tfoot>
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
-      <td>Total &#x20B1;<?php echo number_format((float)$cart_items['Total Price']['Total'], 2, '.', ''); ?></td>
+      <td>Total &#x20B1;<?php echo commafy($cart_items['Total Price']['Total']); ?></td>
       <td></td>
       <td></td>
       <td></td>

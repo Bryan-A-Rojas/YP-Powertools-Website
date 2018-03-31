@@ -30,7 +30,7 @@ $product_information = $product_information[0];
 
 		</div>
 		<h2><?php echo $product_information['name'] ?></h2>
-		<h4 class="product_page-product_price">Price: &#x20B1;<?php echo number_format((float)$product_information['price'], 2, '.', ''); ?></h4>
+		<h4 class="product_page-product_price">Price: &#x20B1;<?php echo commafy($product_information['price']); ?></h4>
 		<h3>Description: <?php echo $product_information['description'] ?></h3>
 
 		<?php if(isset($_SESSION['role']) AND $_SESSION['role'] == 'user'): ?>
