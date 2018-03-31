@@ -8,6 +8,8 @@ require_once ADMIN_CLASSES . 'products.inc.php';
 
 $products = Products::get_products();
 
+$modal_counter = 0;
+
 ?>
 
 <div class="jumbotron" id="jumbotron-color">
@@ -15,124 +17,70 @@ $products = Products::get_products();
 		<a href="../pages/index.php"><h4>&lt;Back to Home Page</h4></a>
 </div>
 
-    <div class="container">
-        <div class="row">
-        	<!-- Dividers to center logo -->
-            <div class="col-lg-3 col-md-0 col-sm-0 col-xs-0"></div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            	<!-- Logo image and text -->
-                <img src="../images/icons/yplogoblk.png" id="logo-padding-sm">
-                <h1 id="logo-text-sm">Powertools</h1>
-                <div class="container" id="form-transbox">
-                <div class="row" style="margin-left:0px;">
-				<h2>Add Products</h2>
-
-				<form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
-				  <div class="form-group">
-				    <label for="uploading">Upload Product Picture:</label>
-				    <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
-				  </div>
-
-				  <div class="form-row">
-				    <div class="col">
-				      <label for="product">Product Name:</label>
-				      <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" required>
-				    </div>
-				    <div class="col">
-				      <label for="price">Price:</label>
-				      <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" required>
-				    </div>
-				  </div>
-
-				  <div class="form-group">
-				    <label for="description">Description</label>
-				    <textarea class="form-control" id="exampleFormControlTextarea1" name="txtdescription" cols="30" rows="5"></textarea>
-				  </div>
-
-				  <button type="submit" name="submit" class="btn btn-success">Add Product</button>
-				</form>
-		      </div>
-		</div>
-	</div>
-	</div>
-
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Remove</button>
-
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Edit</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to remove?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="">
-      <div class="modal-body">
-        <div class="form-group">
-		    <label for="password">Password:</label>
-		    <div class="col-sm-6">
-		    <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
-			</div>
-		  </div>
-      <div class="modal-footer">
-		<button type="submit" name="submit" class="btn btn-danger">Remove</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
-
-
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit page here</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="">
-      <div class="modal-body">
-      	<div class="form-group">
-      		<img src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg" alt="sample image" class="modal-image-size">
-      	</div>
-        <div class="form-group">
-				    <label for="uploading">Upload New Product Picture:</label>
-				    <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
-				  </div>
-
-				  <div class="form-row">
-				    <div class="col">
-				      <label for="product">Change Product Name:</label>
-				      <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" required>
-				    </div>
-				    <div class="col">
-				      <label for="price">Change Price:</label>
-				      <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" required>
-				    </div>
-				  </div>
-
-				  <div class="form-group">
-				    <label for="description">Change Description:</label>
-				    <textarea class="form-control" id="exampleFormControlTextarea1" name="txtdescription" cols="30" rows="5"></textarea>
-				  </div>
-      <div class="modal-footer">
-		<button type="submit" name="submit" class="btn btn-info">Edit</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
+<div class="container">
 
   <div class="row">
   	<h2>Modify Products</h2>
+    
   </div>
+
+      <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal" data-target="#addModal" data-whatever="@mdo" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Add Product</button>
+
+      <form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="uploading">Upload Product Picture:</label>
+                <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary">
+              </div>
+
+                <div class="form-row">
+              <div class="col">
+                <label for="product">Product Name:</label>
+                <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" required>
+              </div>
+              <div class="col">
+                <label for="price">Price:</label>
+                <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" name="txtdescription" cols="30" rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Availability:</label>
+                <br />
+                <label class="switch">
+                  <input type="checkbox" name="availability" checked>
+                  <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Stock:</label>
+                <input type="number" class="form-control" name="stock" min="0" value="1" style="font-size:30px">
+            </div>
+
+              <div class="modal-footer">
+                 <button type="submit" name="submit" class="btn btn-success" style="margin-top:10px;">Add Product</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
 
   <table class="table table-hover table-dark">
     <thead>
@@ -149,6 +97,7 @@ $products = Products::get_products();
     <tbody>
       
       <?php foreach ($products as $key => $item): ?>
+
           <tr>
             <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
             <td><?php echo $item['name'] ?></td>
@@ -164,17 +113,114 @@ $products = Products::get_products();
             ?>
 
             <td>
-              <form action="scripts/modify_cart_item.php" method="POST">
-                <input type="Submit" name="Edit" value="Edit" class="btn btn-info btn-lg float-right" style="width:106px">
-                <input type="Submit" name="Remove" value="Remove" class="btn btn-danger btn-lg float-right">
-                <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
-              </form>
+              
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;">Edit</button>
+              <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#removeModal<?php echo $modal_counter ?>" data-whatever="@mdo">Remove</button>
+
             </td>
           </tr>
+      
+      <?php $modal_counter++ ?>
       <?php endforeach ?>
 
     </tbody>
   </table>
+  
+  <?php $modal_counter = 0; ?>
+
+  <?php foreach($products as $key => $item): ?>
+
+  <form action="scripts/modify_cart_item.php" method="POST" enctype="multipart/form-data">
+    <div class="modal fade" id="editModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit page</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+              <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
+              <div class="form-group">
+                <img src="../images/products/<?php echo $item['image'] ?>" alt="sample image" class="modal-image-size">
+              </div>
+              <div class="form-group">
+                  <label for="uploading">Upload New Product Picture:</label>
+                  <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+                </div>
+
+                <div class="form-row">
+                  <div class="col">
+                    <label for="product">Change Product Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" value="<?php echo $item['name'] ?>" required>
+                  </div>
+                  <div class="col">
+                    <label for="price">Change Price:</label>
+                    <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" value="<?php echo $item['price'] ?>" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="description">Change Description:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="txtdescription" cols="30" rows="5"><?php echo $item['description'] ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Availability:</label>
+                    <br />
+                    <label class="switch">
+                      <?php if($item['availability'] == 'available'): ?>
+                        <input type="checkbox" name="availability" checked>
+                      <?php else: ?>
+                        <input type="checkbox" name="availability">
+                      <?php endif ?>
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Stock:</label>
+                    <input type="number" class="form-control" name="stock" min="0" value="<?php echo $item['stock'] ?>" style="font-size:30px">
+                </div>
+
+              <div class="modal-footer">
+                <button type="submit" name="Edit" class="btn btn-warning">Update</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <form action="scripts/modify_cart_item.php" method="POST">
+    <div class="modal fade" id="removeModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to remove?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password:</label>
+                <div class="col-sm-6">
+                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="Remove" class="btn btn-danger">Remove</button>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <?php $modal_counter++ ?>
+  <?php endforeach ?>
 
 </div>
 

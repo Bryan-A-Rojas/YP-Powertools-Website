@@ -32,7 +32,6 @@ require_once '../../config.php';
 					}else{
 
 						$_SESSION['account_id'] = $row['account_id'];
-						$_SESSION['username'] = $row['username'];
 						$_SESSION['email'] = $row['email'];
 						$_SESSION['name'] = $row['name'];
 						$_SESSION['role'] = $row['role'];

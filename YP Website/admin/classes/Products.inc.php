@@ -68,7 +68,6 @@ class Products{
 		return $result;
 	}
 
-
 }
 
 

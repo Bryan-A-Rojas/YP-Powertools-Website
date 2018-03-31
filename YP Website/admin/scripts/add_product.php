@@ -13,6 +13,8 @@
 		$txtname = $Database->real_escape_string($_POST['txtname']);
 		$price  = $Database->real_escape_string($_POST['txtprice']);
 		$description  = $Database->real_escape_string($_POST['txtdescription']);
+		$stock  = $Database->real_escape_string($_POST['stock']);
+		$availability = isset($_POST['availability']) ? 'available' : 'unavailable' ; 
 
 		if($error = move_image($product_image, "products") !== true){
 			header("Location: ../edit_products.php?$error");
@@ -20,8 +22,8 @@
 		} else {
 			$image_name = $_FILES['product_image']['name'];
 
-			$sql = "INSERT INTO `products` (`image`, `name`, `price`, `description`)
-					VALUES ('$image_name', '$txtname', $price, '$description');";
+			$sql = "INSERT INTO `products` (`image`, `name`, `price`, `description`, `stock`, `availability`)
+					VALUES ('$image_name', '$txtname', $price, '$description', $stock, '$availability');";
 
 			if ($Database->query($sql) === TRUE) {
 				header("Location: ../edit_products.php?add_product=success");
