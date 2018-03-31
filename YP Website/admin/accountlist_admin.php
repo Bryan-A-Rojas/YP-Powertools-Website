@@ -80,7 +80,7 @@ $users_array = $Admin->get_users();
 
 <button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Deactivate</button>
 
-<button type="button" class="btn btn-info btn-lg float-right" href="receipt_page.php" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Order History</button>
+<a href="receipt_page.php" type="button" class="btn btn-info btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Order History</a>
 
 <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#pendingModal" data-whatever="@mdo" style="margin-bottom: 20px; width: 173px;height: 67px;font-size: 24px;">Pending</button>
 

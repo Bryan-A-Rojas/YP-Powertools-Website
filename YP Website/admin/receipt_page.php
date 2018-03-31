@@ -14,7 +14,7 @@ $users_array = $Admin->get_users();
 ?>
 
 <div class="container" style="padding-bottom: 20px;">
-		<a href="accountlist_admin.php">&lt;Back to products page</a>
+		<a href="accountlist_admin.php">&lt;Back to Account List page</a>
 	</div>
 
 <div class="container">

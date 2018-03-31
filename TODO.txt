@@ -125,3 +125,5 @@ Pages:
 				- Line graph, separated by day (1 - 30), this month until last month AND last month to the month before last.
 			- Weekly
 				- Line graph, separated by day (Mon - Sun), now until last week
+
+		-Edit Buttons in accountlist_admin.php, use form with GET
