@@ -157,13 +157,8 @@ $products = Products::get_products();
             <td><?php echo $item['description'] ?></td>
 
             <?php 
-              $color = "";
               $availability = strtoupper($item['availability']);
-              if($availability == "AVAILABLE"){
-                $color = "green";
-              } else {
-                $color = "red";
-              }
+              $color = $availability == "AVAILABLE" ? "green" : "red";
 
               echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;'>$availability<p></td>";
             ?>

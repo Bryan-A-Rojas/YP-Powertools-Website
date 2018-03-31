@@ -86,8 +86,19 @@ Pages:
 		0-Login for admin and useradmin should be in different pages and different database tables
 			0-Also remove role column and role checking in script
 			0-Edit structure of users table, add more for information like address and full name
-		- admin & superadmin should see the orders from users
 		0- Doing anything in the admin and superadmin menu would require a password (Example: Deleting a user, adding a product, etc.) and would also record it in the database
 		0- Should also display log of the actions happening like who bought something, the order number, statistics, what they bought , and etc.
 			0-Add log table for user,admin, & superadmin
+
+		- Reports:
+			- 1 graph, 2 date pickers, 1 group by/interval dropdown, 1 refresh button
+			
+		- admin & superadmin should see the orders from users
+		- add 2 more text fields for address in user sign up (named address 2 and address 3 but those 2 should be optional)
+		- Change the display for address in user page
+			- Loop through the addresses
+			- Display with a dot at the side
+		- Users/admins/superadmins should have an edit button where they can edit any of their information
+		- Change the way the admin/superadmin sees the users addresses
+		- admin/superadmin should be able to activate/deactive/edit other accounts
 		

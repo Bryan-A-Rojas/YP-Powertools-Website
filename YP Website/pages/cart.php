@@ -17,9 +17,15 @@ $cart_items = $cart->display_cart();
 <div class="container">
 <div class="jumbotron">
   <h1>Cart</h1>
+
+  <?php if($cart_items['Total Price']['Total'] != 0): ?>
+
   <form action="../includes/scripts/clear_cart.inc.php" method="POST">
     <input type="Submit" name="clear_cart" value="Clear Cart" class="btn btn-danger btn-lg float-right">
   </form>
+
+  <?php endif ?>
+
 </div>
 
 <table class="table table-hover table-dark">
@@ -57,15 +63,21 @@ $cart_items = $cart->display_cart();
   </tbody>
   <tfoot>
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
-      <td>Total</td>
-      <td>&#x20B1;<?php echo number_format((float)$cart_items['Total Price']['Total'], 2, '.', ''); ?></td>
+      <td>Total &#x20B1;<?php echo number_format((float)$cart_items['Total Price']['Total'], 2, '.', ''); ?></td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td>
+
+        <?php if($cart_items['Total Price']['Total'] != 0): ?>
+
         <form action="checkout.php" method="POST">
           <input type="Submit" value="Checkout" class="btn btn-success btn-lg" style="float: right;">
         </form>
+
+        <?php endif ?>
+
       </td>
     </tr>
   </tfoot>
@@ -76,6 +88,7 @@ $cart_items = $cart->display_cart();
 <?php 
 
 require_once INCLUDES . 'footer.inc.php';
+
 require_once INCLUDES . 'endtags.inc.php';
 
 ?>
