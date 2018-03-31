@@ -109,3 +109,19 @@ Pages:
 			- Pending Transactions (Show only pending orders)
 				- show modal with a table containing their transaction number, date, payment, address, etc. and a button to approve or deny
 		
+
+		Things to change when adding addresses:
+			-Sign up page - add 2 or more lines for optional addresses
+			- user page - display all the addresses in bulleted form - can also edit addresses
+			- checkout page - should have a dropdown of where to send the order
+			- database - transactions table - add a column named shipping address
+			- admin accountlist - should display addresses of every user
+			- admin accountlist - can also edit addresses
+
+		-Reports
+			- Yearly
+				- Line graph, separated by month, comparing now until last year
+			- Monthly
+				- Line graph, separated by day (1 - 30), this month until last month AND last month to the month before last.
+			- Weekly
+				- Line graph, separated by day (Mon - Sun), now until last week
