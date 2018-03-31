@@ -92,7 +92,7 @@ Pages:
 
 		- Reports:
 			- 1 graph, 2 date pickers, 1 group by/interval dropdown, 1 refresh button
-		- Orders should reduce stock number
+		0- Orders should reduce stock number
 		- admin & superadmin should see the orders from users
 		- add 2 more text fields for address in user sign up (named address 2 and address 3 but those 2 should be optional)
 		- Change the display for address in user page

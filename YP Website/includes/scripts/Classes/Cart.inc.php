@@ -69,27 +69,11 @@ class Cart{
 
 		//Insert for logging
 		$sql = "INSERT INTO `log` (`account_id`, `description`) 
-				VALUES ($this->user_id, 'added $quantity pieces of $result to cart');";
+				VALUES ($this->user_id, 'added $quantity piece(s) of $result to cart');";
 		$result = $Database->query($sql);		
 
 		return $result;
 	}
-
-	// function remove_from_cart($cart_id){
-	// 	//include database header
-	// 	require_once SCRIPTS . "dbh.inc.php";
-		
-	// 	$sql = "DELETE FROM cart 
-	// 			WHERE `cart_id` = $cart_id;";
-	// 	$result = $Database->query($sql);
-
-	// 	//Insert for logging
-	// 	$sql = "INSERT INTO `log` (`account_id`, `description`) 
-	// 			VALUES ($this->user_id, 'removed $quantity $result to cart');";
-	// 	$result = $Database->query($sql);	
-
-	// 	return $result;
-	// }
 
 	function remove_item($product_id){
 		//include database header
@@ -213,6 +197,17 @@ class Cart{
 	        $checkout_items[] = $row;
 	   	}
 
+	   	//Reduce the stocks for each product
+	   	foreach($checkout_items as $key => $item){
+	   		$products_id = $item['products_id'];
+			$quantity = $item['quantity'];
+
+			$sql = "UPDATE `products` 
+					SET `stock`= `stock` - $quantity
+					WHERE `product_id` = $products_id;";
+			$Database->query($sql);
+	   	}
+
 	   	//Insert each item from cart into purchases
 		foreach ($checkout_items as $key => $item){
 			$products_id = $item['products_id'];
@@ -239,6 +234,5 @@ class Cart{
 
 		return true;
 	}
-
 
 }
