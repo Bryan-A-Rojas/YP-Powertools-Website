@@ -109,7 +109,7 @@
                         <a class="nav-link" href="../pages/signupform.php">Sign Up <i class="fa fa-user-plus"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/loginform.php">Login <i class="fa fa-user"></i></a>
+                        <a class="nav-link" data-toggle="modal" data-target="#loginModal" data-whatever="@mdo">Login <i class="fa fa-user"></i></a>
                     </li>
                     
                 <?php endif; ?>
@@ -117,3 +117,39 @@
             </div>
         </div>
 </nav>
+
+<form action="../includes/scripts/login.php" method="POST">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+              <div class="form-group">
+					    <label for="email">Email:</label>
+					    <div class="col-sm-6">
+					    <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+						</div>
+					  </div>
+
+					    <div class="form-group">
+					    <label for="password">Password:</label>
+					    <div class="col-sm-6">
+					    <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+						</div>
+					  </div>
+
+              <div class="modal-footer">
+                 <button type="submit" name="submit" class="btn btn-success">Log In</button>
+                 	<br>
+				<p style="display:inline;">No account? </p><a href="signupform.php" style="display:inline;">Sign Up here</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
