@@ -14,21 +14,24 @@ require_once INCLUDES . 'header.inc.php';
             	<!-- Logo image and text -->
                 <img src="../images/icons/yplogoblk.png" id="logo-padding-sm">
                 <h1 id="logo-text-sm">Powertools</h1>
-                <div class="container" id="form-transbox">
+                <div class="container" id="form-transbox" style="margin-bottom: 100px; margin-left: 50px; margin-right: 200px">
                 <form action="scripts/login.php" method="POST">
-	                <label for="email">Email:</label>
-	                <br />
-					<input type="email" placeholder="Enter Email" name="txtemail" required>
+	                <div class="form-group">
+					    <label for="email">Email:</label>
+					    <div class="col-sm-12">
+					    <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+						</div>
+					  </div>
+
+					    <div class="form-group">
+					    <label for="password">Password:</label>
+					    <div class="col-sm-12">
+					    <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+						</div>
+					  </div>
 					<br />
 
-					<label for="password">Password:</label>
-					<br />
-
-					<input type="password" placeholder="Enter Password" name="txtpassword" required>
-					<br />
-					<br />
-
-					<button type="submit" name="submit" class="btn btn-success">Log In</button>
+					<button type="submit" name="submit" class="btn btn-success float-right">Log In</button>
 				</form>
 				</div>
             </div>
