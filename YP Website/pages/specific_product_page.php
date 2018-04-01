@@ -49,6 +49,10 @@ $product_information = $product_information[0];
 			</form>
 		    
 		    <?php endif ?>
+		
+		<?php elseif(!isset($_SESSION['role'])): ?>
+			
+			<p class="unavailable-message">PLEASE LOGIN / SIGNUP TO BUY</p>
 
 		<?php endif ?>
 	</div>

@@ -101,9 +101,10 @@ Pages:
 		- admin/superadmin should be able to activate/deactive/edit other accounts
 		0- money should be formatted with commas
 		- add these buttons in the account list
+			- add accounts at the top
 			- Edit (with a modal just like sign up / edit products)
 			- Deactivate (dynamic, can be activate when already deactivated)
-			- Order History (Only show approved orders)
+			0- Order History (Only show approved orders)
 			- Pending Transactions (Show only pending orders)
 				- show modal with a table containing their transaction number, date, payment, address, etc. and a button to approve or deny
 		

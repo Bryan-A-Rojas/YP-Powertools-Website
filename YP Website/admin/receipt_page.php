@@ -1,6 +1,7 @@
 <?php 
 
 require_once 'config_admin.php';
+
 require_once INCLUDES . 'header.inc.php';
 
 require_once INCLUDES . 'navbar.inc.php';
@@ -123,7 +124,7 @@ $modal_counter = 0;
 
 <div class="modal fade" id="historyModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content" style="width: 900px; margin-left: -50px;">
+    <div class="modal-content" style="width: 996px;margin-left: -87px;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">History</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -144,11 +145,11 @@ $modal_counter = 0;
           </thead>
           <tbody>
             <tr>
-              <td><?php echo $order_history[$modal_counter]['transaction_id'] ?></td>
+              <td style="text-align:center;"><?php echo $order_history[$modal_counter]['transaction_id'] ?></td>
               <td><?php echo $order_history[$modal_counter]['account_name'] ?></td>
-              <td><?php echo commafy($order_history[$modal_counter]['total_price']) ?></td>
-              <td><?php echo commafy($order_history[$modal_counter]['payment_given']) ?></td>
-              <td><?php echo commafy($order_history[$modal_counter]['change_given']) ?></td>
+              <td style="color:lightgreen;"><?php echo commafy($order_history[$modal_counter]['total_price']) ?></td>
+              <td style="color:rgb(255, 116, 91);"><?php echo commafy($order_history[$modal_counter]['payment_given']) ?></td>
+              <td style="color:orange;"><?php echo commafy($order_history[$modal_counter]['change_given']) ?></td>
               <td><?php echo $order_history[$modal_counter]['date_of_purchase'] ?></td>
             </tr>
           </tbody>

@@ -80,8 +80,6 @@ $users_array = $Admin->get_users();
 
 <button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Deactivate</button>
 
-<a href="receipt_page.php" type="button" class="btn btn-info btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Order History</a>
-
 <button href="pending_orders.php" type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#pendingModal" data-whatever="@mdo" style="margin-bottom: 20px; width: 173px;height: 67px;font-size: 24px;">Pending</button>
 
 <!-- <form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
@@ -138,6 +136,7 @@ $users_array = $Admin->get_users();
       <th scope="col">Email</th>
       <th scope="col">City</th>
       <th scope="col">Address</th>
+      <th></th>
     </tr>
   </thead>
   </tfoot>
@@ -156,6 +155,12 @@ $users_array = $Admin->get_users();
       <td><?php echo $user['email'] ?></td>
       <td><?php echo $user['city'] ?></td>
       <td><?php echo $user['full_address'] ?></td>
+      <td>
+        <form action="receipt_page.php" method="GET">
+          <input type="submit" class="btn btn-info btn-lg float-right" value="Order History"></input>
+          <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
+        </form>
+      </td>
 
     </tr>
     <?php endforeach ?>
