@@ -49,11 +49,38 @@ class Admin{
 		require SCRIPTS . 'dbh.inc.php';
 
 		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
-				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
+				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, `status`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
-				WHERE `status` = 'approved'
+				WHERE `status` = 'approved' OR `status` = 'denied'
+				ORDER BY `date_of_purchase` ASC;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+	function get_specific_order_history($account_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
+				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, `status`
+				FROM `transactions`
+				inner join `accounts`
+				on transactions.account_id = accounts.account_id
+				WHERE (`status` = 'approved' OR `status` = 'denied') AND transactions.`account_id` = $account_id
 				ORDER BY `date_of_purchase` ASC;";
 
 		//Query sql string
@@ -95,6 +122,13 @@ class Admin{
 
 		//return array
 		return $resultsArray;
+	}
+
+	function update_pending_transaction($transaction_id, $choice){
+		$sql = "UPDATE `transactions` 
+				SET `status`= '$choice'
+				WHERE `transaction_id` = $transaction_id;";
+		return $Database->query($sql);
 	}
 
 }

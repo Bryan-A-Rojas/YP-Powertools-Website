@@ -48,7 +48,7 @@ require_once SCRIPTS . 'functions.inc.php';
       <tr>
         <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
         <td><?php echo $item['name'] ?></td>
-        <td>&#x20B1;<?php echo commafy($item['price']); ?></td>
+        <td><?php echo commafy($item['price']); ?></td>
         <td><?php echo $item['quantity'] ?></td>
         <td><?php echo $item['description'] ?></td>
         <td>
@@ -65,7 +65,7 @@ require_once SCRIPTS . 'functions.inc.php';
   </tbody>
   <tfoot>
     <tr align="justify" style="color: #00ff35; font-size: 25px;">
-      <td>Total &#x20B1;<?php echo commafy($cart_items['Total Price']['Total']); ?></td>
+      <td>Total <?php echo commafy($cart_items['Total Price']['Total']); ?></td>
       <td></td>
       <td></td>
       <td></td>

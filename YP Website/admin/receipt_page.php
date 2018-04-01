@@ -5,6 +5,8 @@ require_once INCLUDES . 'header.inc.php';
 
 require_once INCLUDES . 'navbar.inc.php';
 
+require SCRIPTS . 'functions.inc.php';
+
 if(isset($_SESSION['account_id'])){
 
   if($_SESSION['role'] == 'admin'){
@@ -12,7 +14,11 @@ if(isset($_SESSION['account_id'])){
 
     $Admin = new Admin($_SESSION['account_id']);
 
-    $order_history = $Admin->get_order_history();
+    if(isset($_GET['account_id'])){
+      $order_history = $Admin->get_specific_order_history($_GET['account_id']);
+    } else {
+      $order_history = $Admin->get_order_history();
+    }
 
     //Get details for each transaction
     $order_history_details = [];
@@ -26,7 +32,12 @@ if(isset($_SESSION['account_id'])){
     require ADMIN_CLASSES . 'SuperAdmin.inc.php';
 
     $SuperAdmin = new SuperAdmin($_SESSION['account_id']);
-    $order_history = $SuperAdmin->get_order_history();
+    
+    if(isset($_GET['account_id'])){
+      $order_history = $SuperAdmin->get_specific_order_history($_GET['account_id']);
+    } else {
+      $order_history = $SuperAdmin->get_order_history();
+    }
 
     //Get details for each transaction
     $order_history_details = [];
@@ -37,8 +48,6 @@ if(isset($_SESSION['account_id'])){
 
   }
 }
-
-
 
 $modal_counter = 0;
 
@@ -76,6 +85,7 @@ $modal_counter = 0;
         <th scope="col">Payment Given</th>
         <th scope="col">Change Given</th>
         <th scope="col">Date of Purchase</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
@@ -83,12 +93,18 @@ $modal_counter = 0;
       <?php foreach($order_history as $key => $item): ?>
 
         <tr>
-          <td><?php echo $item['transaction_id'] ?></td>
+          <td style="text-align:center;"><?php echo $item['transaction_id'] ?></td>
           <td><?php echo $item['account_name'] ?></td>
-          <td><?php echo $item['total_price'] ?></td>
-          <td><?php echo $item['payment_given'] ?></td>
-          <td><?php echo $item['change_given'] ?></td>
+          <td style="color:lightgreen;"><?php echo commafy($item['total_price']) ?></td>
+          <td style="color:rgb(255, 116, 91);"><?php echo commafy($item['payment_given']) ?></td>
+          <td style="color:orange;"><?php echo commafy($item['change_given']) ?></td>
           <td><?php echo $item['date_of_purchase'] ?></td>
+          <?php 
+              $status = strtoupper($item['status']);
+              $color = $status == "APPROVED" ? "green" : "red";
+
+              echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>$status<p></td>";
+          ?>
           <td>
             <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal<?php echo $modal_counter ?>" data-whatever="@mdo">Info</button>
           </td>
@@ -130,9 +146,9 @@ $modal_counter = 0;
             <tr>
               <td><?php echo $order_history[$modal_counter]['transaction_id'] ?></td>
               <td><?php echo $order_history[$modal_counter]['account_name'] ?></td>
-              <td><?php echo $order_history[$modal_counter]['total_price'] ?></td>
-              <td><?php echo $order_history[$modal_counter]['payment_given'] ?></td>
-              <td><?php echo $order_history[$modal_counter]['change_given'] ?></td>
+              <td><?php echo commafy($order_history[$modal_counter]['total_price']) ?></td>
+              <td><?php echo commafy($order_history[$modal_counter]['payment_given']) ?></td>
+              <td><?php echo commafy($order_history[$modal_counter]['change_given']) ?></td>
               <td><?php echo $order_history[$modal_counter]['date_of_purchase'] ?></td>
             </tr>
           </tbody>
@@ -156,10 +172,10 @@ $modal_counter = 0;
           <tr>
             <th scope="col"><img src="../images/products/<?php echo $receipt_information['image'] ?>" class="product-image-size"></th>
             <td><?php echo $receipt_information['name'] ?></td>
-            <td><?php echo $receipt_information['price'] ?></td>
+            <td><?php echo commafy($receipt_information['price']) ?></td>
             <td><?php echo $receipt_information['quantity'] ?></td>
             <td><?php echo $receipt_information['description'] ?></td>
-            <td><?php echo $receipt_information['total'] ?></td>
+            <td><?php echo commafy($receipt_information['total']) ?></td>
           </tr>
           
           <?php endforeach ?>

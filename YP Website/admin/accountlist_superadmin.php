@@ -5,6 +5,7 @@ require_once 'config_admin.php';
 require_once INCLUDES . 'header.inc.php';
 require_once INCLUDES . 'navbar.inc.php';
 
+require_once ADMIN_CLASSES . 'Admin.inc.php';
 require_once ADMIN_CLASSES . 'SuperAdmin.inc.php';
 
 $Admin = new SuperAdmin($_SESSION['account_id']);

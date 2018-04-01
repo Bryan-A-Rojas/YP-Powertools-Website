@@ -84,7 +84,7 @@ require_once INCLUDES . 'navbar.inc.php';
                 </a>
                 
                 <h2><?php echo $product['name'] ?></h2>
-                <p style="color:green;">&#x20B1;<?php echo commafy($product['price']); ?></p>
+                <p style="color:green;"><?php echo commafy($product['price']); ?></p>
             </div>
         <?php endforeach ?>
 

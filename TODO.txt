@@ -126,3 +126,4 @@ Pages:
 			- 1 graph, 2 date pickers, 1 group by/interval dropdown, 1 refresh button
 
 		-Edit Buttons in accountlist_admin.php, use form with GET
+		- Change accountlist page to just 1 page with if statements instead of 2 pages, afterwards fix the anchor in the nav bar, order history, and pending transactions

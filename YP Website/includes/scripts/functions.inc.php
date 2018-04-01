@@ -43,7 +43,7 @@ function move_image($FilesArray, $folder_name){
 
 
 function commafy($money){
-	return number_format($money, 2, '.', ',');
+	return "&#x20B1;" . number_format($money, 2, '.', ',');
 }
 
 //Experimental code
