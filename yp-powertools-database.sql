@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2018 at 02:18 PM
+-- Generation Time: Apr 01, 2018 at 11:13 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -55,6 +55,7 @@ INSERT INTO `accounts` (`account_id`, `profile_image`, `name`, `email`, `passwor
 --
 
 CREATE TABLE `addresses` (
+  `addresses_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
   `full_address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL
@@ -64,9 +65,9 @@ CREATE TABLE `addresses` (
 -- Dumping data for table `addresses`
 --
 
-INSERT INTO `addresses` (`account_id`, `full_address`, `city`) VALUES
-(1, 'Equitable Village Talon 5 Las Pinas City', 'Las Pinas City'),
-(5, 'Alabang Hills, SBCA, Muntinlupa City', 'Muntinlupa City');
+INSERT INTO `addresses` (`addresses_id`, `account_id`, `full_address`, `city`) VALUES
+(1, 1, 'Equitable Village Talon 5 Las Pinas City', 'Las Pinas City'),
+(2, 5, 'Alabang Hills, SBCA, Muntinlupa City', 'Muntinlupa City');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,54 @@ INSERT INTO `log` (`log_id`, `account_id`, `date`, `description`) VALUES
 (88, 1, '2018-03-26 15:27:38', 'viewed their cart'),
 (89, 1, '2018-03-26 15:27:42', 'viewed checkout'),
 (90, 1, '2018-03-26 15:27:53', 'checked out'),
-(91, 1, '2018-03-26 16:30:01', 'viewed their cart');
+(91, 1, '2018-03-26 16:30:01', 'viewed their cart'),
+(92, 1, '2018-03-31 11:55:29', 'viewed their cart'),
+(93, 1, '2018-03-31 11:56:03', 'viewed their cart'),
+(94, 1, '2018-03-31 11:56:10', 'viewed checkout'),
+(95, 1, '2018-03-31 11:57:38', 'viewed their cart'),
+(96, 1, '2018-03-31 11:58:17', 'viewed their cart'),
+(97, 1, '2018-03-31 19:51:12', 'added 4 pieces of Hoyoma Japan - Electric Blower HTEB-600 to cart'),
+(98, 1, '2018-03-31 19:51:13', 'viewed their cart'),
+(99, 1, '2018-03-31 19:51:38', 'added 1 pieces of Total - Electric Drill 280W to cart'),
+(100, 1, '2018-03-31 19:51:38', 'viewed their cart'),
+(101, 1, '2018-03-31 19:52:38', 'viewed checkout'),
+(102, 1, '2018-03-31 19:52:46', 'checked out'),
+(103, 1, '2018-03-31 19:53:21', 'added 1 pieces of Angle Grinder to cart'),
+(104, 1, '2018-03-31 19:53:22', 'viewed their cart'),
+(105, 1, '2018-03-31 19:53:25', 'viewed checkout'),
+(106, 1, '2018-03-31 19:53:34', 'checked out'),
+(107, 1, '2018-03-31 20:04:39', 'viewed their cart'),
+(108, 1, '2018-03-31 20:13:05', 'viewed their cart'),
+(109, 1, '2018-03-31 20:16:43', 'viewed their cart'),
+(110, 1, '2018-03-31 20:18:44', 'added 1 piece(s) of Total - Electric Drill 280W to cart'),
+(111, 1, '2018-03-31 20:18:45', 'viewed their cart'),
+(112, 1, '2018-03-31 20:19:14', 'viewed their cart'),
+(113, 1, '2018-03-31 20:19:18', 'viewed checkout'),
+(114, 1, '2018-03-31 20:20:09', 'viewed checkout'),
+(115, 1, '2018-03-31 21:32:50', 'added 1 piece(s) of Total - Electric Drill 280W to cart'),
+(116, 1, '2018-03-31 21:32:51', 'viewed their cart'),
+(117, 1, '2018-03-31 21:32:53', 'viewed checkout'),
+(118, 1, '2018-03-31 21:32:56', 'viewed their cart'),
+(119, 1, '2018-03-31 21:33:01', 'viewed checkout'),
+(120, 1, '2018-03-31 23:44:28', 'viewed their cart'),
+(121, 1, '2018-03-31 23:44:38', 'removed Total - Electric Drill 280W from cart'),
+(122, 1, '2018-03-31 23:44:38', 'viewed their cart'),
+(123, 1, '2018-03-31 23:44:47', 'added 1 piece(s) of Total - Electric Drill 280W to cart'),
+(124, 1, '2018-03-31 23:44:47', 'viewed their cart'),
+(125, 1, '2018-03-31 23:44:49', 'viewed checkout'),
+(126, 1, '2018-04-01 14:50:52', 'added 2 piece(s) of Hoyoma Japan - Jigsaw HT - JS650 to cart'),
+(127, 1, '2018-04-01 14:50:58', 'viewed their cart'),
+(128, 1, '2018-04-01 14:51:06', 'viewed checkout'),
+(129, 1, '2018-04-01 14:51:13', 'checked out'),
+(130, 1, '2018-04-01 16:22:43', 'viewed their cart'),
+(131, 1, '2018-04-01 16:24:10', 'added 1 piece(s) of Hoyoma Japan - Jigsaw HT - JS650 to cart'),
+(132, 1, '2018-04-01 16:24:10', 'viewed their cart'),
+(133, 1, '2018-04-01 16:24:13', 'viewed checkout'),
+(134, 1, '2018-04-01 16:24:28', 'checked out'),
+(135, 1, '2018-04-01 16:25:32', 'added 1 piece(s) of Hoyoma Japan - Electric Blower HTEB-600 to cart'),
+(136, 1, '2018-04-01 16:25:34', 'viewed their cart'),
+(137, 1, '2018-04-01 16:25:37', 'viewed checkout'),
+(138, 1, '2018-04-01 16:25:53', 'checked out');
 
 -- --------------------------------------------------------
 
@@ -219,11 +267,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `image`, `name`, `price`, `description`, `stock`, `availability`) VALUES
-(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care', 0, 'available'),
-(2, '20180217_153001.jpg', 'Total - Electric Drill 280W', 23000.5, 'This is our finest drill, it can even drill through diamonds!', 10, 'unavailable'),
-(3, '20180217_151735.jpg', 'Makute - Trimmer TR001', 5000.5, 'Top notch american based trimmer', 10, 'available'),
+(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care.', 1, 'available'),
+(2, '20180217_153001.jpg', 'Total - Electric Drill 280W', 23000.5, 'This is our finest drill, it can even drill through diamonds!', 6, 'available'),
+(3, '20180217_151735.jpg', 'Makute - Trimmer TR001', 5000.5, 'Top notch american based trimmer', 10, 'unavailable'),
 (4, '20180217_152633.jpg', 'Fujima - Air Die Grinder XQ-T02', 1000, 'Newly arrived Fujima Grinder', 10, 'available'),
-(5, 'Hoyoma Japan - Jigsaw HT - JS650.jpg', 'Hoyoma Japan - Jigsaw HT - JS650', 5599, 'Useful for cutting wooden planks at great speed, also used for precision cutting', 10, 'available');
+(5, 'Hoyoma Japan - Jigsaw HT - JS650.jpg', 'Hoyoma Japan - Jigsaw HT - JS650', 5599, 'Useful for cutting wooden planks at great speed, also used for precision cutting', 7, 'available'),
+(11, '20180217_151314.jpg', 'Hoyoma Japan - Electric Blower HTEB-600', 13000, 'You don\'t need a lawn mower when you can just use our powerful lawn blower', 15, 'available');
 
 -- --------------------------------------------------------
 
@@ -253,7 +302,14 @@ INSERT INTO `purchases` (`purchase_id`, `transaction_id`, `product_id`, `quantit
 (8, 4, 5, 2),
 (9, 5, 3, 5),
 (10, 6, 3, 2),
-(11, 6, 5, 1);
+(11, 6, 5, 1),
+(12, 7, 2, 1),
+(13, 7, 11, 4),
+(14, 8, 1, 1),
+(15, 9, 2, 1),
+(16, 9, 5, 2),
+(17, 10, 5, 1),
+(18, 11, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -266,19 +322,25 @@ CREATE TABLE `transactions` (
   `account_id` int(11) NOT NULL,
   `total_price` double NOT NULL,
   `payment_given` double NOT NULL,
-  `date_of_purchase` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_of_purchase` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(255) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transactions`
 --
 
-INSERT INTO `transactions` (`transaction_id`, `account_id`, `total_price`, `payment_given`, `date_of_purchase`) VALUES
-(2, 1, 22198.5, 50000, '2018-03-25 22:12:30'),
-(3, 1, 13001, 20000, '2018-03-25 22:19:39'),
-(4, 1, 17198.5, 20000, '2018-03-26 07:56:54'),
-(5, 1, 25002.5, 50000, '2018-03-26 08:24:20'),
-(6, 1, 15600, 20000, '2018-03-26 15:27:52');
+INSERT INTO `transactions` (`transaction_id`, `account_id`, `total_price`, `payment_given`, `date_of_purchase`, `status`) VALUES
+(2, 1, 22198.5, 50000, '2018-03-25 22:12:30', 'approved'),
+(3, 1, 13001, 20000, '2018-03-24 01:19:39', 'approved'),
+(4, 1, 17198.5, 20000, '2018-04-04 07:56:54', 'approved'),
+(5, 1, 25002.5, 50000, '2018-03-26 01:24:20', 'approved'),
+(6, 1, 15600, 20000, '2018-04-01 01:27:52', 'approved'),
+(7, 1, 75000.5, 80000, '2018-04-02 19:52:46', 'approved'),
+(8, 1, 3000, 5000, '2018-03-31 19:53:33', 'pending'),
+(9, 1, 34198.5, 40000, '2018-04-01 14:51:12', 'pending'),
+(10, 1, 5599, 6000, '2018-04-01 16:24:26', 'approved'),
+(11, 1, 13000, 15000, '2018-04-01 16:25:53', 'approved');
 
 --
 -- Indexes for dumped tables
@@ -289,6 +351,12 @@ INSERT INTO `transactions` (`transaction_id`, `account_id`, `total_price`, `paym
 --
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`account_id`);
+
+--
+-- Indexes for table `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`addresses_id`);
 
 --
 -- Indexes for table `cart`
@@ -331,34 +399,40 @@ ALTER TABLE `accounts`
   MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `addresses`
+--
+ALTER TABLE `addresses`
+  MODIFY `addresses_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

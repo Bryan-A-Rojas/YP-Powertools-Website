@@ -44,7 +44,34 @@ class Admin{
 		return $result;
 	}
 
+	function get_order_history(){
+		//Require database header
+		require_once SCRIPTS . 'dbh.inc.php';
 
-	//Edit pages
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
+				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
+				FROM `transactions`
+				inner join `accounts`
+				on transactions.account_id = accounts.account_id
+				WHERE `status` = 'approved';";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+	function get_products_in_order_history($transaction_id){
+		
+	}
 
 }
