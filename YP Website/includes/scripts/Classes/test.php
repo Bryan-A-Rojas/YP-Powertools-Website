@@ -44,7 +44,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-6">
-			<canvas id="myChart" style="width:500px;height:500px"></canvas>
+			<canvas id="myChart"></canvas>
 		</div>
 	</div>	
 </div>

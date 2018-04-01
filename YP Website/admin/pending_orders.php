@@ -13,13 +13,13 @@ $users_array = $Admin->get_users();
 
 ?>
 
-<div class="container" style="padding-bottom: 20px;">
+<div class="container" style="padding-bottom: 20px;margin-top: 30px;">
 		<a href="accountlist_admin.php">&lt;Back to Account List page</a>
 	</div>
 
 <div class="container">
 <div class="jumbotron" id="jumbotron-color">
-  <h1>Order History</h1>
+  <h1>Pending Transactions</h1>
 </div>
 
 <table class="table table-hover table-bordered table-striped table-dark">

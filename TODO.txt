@@ -90,8 +90,6 @@ Pages:
 		0- Should also display log of the actions happening like who bought something, the order number, statistics, what they bought , and etc.
 			0-Add log table for user,admin, & superadmin
 
-		- Reports:
-			- 1 graph, 2 date pickers, 1 group by/interval dropdown, 1 refresh button
 		0- Orders should reduce stock number
 		- admin & superadmin should see the orders from users
 		- add 2 more text fields for address in user sign up (named address 2 and address 3 but those 2 should be optional)
@@ -119,11 +117,12 @@ Pages:
 			- admin accountlist - can also edit addresses
 
 		-Reports
-			- Yearly
+			0- Yearly
 				- Line graph, separated by month, comparing now until last year
-			- Monthly
+			0- Monthly
 				- Line graph, separated by day (1 - 30), this month until last month AND last month to the month before last.
-			- Weekly
+			0- Weekly
 				- Line graph, separated by day (Mon - Sun), now until last week
+			- 1 graph, 2 date pickers, 1 group by/interval dropdown, 1 refresh button
 
 		-Edit Buttons in accountlist_admin.php, use form with GET

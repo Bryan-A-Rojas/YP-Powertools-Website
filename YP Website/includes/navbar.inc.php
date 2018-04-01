@@ -38,17 +38,25 @@
                     <?php elseif($_SESSION['role'] == "admin"): ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="../admin/accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
+                                    Actions <i class="fas fa-cogs"></i>
+                                    </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <a class="dropdown-item" href="../admin/report_page.php">Reports <i class="fas fa-chart-pie"></i></a>
+                                    <a class="dropdown-item" href="../admin/accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
+                                    <a class="dropdown-item" href="../admin/receipt_page.php">Order History <i class="fas fa-list-alt"></i></a>
+                                    <a class="dropdown-item" href="../admin/pending_orders.php">Pending Transactions <i class="fas fa-hourglass-half"></i></a>
+                                </div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../admin/report_page.php">Reports <i class="fas fa-users"></i></a>
-                        </li>
+
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
                                     Edit Pages <i class="fas fa-edit"></i>
                                     </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                     <a class="dropdown-item" href="../admin/edit_products.php">Products</a>
                                 </div>
                             </div>
@@ -60,14 +68,25 @@
                     <?php elseif($_SESSION['role'] == "superadmin"): ?>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="../admin/accountlist_superadmin.php">Account List <i class="fas fa-users"></i></a>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
+                                    Actions <i class="fas fa-cogs"></i>
+                                    </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <a class="dropdown-item" href="../admin/report_page.php">Reports <i class="fas fa-chart-pie"></i></a>
+                                    <a class="dropdown-item" href="../admin/accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
+                                    <a class="dropdown-item" href="../admin/receipt_page.php">Order History <i class="fas fa-list-alt"></i></a>
+                                    <a class="dropdown-item" href="../admin/pending_orders.php">Pending Transactions <i class="fas fa-hourglass-half"></i></a>
+                                </div>
+                            </div>
                         </li>
+
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
                                     Edit Pages <i class="fas fa-edit"></i>
                                     </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                     <a class="dropdown-item" href="../admin/edit_products.php">Products</a>
                                 </div>
                             </div>

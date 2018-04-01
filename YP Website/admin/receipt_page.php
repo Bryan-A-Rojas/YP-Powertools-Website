@@ -13,7 +13,7 @@ $users_array = $Admin->get_users();
 
 ?>
 
-<div class="container" style="padding-bottom: 20px;">
+<div class="container" style="padding-bottom: 20px;margin-top: 30px;">
 		<a href="accountlist_admin.php">&lt;Back to Account List page</a>
 	</div>
 
