@@ -43,10 +43,10 @@
                                     Actions <i class="fas fa-cogs"></i>
                                     </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="../admin/report_page.php">Reports <i class="fas fa-chart-pie"></i></a>
-                                    <a class="dropdown-item" href="../admin/accountlist_admin.php">Account List <i class="fas fa-users"></i></a>
-                                    <a class="dropdown-item" href="../admin/receipt_page.php">Order History <i class="fas fa-list-alt"></i></a>
-                                    <a class="dropdown-item" href="../admin/pending_orders.php">Pending Transactions <i class="fas fa-hourglass-half"></i></a>
+                                    <a class="dropdown-item" href="../admin/report_page.php"><i class="fas fa-chart-pie"></i> Reports</a>
+                                    <a class="dropdown-item" href="../admin/accountlist_admin.php"><i class="fas fa-users"></i> Account List</a>
+                                    <a class="dropdown-item" href="../admin/receipt_page.php"><i class="fas fa-list-alt"></i> Order History</a>
+                                    <a class="dropdown-item" href="../admin/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
                                 </div>
                             </div>
                         </li>
