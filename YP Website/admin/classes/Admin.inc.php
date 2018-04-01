@@ -46,14 +46,15 @@ class Admin{
 
 	function get_order_history(){
 		//Require database header
-		require_once SCRIPTS . 'dbh.inc.php';
+		require SCRIPTS . 'dbh.inc.php';
 
 		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
 				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
-				WHERE `status` = 'approved';";
+				WHERE `status` = 'approved'
+				ORDER BY `date_of_purchase` ASC;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -71,7 +72,29 @@ class Admin{
 	}
 
 	function get_products_in_order_history($transaction_id){
-		
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT image, name, price, SUM(quantity) as quantity, description, (SUM(quantity) * price) as total
+				FROM purchases
+				INNER JOIN products
+				ON products.product_id = purchases.product_id
+				WHERE purchases.transaction_id = $transaction_id
+				GROUP BY products.image, products.name, products.price, products.description;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
 	}
 
 }

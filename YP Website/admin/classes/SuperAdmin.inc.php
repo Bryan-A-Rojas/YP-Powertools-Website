@@ -1,6 +1,6 @@
 <?php 
 
-class SuperAdmin{
+class SuperAdmin extends Admin{
 
 	private $SuperAdmin_id;
 

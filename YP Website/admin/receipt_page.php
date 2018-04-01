@@ -8,17 +8,39 @@ require_once INCLUDES . 'navbar.inc.php';
 if(isset($_SESSION['account_id'])){
 
   if($_SESSION['role'] == 'admin'){
-    require_once ADMIN_CLASSES . 'Admin.inc.php';
+    require ADMIN_CLASSES . 'Admin.inc.php';
 
     $Admin = new Admin($_SESSION['account_id']);
 
     $order_history = $Admin->get_order_history();
+
+    //Get details for each transaction
+    $order_history_details = [];
+
+    foreach($order_history as $item){
+        $order_history_details[] = $Admin->get_products_in_order_history($item['transaction_id']);
+    }
+
   } elseif($_SESSION['role'] == 'superadmin'){
-    require_once ADMIN_CLASSES . 'Admin.inc.php';
+    require ADMIN_CLASSES . 'Admin.inc.php';
+    require ADMIN_CLASSES . 'SuperAdmin.inc.php';
 
     $SuperAdmin = new SuperAdmin($_SESSION['account_id']);
+    $order_history = $SuperAdmin->get_order_history();
+
+    //Get details for each transaction
+    $order_history_details = [];
+
+    foreach($order_history as $item){
+        $order_history_details[] = $SuperAdmin->get_products_in_order_history($item['transaction_id']);
+    }
+
   }
 }
+
+
+
+$modal_counter = 0;
 
 ?>
 
@@ -68,18 +90,22 @@ if(isset($_SESSION['account_id'])){
           <td><?php echo $item['change_given'] ?></td>
           <td><?php echo $item['date_of_purchase'] ?></td>
           <td>
-            <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal" data-whatever="@mdo">More Info</button>
+            <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal<?php echo $modal_counter ?>" data-whatever="@mdo">Info</button>
           </td>
         </tr>
 
+      <?php $modal_counter++ ?>
       <?php endforeach ?>
       
     </tbody>
   </table>
 </div>
 
+<?php $modal_counter = 0; ?>
 
-<div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach($order_history_details as $item): ?>
+
+<div class="modal fade" id="historyModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" style="width: 900px; margin-left: -50px;">
       <div class="modal-header">
@@ -101,14 +127,13 @@ if(isset($_SESSION['account_id'])){
             </tr>
           </thead>
           <tbody>
-
             <tr>
-              <td>1</td>
-              <td>test@gmail.com</td>
-              <td>3,000.00</td>
-              <td>3,000.00</td>
-              <td>0.00</td>
-              <td>01/04/2018</td>
+              <td><?php echo $order_history[$modal_counter]['transaction_id'] ?></td>
+              <td><?php echo $order_history[$modal_counter]['account_name'] ?></td>
+              <td><?php echo $order_history[$modal_counter]['total_price'] ?></td>
+              <td><?php echo $order_history[$modal_counter]['payment_given'] ?></td>
+              <td><?php echo $order_history[$modal_counter]['change_given'] ?></td>
+              <td><?php echo $order_history[$modal_counter]['date_of_purchase'] ?></td>
             </tr>
           </tbody>
         </table>
@@ -125,21 +150,30 @@ if(isset($_SESSION['account_id'])){
             </tr>
           </thead>
           <tbody>
+          
+          <?php foreach($item as $receipt_information): ?>
 
-            <th scope="col"><img src="../images/products/Angle Grinder.jpg" class="product-image-size"></th>
-            <td>Angle Grinder</td>
-            <td>₱3,000.00</td>
-            <td>2</td>
-            <td>This is one of our best angle grinders and can last for years under the right care</td>
-            <td>₱6,000.00</td>
+          <tr>
+            <th scope="col"><img src="../images/products/<?php echo $receipt_information['image'] ?>" class="product-image-size"></th>
+            <td><?php echo $receipt_information['name'] ?></td>
+            <td><?php echo $receipt_information['price'] ?></td>
+            <td><?php echo $receipt_information['quantity'] ?></td>
+            <td><?php echo $receipt_information['description'] ?></td>
+            <td><?php echo $receipt_information['total'] ?></td>
+          </tr>
+          
+          <?php endforeach ?>
 
           </tbody>
-
         </table>
       </div>
     </div>
   </div>
 </div>
+
+<?php $modal_counter++ ?>
+<?php endforeach ?>
+
 
 <?php 
 
