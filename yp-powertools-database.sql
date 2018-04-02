@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2018 at 11:13 AM
+-- Generation Time: Apr 02, 2018 at 04:19 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -87,7 +87,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `account_id`, `product_id`, `quantity`) VALUES
-(16, 5, 3, 1);
+(16, 5, 3, 1),
+(17, 1, 3, 1),
+(18, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -244,7 +246,26 @@ INSERT INTO `log` (`log_id`, `account_id`, `date`, `description`) VALUES
 (135, 1, '2018-04-01 16:25:32', 'added 1 piece(s) of Hoyoma Japan - Electric Blower HTEB-600 to cart'),
 (136, 1, '2018-04-01 16:25:34', 'viewed their cart'),
 (137, 1, '2018-04-01 16:25:37', 'viewed checkout'),
-(138, 1, '2018-04-01 16:25:53', 'checked out');
+(138, 1, '2018-04-01 16:25:53', 'checked out'),
+(139, 1, '2018-04-01 18:52:32', 'added 1 piece(s) of Fujima - Air Die Grinder XQ-T02 to cart'),
+(140, 1, '2018-04-01 18:52:32', 'viewed their cart'),
+(141, 1, '2018-04-01 18:52:38', 'added 1 piece(s) of Angle Grinder to cart'),
+(142, 1, '2018-04-01 18:52:39', 'viewed their cart'),
+(143, 1, '2018-04-01 18:52:43', 'viewed checkout'),
+(144, 1, '2018-04-01 18:52:49', 'checked out'),
+(145, 1, '2018-04-01 20:13:30', 'viewed their cart'),
+(146, 1, '2018-04-02 08:19:53', 'viewed their cart'),
+(147, 1, '2018-04-02 08:46:04', 'viewed their cart'),
+(148, 1, '2018-04-02 08:46:13', 'added 1 piece(s) of Makute - Trimmer TR001 to cart'),
+(149, 1, '2018-04-02 08:46:15', 'viewed their cart'),
+(150, 1, '2018-04-02 08:46:19', 'viewed checkout'),
+(151, 1, '2018-04-02 08:48:21', 'viewed their cart'),
+(152, 1, '2018-04-02 08:48:29', 'viewed checkout'),
+(153, 1, '2018-04-02 08:49:19', 'viewed their cart'),
+(154, 1, '2018-04-02 08:49:20', 'viewed checkout'),
+(155, 1, '2018-04-02 09:20:21', 'added 1 piece(s) of Total - Electric Drill 280W to cart'),
+(156, 1, '2018-04-02 09:20:27', 'viewed their cart'),
+(157, 1, '2018-04-02 09:20:35', 'viewed checkout');
 
 -- --------------------------------------------------------
 
@@ -267,12 +288,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `image`, `name`, `price`, `description`, `stock`, `availability`) VALUES
-(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care.', 1, 'available'),
+(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care.', 3, 'unavailable'),
 (2, '20180217_153001.jpg', 'Total - Electric Drill 280W', 23000.5, 'This is our finest drill, it can even drill through diamonds!', 6, 'available'),
-(3, '20180217_151735.jpg', 'Makute - Trimmer TR001', 5000.5, 'Top notch american based trimmer', 10, 'unavailable'),
-(4, '20180217_152633.jpg', 'Fujima - Air Die Grinder XQ-T02', 1000, 'Newly arrived Fujima Grinder', 10, 'available'),
+(3, '20180217_151735.jpg', 'Makute - Trimmer TR001', 5000.5, 'Top notch american based trimmer', 10, 'available'),
+(4, '20180217_152633.jpg', 'Fujima - Air Die Grinder XQ-T02', 1000, 'Newly arrived Fujima Grinder', 9, 'available'),
 (5, 'Hoyoma Japan - Jigsaw HT - JS650.jpg', 'Hoyoma Japan - Jigsaw HT - JS650', 5599, 'Useful for cutting wooden planks at great speed, also used for precision cutting', 7, 'available'),
-(11, '20180217_151314.jpg', 'Hoyoma Japan - Electric Blower HTEB-600', 13000, 'You don\'t need a lawn mower when you can just use our powerful lawn blower', 15, 'available');
+(11, '20180217_151314.jpg', 'Hoyoma Japan - Electric Blower HTEB-600', 13000, 'You don\'t need a lawn mower when you can just use our powerful lawn blower', 15, 'unavailable');
 
 -- --------------------------------------------------------
 
@@ -309,7 +330,9 @@ INSERT INTO `purchases` (`purchase_id`, `transaction_id`, `product_id`, `quantit
 (15, 9, 2, 1),
 (16, 9, 5, 2),
 (17, 10, 5, 1),
-(18, 11, 11, 1);
+(18, 11, 11, 1),
+(19, 12, 1, 1),
+(20, 12, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -332,15 +355,16 @@ CREATE TABLE `transactions` (
 
 INSERT INTO `transactions` (`transaction_id`, `account_id`, `total_price`, `payment_given`, `date_of_purchase`, `status`) VALUES
 (2, 1, 22198.5, 50000, '2018-03-25 22:12:30', 'approved'),
-(3, 1, 13001, 20000, '2018-03-24 01:19:39', 'approved'),
+(3, 1, 13001, 20000, '2018-03-24 01:19:39', 'denied'),
 (4, 1, 17198.5, 20000, '2018-04-04 07:56:54', 'approved'),
 (5, 1, 25002.5, 50000, '2018-03-26 01:24:20', 'approved'),
 (6, 1, 15600, 20000, '2018-04-01 01:27:52', 'approved'),
 (7, 1, 75000.5, 80000, '2018-04-02 19:52:46', 'approved'),
 (8, 1, 3000, 5000, '2018-03-31 19:53:33', 'pending'),
-(9, 1, 34198.5, 40000, '2018-04-01 14:51:12', 'pending'),
+(9, 1, 34198.5, 40000, '2018-04-01 14:51:12', 'approved'),
 (10, 1, 5599, 6000, '2018-04-01 16:24:26', 'approved'),
-(11, 1, 13000, 15000, '2018-04-01 16:25:53', 'approved');
+(11, 1, 13000, 15000, '2018-04-01 16:25:53', 'denied'),
+(12, 1, 4000, 5000, '2018-04-01 18:52:49', 'denied');
 
 --
 -- Indexes for dumped tables
@@ -408,13 +432,13 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -426,13 +450,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

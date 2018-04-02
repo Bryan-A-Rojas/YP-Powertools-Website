@@ -80,7 +80,6 @@ $users_array = $Admin->get_users();
 
 <button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Deactivate</button>
 
-<button href="pending_orders.php" type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#pendingModal" data-whatever="@mdo" style="margin-bottom: 20px; width: 173px;height: 67px;font-size: 24px;">Pending</button>
 
 <!-- <form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
     <div class="modal fade" id="pendingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -157,7 +156,11 @@ $users_array = $Admin->get_users();
       <td><?php echo $user['full_address'] ?></td>
       <td>
         <form action="receipt_page.php" method="GET">
-          <input type="submit" class="btn btn-info btn-lg float-right" value="Order History"></input>
+          <input type="submit" class="btn btn-info btn-lg float-right" value="Order History" style="margin-bottom: 10px;width: 227px;"></input>
+          <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
+        </form>
+        <form action="pending_orders.php" method="GET">
+          <input type="submit" class="btn btn-warning btn-lg float-right" value="Pending Transactions">
           <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
         </form>
       </td>

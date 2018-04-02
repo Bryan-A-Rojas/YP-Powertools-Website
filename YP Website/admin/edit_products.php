@@ -42,7 +42,7 @@ require_once SCRIPTS . 'functions.inc.php';
                 <div class="form-row">
               <div class="col">
                 <label for="product">Product Name:</label>
-                <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" required>
+                <input type="text" class="form-control" placeholder="Enter Product Name" name="txtname" required>
               </div>
               <div class="col">
                 <label for="price">Price:</label>

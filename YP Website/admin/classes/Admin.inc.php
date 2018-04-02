@@ -11,7 +11,7 @@ class Admin{
 	//Get all users
 	function get_users(){
 		//Require database header
-		require_once SCRIPTS . 'dbh.inc.php';
+		require SCRIPTS . 'dbh.inc.php';
 
 		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address
 				FROM accounts 
@@ -34,8 +34,33 @@ class Admin{
 		return $resultsArray;
 	}
 
+	function get_specific_user($account_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT accounts.account_id,profile_image,name as account_name,email, city, full_address
+				FROM accounts 
+				LEFT JOIN addresses
+				ON accounts.account_id = addresses.account_id
+				WHERE `role` = 'user' AND accounts.account_id = $account_id;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
 	function add_product($image_array, $name, $price, $description){
-		require_once SCRIPTS . 'functions.inc.php';
+		require SCRIPTS . 'functions.inc.php';
 
 		move_image($image_array, "products");
 		$sql = "INSERT INTO `products`(`image`, `name`, `price`, `description`) 
@@ -124,7 +149,64 @@ class Admin{
 		return $resultsArray;
 	}
 
+	function get_pending_transactions(){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
+				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
+				FROM `transactions`
+				inner join `accounts`
+				on transactions.account_id = accounts.account_id
+				WHERE `status` = 'pending'
+				ORDER BY `date_of_purchase` ASC;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+	function get_specific_pending_transactions($account_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
+				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
+				FROM `transactions`
+				inner join `accounts`
+				on transactions.account_id = accounts.account_id
+				WHERE `status` = 'pending' AND transactions.account_id = $account_id
+				ORDER BY `date_of_purchase` ASC;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+
 	function update_pending_transaction($transaction_id, $choice){
+		require SCRIPTS . 'dbh.inc.php';
+
 		$sql = "UPDATE `transactions` 
 				SET `status`= '$choice'
 				WHERE `transaction_id` = $transaction_id;";

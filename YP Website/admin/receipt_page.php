@@ -17,6 +17,9 @@ if(isset($_SESSION['account_id'])){
 
     if(isset($_GET['account_id'])){
       $order_history = $Admin->get_specific_order_history($_GET['account_id']);
+      //Get the name of the user
+      $user_name = $Admin->get_specific_user($_GET['account_id']);
+      $user_name = $user_name[0]['account_name'];
     } else {
       $order_history = $Admin->get_order_history();
     }
@@ -36,6 +39,9 @@ if(isset($_SESSION['account_id'])){
     
     if(isset($_GET['account_id'])){
       $order_history = $SuperAdmin->get_specific_order_history($_GET['account_id']);
+      //Get the name of the user
+      $user_name = $SuperAdmin->get_specific_user($_GET['account_id']);
+      $user_name = $user_name[0]['account_name'];
     } else {
       $order_history = $SuperAdmin->get_order_history();
     }
@@ -46,7 +52,7 @@ if(isset($_SESSION['account_id'])){
     foreach($order_history as $item){
         $order_history_details[] = $SuperAdmin->get_products_in_order_history($item['transaction_id']);
     }
-
+    
   }
 }
 
@@ -75,13 +81,21 @@ $modal_counter = 0;
 <div class="container">
   <div class="jumbotron" id="jumbotron-color">
     <h1>Order History</h1>
+
+    <?php if(isset($user_name)): ?>
+      <h2><?php echo $user_name ?></h2>
+    <?php endif ?>
   </div>
 
   <table class="table table-hover table-bordered table-striped table-dark">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Transaction ID</th>
-        <th scope="col">Account Name</th>
+
+        <?php if(!isset($_GET['account_id'])): ?>
+          <th scope="col">Account Name</th>
+        <?php endif ?>
+        
         <th scope="col">Total Price</th>
         <th scope="col">Payment Given</th>
         <th scope="col">Change Given</th>
@@ -95,7 +109,11 @@ $modal_counter = 0;
 
         <tr>
           <td style="text-align:center;"><?php echo $item['transaction_id'] ?></td>
-          <td><?php echo $item['account_name'] ?></td>
+          
+          <?php if(!isset($_GET['account_id'])): ?>
+            <td><?php echo $item['account_name'] ?></td>
+          <?php endif ?>
+          
           <td style="color:lightgreen;"><?php echo commafy($item['total_price']) ?></td>
           <td style="color:rgb(255, 116, 91);"><?php echo commafy($item['payment_given']) ?></td>
           <td style="color:orange;"><?php echo commafy($item['change_given']) ?></td>
