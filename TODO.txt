@@ -128,3 +128,13 @@ Pages:
 
 		-Edit Buttons in accountlist_admin.php, use form with GET
 		- Change accountlist page to just 1 page with if statements instead of 2 pages, afterwards fix the anchor in the nav bar, order history, and pending transactions
+
+        0- Change navbar to a dropdown
+        - Put edit profile in admin/superadmin just like I did in the user
+        - combine the admin pages
+            - accountlist should be 1 page with if statements
+            - user page for admins should be 1 page
+        - Add a bar graph for the products sales
+        - generate downloadable pdfs
+            - optional: also make csv for reports
+        - 

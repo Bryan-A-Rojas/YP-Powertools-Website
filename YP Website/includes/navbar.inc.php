@@ -31,14 +31,12 @@
         <li class="nav-item">
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
-            <img src="../images/profile_images/39dyylqmqxa01.png" width="35" height="35" alt="UserImg" style="border-radius: 50%;">User
+            <img src="../images/profile_images/<?php echo $_SESSION['profile_image']?>" width="35" height="35" alt="UserImg" style="border-radius: 50%;margin-right:2px;"><?php echo $_SESSION['name'] ?>
                                     </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: -16px;">
+              <a class="dropdown-item" href="../pages/user_page.php"><i class="fa fa-user"></i> Profile</a> 
               <a class="dropdown-item" href="../pages/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
-              <a class="dropdown-item" href="../pages/user_page.php"><i class="fa fa-user"></i>	Profile</a> 
-            </div>
-          </div>
-        </li>
+            
 
         <?php elseif($_SESSION['role'] == "admin"): ?>
 
@@ -53,10 +51,10 @@
               <a class="dropdown-item" href="../admin/receipt_page.php"><i class="fas fa-list-alt"></i> Order History</a>
               <a class="dropdown-item" href="../admin/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
             </div>
-          </div>
+        </div>
         </li>
-
-        <li class="nav-item">
+       
+       <li class="nav-item">
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
                                     Edit Pages <i class="fas fa-edit"></i>
@@ -64,26 +62,34 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
               <a class="dropdown-item" href="../admin/edit_products.php">Products</a>
             </div>
-          </div>
+            </div>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="../admin/admin_page.php">Profile <i class="fa fa-user"></i></a>
-        </li>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
+            <img src="../images/profile_images/<?php echo $_SESSION['profile_image']?>" width="35" height="35" alt="UserImg" style="border-radius: 50%;margin-right:2px;"><?php echo $_SESSION['name'] ?>
+                                    </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3" style="left: -16px;">
+              <a class="dropdown-item" href="../admin/admin_page.php"><i class="fa fa-user"></i> Profile</a>
 
         <?php elseif($_SESSION['role'] == "superadmin"): ?>
 
         <li class="nav-item">
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;margin-right: 2px;">
                                     Actions <i class="fas fa-cogs"></i>
                                     </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <a class="dropdown-item" href="../admin/report_page.php"><i class="fas fa-chart-pie"></i> Reports</a> + <a class="dropdown-item" href="../admin/accountlist_superadmin.php"><i class="fas fa-users"></i> Account List</a> + <a class="dropdown-item" href="../admin/receipt_page.php"><i class="fas fa-list-alt"></i> Order History</a> + <a class="dropdown-item" href="../admin/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
+              <a class="dropdown-item" href="../admin/report_page.php"><i class="fas fa-chart-pie"></i> Reports</a>
+              <a class="dropdown-item" href="../admin/accountlist_superadmin.php"><i class="fas fa-users"></i> Account List</a>
+              <a class="dropdown-item" href="../admin/receipt_page.php"><i class="fas fa-list-alt"></i> Order History</a>
+              <a class="dropdown-item" href="../admin/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
             </div>
-          </div>
+        </div>
         </li>
-
-        <li class="nav-item">
+       
+       <li class="nav-item">
           <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
                                     Edit Pages <i class="fas fa-edit"></i>
@@ -91,19 +97,25 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
               <a class="dropdown-item" href="../admin/edit_products.php">Products</a>
             </div>
-          </div>
+            </div>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="../admin/admin_page.php">Profile <i class="fa fa-user"></i></a>
-        </li>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
+            <img src="../images/profile_images/<?php echo $_SESSION['profile_image']?>" width="35" height="35" alt="UserImg" style="border-radius: 50%;margin-right:2px;"><?php echo $_SESSION['name'] ?>
+                                    </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3" style="left: -16px;">
+              <a class="dropdown-item" href="../admin/superadmin_page.php"><i class="fa fa-user"></i> Profile</a>
 
         <?php endif ?>
 
-        <li class="nav-item">
-          <form action="../includes/scripts/logout.php" method="POST">
-            <button type="submit" name="submit" class="btn btn-danger">Logout <i class="fas fa-sign-out-alt"></i></button>
-          </form>
-        </li>
+              <form action="../includes/scripts/logout.php" method="POST">
+                <button type="submit" name="submit" class="btn btn-danger btn-dropdown-white"><i class="fas fa-sign-out-alt"></i> Logout</button>
+              </form>
+            </div>
+          </li>
+        </div>
 
         <?php else: ?>
 
@@ -129,11 +141,11 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
+          <div class="form-row">
             <label for="uploading">Upload Profile Picture:</label>
             <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
           </div>
@@ -143,22 +155,13 @@
               <label for="Name">Full Name:</label>
               <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" required>
             </div>
-            <div class="col">
-              <label for="email">Email:</label>
-              <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
-            </div>
-
-            <div class="col">
-              <label for="city">Enter City</label>
-              <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
-            </div>
           </div>
 
-          <div class="form-group">
-            <div class="col">
-              <label for="fulladdress">Enter Full Address</label>
-              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
-            </div>
+          <div class="form-row">
+              <div class="col">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+              </div>
           </div>
 
           <div class="form-row">
@@ -166,11 +169,28 @@
               <label for="password">Password:</label>
               <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
             </div>
+          </div>
+
+          <div class="form-row">
             <div class="col">
               <label for="confirmpassword">Confirm Password:</label>
               <input type="password" placeholder="Confirm Password" name="txtconfirmpassword" class="form-control" required>
             </div>
           </div>
+          
+          <div class="form-row">
+            <div class="col">
+              <label for="fulladdress">Enter Full Address</label>
+              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
+            </div>
+            <div class="col">
+              <label for="city">Enter City</label>
+              <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
+            </div>
+          </div>
+
+          <hr>
+
           <div class="modal-footer col-lg-12">
             <button type="submit" name="submit" class="btn btn-success float-right">Sign Up</button>
           </div>
@@ -204,6 +224,8 @@
               <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
             </div>
           </div>
+          
+          <hr style="width:360px;">
 
           <div class="modal-footer col-lg-12">
             <button type="submit" name="submit" class="btn btn-success">Log In</button>

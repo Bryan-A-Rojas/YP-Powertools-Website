@@ -144,7 +144,7 @@ $modal_counter = 0;
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" style="width: 996px;margin-left: -87px;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">History</h5>
+        <h5 class="modal-title" id="exampleModalLabel">History - <?php echo $order_history[$modal_counter]['account_name'] ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -154,7 +154,6 @@ $modal_counter = 0;
           <thead class="thead-dark">
             <tr>
               <th scope="col">Transaction ID</th>
-              <th scope="col">Account Name</th>
               <th scope="col">Total Price</th>
               <th scope="col">Payment Given</th>
               <th scope="col">Change Given</th>
@@ -164,7 +163,6 @@ $modal_counter = 0;
           <tbody>
             <tr>
               <td style="text-align:center;"><?php echo $order_history[$modal_counter]['transaction_id'] ?></td>
-              <td><?php echo $order_history[$modal_counter]['account_name'] ?></td>
               <td style="color:lightgreen;"><?php echo commafy($order_history[$modal_counter]['total_price']) ?></td>
               <td style="color:rgb(255, 116, 91);"><?php echo commafy($order_history[$modal_counter]['payment_given']) ?></td>
               <td style="color:orange;"><?php echo commafy($order_history[$modal_counter]['change_given']) ?></td>

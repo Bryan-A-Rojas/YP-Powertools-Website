@@ -63,19 +63,6 @@ class User extends Person{
 
 		return true;
 	}
-
-	// public function logout(){
-	// 	if(!isset($_SESSION)){
-	// 		session_start();
-	// 	}
-
-	// 	session_unset();
-	// 	session_destroy();
-	// }
-
-	// public function useCart(){
-	// 	return $this->cart;
-	// }
 	
 }
 

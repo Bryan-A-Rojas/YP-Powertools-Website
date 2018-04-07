@@ -11,7 +11,7 @@ require_once '../../config.php';
 		$password = $_POST['txtpassword'];
 
 		if(empty($email) || empty($password)){
-			header("Location: ../../pages/LoginForm.php?login=empty");
+			header("Location: ../../pages/user_page.php?login=empty");
 			exit();
 		} else {
 			//SQL insert statement
@@ -21,13 +21,13 @@ require_once '../../config.php';
 			$result = $Database->query($sql);
 			
 			if($result->num_rows < 1){
-				header("Location: ../../pages/LoginForm.php?login=error");
+				header("Location: ../../pages/user_page.php?login=error");
 				exit();
 			} else {
 				if($row = $result->fetch_assoc()){
 
 					if(!password_verify($password, $row['password'])){
-						header("Location: ../../pages/LoginForm.php?login=error");
+						header("Location: ../../pages/user_page.php?login=error");
 						exit();
 					}else{
 
@@ -55,7 +55,7 @@ require_once '../../config.php';
 		}
 	} else {
 		//User did not click the button
-		header("Location: ../../pages/LoginForm.php?login=used_get");
+		header("Location: ../../pages/user_page.php?login=used_get");
 		exit();
 	}
 
