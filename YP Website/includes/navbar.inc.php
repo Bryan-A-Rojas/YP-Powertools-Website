@@ -29,10 +29,15 @@
         <?php if($_SESSION['role'] == "user"): ?>
 
         <li class="nav-item">
-          <a class="nav-link" href="../pages/cart.php">Cart <i class="fas fa-shopping-cart"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/user_page.php">Profile <i class="fa fa-user"></i></a>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
+            <img src="../images/profile_images/39dyylqmqxa01.png" width="35" height="35" alt="UserImg" style="border-radius: 50%;">User
+                                    </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <a class="dropdown-item" href="../pages/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
+              <a class="dropdown-item" href="../pages/user_page.php"><i class="fa fa-user"></i>	Profile</a> 
+            </div>
+          </div>
         </li>
 
         <?php elseif($_SESSION['role'] == "admin"): ?>
@@ -114,6 +119,8 @@
     </div>
   </div>
 </nav>
+
+<!-- Modals -->
 
 <form action="../includes/scripts/signup.php" method="POST" enctype="multipart/form-data">
   <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
