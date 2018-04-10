@@ -90,6 +90,7 @@ $modal_counter = 0;
 </form>
 
 <button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Deactivate</button>
+<button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Add Account</button>
 
 
 <!-- <form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
@@ -197,10 +198,10 @@ $modal_counter = 0;
           <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
         </form>
         <form action="pending_orders.php" method="GET">
-          <input type="submit" class="btn btn-warning btn-lg float-right" value="Pending Transactions" style="margin-bottom: 10px; width: 227px;">
+          <input type="submit" class="btn btn-secondary btn-lg float-right" value="Pending Transactions" style="margin-bottom: 10px; width: 227px;">
           <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
         </form>
-        <button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal" data-target="#editProfileModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Edit</button>
+        <button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#editProfileModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Edit</button>
       </td>
     </tr>
 
