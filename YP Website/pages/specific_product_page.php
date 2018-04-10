@@ -16,6 +16,13 @@ require_once CLASSES . 'Products.inc.php';
 $product_information = Products::get_specific_product($_GET['productid']);
 $product_information = $product_information[0];
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <div class="jumbotron" style="padding:1rem 2rem">

@@ -17,12 +17,7 @@ require_once '../../config.php';
 		$city = $Database->real_escape_string($_POST['txtcity']);
 		$account_id = $Database->real_escape_string($_POST['account_id']);
 
-
-		if(empty($full_name) 		||
-		   empty($email) 	 		|| 
-		   empty($full_address) 	|| 
-		   empty($city)){
-
+		if(empty($full_name) || empty($email)){
 			//Fields are empty
 			header("Location: ../accountlist.php?update=empty");
 			exit();
@@ -35,16 +30,30 @@ require_once '../../config.php';
 				} else {
 					
 					$status = isset($_POST['status']) ? "active" : "inactive";
+					
 
 					//SQL string to insert in database
 					$sql = "";
 					//if profile image is not uploaded then use different insert
 					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
-						$sql = "UPDATE `accounts` 
+						
+						if($_SESSION['role'] == 'superadmin'){
+							$role = $_POST['role'];
+							$sql = "UPDATE `accounts` 
+								SET `name` = '$full_name',
+								 	`email`= '$email',
+								 	`role` = '$role',
+								 	`status` = '$status'
+								WHERE `account_id` = $account_id;";
+						} else {
+							$sql = "UPDATE `accounts` 
 								SET `name` = '$full_name',
 								 	`email`= '$email',
 								 	`status` = '$status'
 								WHERE `account_id` = $account_id;";
+						}
+
+						
 					} else {
 						//else move profile image to a folder
 						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
@@ -52,12 +61,24 @@ require_once '../../config.php';
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
-							$sql = "UPDATE `accounts` 
+
+							if($_SESSION['role'] == 'superadmin'){
+								$role = $_POST['role'];
+								$sql = "UPDATE `accounts` 
+										SET `profile_image` = '$image_name',
+											`name` = '$full_name',
+										 	`email`= '$email',
+										 	`role` = '$role',
+										 	`status` = '$status'
+										WHERE `account_id` = $account_id;";
+							} else {
+								$sql = "UPDATE `accounts` 
 									SET `profile_image` = '$image_name',
 										`name` = '$full_name',
 									 	`email`= '$email',
 									 	`status` = '$status'
 									WHERE `account_id` = $account_id;";
+							}
 						}
 					}
 
@@ -73,23 +94,6 @@ require_once '../../config.php';
 										  			FROM accounts
 										  			WHERE account_id = $account_id");
 
-						$row = $result->fetch_assoc();
-
-						$_SESSION['account_id'] = $row['account_id'];
-						$_SESSION['email'] = $row['email'];
-						$_SESSION['name'] = $row['name'];
-						$_SESSION['role'] = $row['role'];
-						$_SESSION['profile_image'] = $row['profile_image'];
-						$_SESSION['status'] = $row['status'];
-
-						$result = $Database->query("SELECT * 
-													FROM addresses 
-													WHERE account_id = $account_id;");
-						$row = $result->fetch_assoc();
-
-						$_SESSION['full_address'] = $row['full_address'];
-						$_SESSION['city'] = $row['city'];
-						
 					    header("Location: ../accountlist.php?update=success");
 					    exit();
 					} else {
@@ -99,7 +103,7 @@ require_once '../../config.php';
 					}
 				}
 			}
-	} elseif(isset($_POST['Activate'])){
+	} elseif(isset($_POST['reactivate'])){
 
 		//Check if password is correct
 		require SCRIPTS . 'dbh.inc.php';
@@ -117,52 +121,136 @@ require_once '../../config.php';
 		// 	exit();
 		// }
 
-		$status = isset($_POST['status']) ? "active" : "inactive";
-		$account_id = $_SESSION['account_id'];
+		$account_id = $_POST['account_id'];
 
 		$sql = "UPDATE `accounts` 
-				SET `status`= '$tatus'
+				SET `status`= 'active'
 				WHERE `account_id` = $account_id;";
 		
 		if($Database->query($sql)){
-			header("Location: ../accountlist.php?products=restored");
+			header("Location: ../accountlist.php?account=restored");
 			exit();
 		} else {
-			header("Location: ../accountlist.php?products=fail_to_restore");
+			header("Location: ../accountlist.php?account=fail_to_restore");
 			exit();
 		}
 
-	} elseif(isset($_POST['Deactivate'])) {
+	} elseif(isset($_POST['deactivate'])) {
 
 		//Check if password is correct
 		require SCRIPTS . 'dbh.inc.php';
 
-		$email = $_SESSION['email'];
+		// $email = $_SESSION['email'];
 
-		$sql = "SELECT password 
-				FROM accounts 
-				WHERE email = '$email';";
-		$result = $Database->query($sql);
-		$row = $result->fetch_assoc();
+		// $sql = "SELECT password 
+		// 		FROM accounts 
+		// 		WHERE email = '$email';";
+		// $result = $Database->query($sql);
+		// $row = $result->fetch_assoc();
 
-		if(!password_verify($_POST['txtpassword'], $row['password'])){
-			header("Location: ../edit_products.php?products=wrong_password");
-			exit();
-		}
+		// if(!password_verify($_POST['txtpassword'], $row['password'])){
+		// 	header("Location: ../edit_products.php?products=wrong_password");
+		// 	exit();
+		// }
 
-		//Proceed if correct
-		require_once ADMIN_CLASSES . 'Products.inc.php';
+		$account_id = $_POST['account_id'];
 
-		$Products = new Products($_SESSION['account_id']);
+		$sql = "UPDATE `accounts` 
+				SET `status`= 'inactive'
+				WHERE `account_id` = $account_id;";
 		
-		if($Products->delete_product($_POST['product_id'])){
-			header("Location: ../edit_products.php?products=removed");
+		if($Database->query($sql)){
+			header("Location: ../accountlist.php?account=restored");
 			exit();
 		} else {
-			header("Location: ../edit_products.php?products=fail_to_remove");
+			header("Location: ../accountlist.php?account=fail_to_restore");
 			exit();
 		}
 
+	} elseif(isset($_POST['create'])) {
+
+		//connect to database
+		require SCRIPTS . 'dbh.inc.php';
+
+		require SCRIPTS . 'functions.inc.php';
+
+		//Get all post data and sanitize input
+		//profile_image,full_name, email, password, confirm password
+		$profile_image = $_FILES['profile_image'];
+		$full_name = $Database->real_escape_string($_POST['txtfullname']);
+		$email = $Database->real_escape_string($_POST['txtemail']);
+		$password = $Database->real_escape_string($_POST['txtpassword']);
+		$confirm_password = $Database->real_escape_string($_POST['txtconfirmpassword']);
+		$full_address = $Database->real_escape_string($_POST['txtfulladdress']);
+		$city = $Database->real_escape_string($_POST['txtcity']);
+
+		$role = "user";
+		if($_SESSION['role'] == 'superadmin' AND isset($_POST['role'])){
+			$role = $Database->real_escape_string($_POST['role']);
+		}
+		
+		$status = isset($_POST['status']) ? 'active' : 'inactive';
+
+		if(empty($full_name) 		||
+		   empty($email) 	 		|| 
+		   empty($password)  		|| 
+		   empty($confirm_password) || 
+		   empty($full_address) 	|| 
+		   empty($city)){
+
+			//Fields are empty
+			header("Location: ../accountlist.php?signup=empty");
+			exit();
+		} else {
+			//Check if password and confirm password is NOT the same
+			if($password != $confirm_password){
+				header("Location: ../accountlist.php?signup=password_not_same");
+				exit();
+			} else {
+				//Check if they are in the right format
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+				    //Invalid email format
+				    header("Location: ../accountlist.php?signup=invalid_email");
+					exit();
+				} else {
+					//Hash password
+					$HashedPassword = password_hash($password,PASSWORD_DEFAULT);
+					
+					//SQL string to insert in database
+					$sql = "";
+					//if profile image is not uploaded then use different insert
+					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
+						$sql = "INSERT INTO `accounts` (`name`, `email`, `password`, `status`, `role`) 
+								VALUES ('$full_name', '$email', '$HashedPassword', '$status', '$role');";
+					} else {
+						//else move profile image to a folder
+						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
+							header("Location: ../accountlist.php?$error");
+							exit();
+						} else {
+							$image_name = $_FILES['profile_image']['name'];
+							$sql = "INSERT INTO `accounts` (`profile_image`, `name`, `email`, `password`, `status`, `role`) 
+									VALUES ('$image_name', '$full_name', '$email', '$HashedPassword', '$status', '$role');";
+						}
+					}
+
+					if ($Database->query($sql) === TRUE) {
+
+						$id = $Database->insert_id;
+						
+						$sql = "INSERT INTO `addresses`(`account_id`, `full_address`, `city`) 
+								VALUES ($id, '$full_address','$city');";
+						$Database->query($sql);
+						
+					    header("Location: ../accountlist.php?signup=success");
+					    exit();
+					} else {
+					    header("Location: ../accountlist.php?signup=database_error");
+					    exit();
+					}
+				}
+			}
+		}
 	} else {
 		header("Location: ../accountlist.php?update=used_get");
 		exit();

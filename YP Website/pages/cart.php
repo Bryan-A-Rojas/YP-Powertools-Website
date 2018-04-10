@@ -14,6 +14,13 @@ $cart_items = $cart->display_cart();
 
 require_once SCRIPTS . 'functions.inc.php';
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <div class="container">

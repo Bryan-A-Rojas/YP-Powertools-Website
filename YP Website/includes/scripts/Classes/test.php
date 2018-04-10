@@ -5,6 +5,20 @@
 	 require_once '../../../config.php';
 
 	 require_once INCLUDES . 'header.inc.php';
+
+	 require_once CLASSES . 'Notifications.php';
+
+	 Notification::save_to_session('success', 'good work!');
+
+	 echo "<pre>";
+	 print_r($_SESSION);
+	 echo "</pre>";
+
+	 if(isset($_SESSION['notify'])){
+	 	echo Notification::display_notification();
+	 	Notification::delete_from_session();	 	
+	 }
+
 	// require_once SCRIPTS . 'dbh.inc.php';
 
 	// //Number of items per page
@@ -38,37 +52,3 @@
 	// }
 
 ?>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
-<div class="container">
-	<div class="row">
-		<div class="col-lg-6">
-			<canvas id="myChart"></canvas>
-		</div>
-	</div>	
-</div>
-
-<script>
-	var ctx = document.getElementById('myChart').getContext('2d');
-	
-	var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
-
-    // Configuration options go here
-    options: {}
-});
-
-</script>

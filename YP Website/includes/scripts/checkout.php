@@ -1,11 +1,13 @@
 <?php
 
 require_once '../../config.php';
+require_once CLASSES . 'Notifications.php';
 
 	if(isset($_POST['checkout'])){
 		
 		if(!isset($_SESSION['account_id'])){
-			header("Location: ../../pages/checkout.php?checkout=not_logged_in");
+			Notification::save_to_session('danger', 'Please log in first!');
+			header("Location: ../../pages/index.php");
 			exit();
 		}
 
@@ -14,14 +16,17 @@ require_once '../../config.php';
 		$cart = new Cart($_SESSION['account_id']);
 		
 		if($cart->checkout($_POST['txtpayment'])){
-			header("Location: ../../pages/user_page.php?checkout=success");
+			Notification::save_to_session('success', 'Thank you for doing business with YP Powertools!');
+			header("Location: ../../pages/user_page.php");
 			exit();
 		} else {
-			header("Location: ../../pages/checkout.php?checkout=not_enough_payment");
+			Notification::save_to_session('danger', 'Insufficient Funds');
+			header("Location: ../../pages/checkout.php");
 			exit();
 		}
 		
 	} else {
-		header("Location: ../../pages/checkout.php?checkout=used_get");
+		Notification::save_to_session('danger', 'Oops! You cannot access that page');
+		header("Location: ../../pages/checkout.php");
 		exit();
 	}

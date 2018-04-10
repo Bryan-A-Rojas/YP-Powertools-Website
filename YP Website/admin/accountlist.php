@@ -7,20 +7,20 @@ require_once INCLUDES . 'navbar.inc.php';
 
 require_once ADMIN_CLASSES . 'Admin.inc.php';
 
-//if($_SESSION['role'] == 'admin'){
-  //$Admin = new Admin($_SESSION['account_id']);
+if($_SESSION['role'] == 'admin'){
+  $Admin = new Admin($_SESSION['account_id']);
 
-//   $users_array = $Admin->get_users();
-// } else if($_SESSION['role'] == 'superadmin'){
+  $users_array = $Admin->get_users();
+} else if($_SESSION['role'] == 'superadmin'){
   
   require_once ADMIN_CLASSES . 'SuperAdmin.inc.php';
   $Admin = new SuperAdmin($_SESSION['account_id']);
 
   $users_array = $Admin->get_users_and_admins();
-//} else {
-  //header("Location: ../pages/index.php");
-  //exit();
-//}
+} else {
+  header("Location: ../pages/index.php");
+  exit();
+}
 
 $modal_counter = 0;
 
@@ -31,115 +31,104 @@ $modal_counter = 0;
   <h1>Account List</h1>
 </div>
 
-<form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+<button type="button" class="btn btn-success btn-lg float-right" data-toggle="modal" data-target="#addaccountModal" data-whatever="@mdo" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Add Account</button>
+
+<form action="scripts/update_account.php" method="POST" enctype="multipart/form-data">
+  <div class="modal fade" id="addaccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-row">
+            <label for="uploading">Upload Profile Picture:</label>
+            <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
           </div>
-            <div class="modal-body">
-              <div class="form-group">
-    <label for="uploading">Upload Profile Picture:</label>
-    <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
-  </div>
 
-  <div class="form-row">
-  <div class="col">
-      <label for="Name">Full Name:</label>
-      <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" required>
-    </div>
-  <div class="col">
-      <label for="email">Email:</label>
-      <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
-    </div>
-  
-    <div class="col">
-      <label for="city">Enter City</label>
-      <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
-    </div>
-  </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="Name">Full Name:</label>
+              <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" required>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <div class="col">
-      <label for="fulladdress">Enter Full Address</label>
-      <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
-    </div>
-  </div>
+          <div class="form-row">
+              <div class="col">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+              </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="col">
+              <label for="fulladdress">Enter Full Address</label>
+              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control">
+            </div>
+            <div class="col">
+              <label for="city">Enter City</label>
+              <input type="city" placeholder="Enter City" name="txtcity" class="form-control">
+            </div>
+          </div>
 
-  <div class="form-row">
-    <div class="col">
-      <label for="password">Password:</label>
-      <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
-    </div>
-    <div class="col">
-      <label for="confirmpassword">Confirm Password:</label>
-      <input type="password" placeholder="Confirm Password" name="txtconfirmpassword" class="form-control" required>
-    </div>
-  </div>
-    <div class="modal-footer">
-       <button type="submit" name="submit" class="btn btn-success" style="margin-top:10px;">Edit User</button>
-    </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm Password:</label>
+            <input type="password" placeholder="Enter Password" name="txtconfirmpassword" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Status:</label>
+            <br />
+            <label class="switch">
+              <input type="checkbox" name="status" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <?php if($_SESSION['role'] == 'superadmin'): ?>
+
+          <div class="form-group">
+             <label>Role:</label>
+              <select class="custom-select" name="role">
+                <option value="user" selected>User</option>
+                <option value="admin">Admin</option>
+              </select>
+          </div>
+
+          <?php endif ?>
+
+          <hr>
+
+          <div class="modal-footer col-lg-12">
+            <button type="submit" name="create" class="btn btn-lg btn-success float-right">Add Account</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </form>
 
-<button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Deactivate</button>
-<button type="button" class="btn btn-danger btn-lg float-right" style="margin-bottom: 20px;width: 173px;height: 67px;font-size: 24px;">Add Account</button>
 
 
-<!-- <form action="scripts/add_product.php" method="POST" enctype="multipart/form-data">
-    <div class="modal fade" id="pendingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Pending Transactions</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-            <div class="modal-body">
-              
-<table class="table table-hover table-bordered table-light">
-  <thead>
-    <tr>
-      <th scope="col">Transaction No.</th>
-      <th scope="col">Date</th>
-      <th scope="col">Payment</th>
-      <th scope="col">Address</th>
-    </tr>
-  </thead>
-  <tbody>
+  <?php if($_SESSION['role'] == 'superadmin'): ?>
 
-    <tr>
-      <td>1</td>
-      <td>01/04/2018</td>
-      <td>Cash</td>
-      <td>Bla St. New York City</td>
-    </tr>
+    <table class="table table-hover table-dark" style="margin-left:-40px;">
+    
+  <?php elseif($_SESSION['role'] == 'admin'): ?>
 
-  </tbody>
+    <table class="table table-hover table-dark">
+  
+  <?php endif  ?>
 
-</table>
-
-    <div class="modal-footer">
-       <button type="submit" name="submit" class="btn btn-success" style="margin-top:10px;">Accept</button>
-       <button type="submit" name="submit" class="btn btn-danger" style="margin-top:10px;">Deny</button>
-    </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</form> -->
-
-
-
-<table class="table table-hover table-dark" style="margin-left:-40px;">
   <thead>
     <tr>
       <th scope="col">Account Image</th>
@@ -148,8 +137,11 @@ $modal_counter = 0;
       <th scope="col">City</th>
       <th scope="col">Address</th>
 
-      <!-- insert an if statement -->
+      <?php if($_SESSION['role'] == 'superadmin'): ?>
+
       <th scope="col">Role</th>
+
+      <?php endif ?>
 
       <th scope="col">Status</th>
       <th scope="col"></th>
@@ -173,6 +165,9 @@ $modal_counter = 0;
       <td><?php echo $user['full_address'] ?></td>
       
       <?php 
+
+        if($_SESSION['role'] == 'superadmin'){
+
         $user_role = strtoupper($user['role']);
         $color = $user_role == "USER" ? "blue" : "orange";
 
@@ -181,6 +176,7 @@ $modal_counter = 0;
                   $user_role
                 <p>
               </td>";
+        }
 
         $user_status = strtoupper($user['status']);
         $color = $user_status == "ACTIVE" ? "green" : "red";
@@ -201,7 +197,13 @@ $modal_counter = 0;
           <input type="submit" class="btn btn-secondary btn-lg float-right" value="Pending Transactions" style="margin-bottom: 10px; width: 227px;">
           <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
         </form>
-        <button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#editProfileModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Edit</button>
+        <button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#editProfileModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-bottom: 10px; width:227px;">Edit</button>
+
+        <?php if($user['status'] == "active"): ?>
+          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deactivateModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Deactivate</button>
+        <?php else: ?>
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#reactivateModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Reactivate</button>
+        <?php endif ?>
       </td>
     </tr>
 
@@ -257,6 +259,8 @@ $modal_counter = 0;
               </div>
           </div>
           
+          <?php if($user['role'] == 'user'): ?>
+
           <div class="form-row">
             <div class="col">
               <label for="fulladdress">Enter Full Address</label>
@@ -267,6 +271,8 @@ $modal_counter = 0;
               <input type="city" placeholder="Enter City" name="txtcity" class="form-control" value="<?php echo $user['city']?>" required>
             </div>
           </div>
+
+          <?php endif ?>
           
           <div class="form-group">
             <label>Status:</label>
@@ -280,6 +286,28 @@ $modal_counter = 0;
               <span class="slider round"></span>
             </label>
           </div>
+          
+          <?php if($_SESSION['role'] == 'superadmin'): ?>
+
+          <div class="form-group">
+             <label>Role:</label>
+              <select class="custom-select" name="role">
+
+                <?php if($user['role'] == 'user'): ?>
+
+                <option value="user" selected>User</option>
+                <option value="admin">Admin</option>
+
+                <?php elseif ($user['role'] == 'admin'): ?>
+                
+                <option value="user">User</option>
+                <option value="admin" selected>Admin</option>
+
+                <?php endif ?>
+              </select>
+          </div>
+
+          <?php endif ?>
 
           <hr>
 
@@ -292,10 +320,63 @@ $modal_counter = 0;
   </div>
 </form>
 
+
+<form action="scripts/update_account.php" method="POST">
+  <div class="modal fade" id="deactivateModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to deactivate?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password:</label>
+                <div class="col-sm-6">
+                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <input type="hidden" name="account_id" value="<?php echo $user['account_id']?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="deactivate" class="btn btn-danger">Deactivate</button>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+
+<form action="scripts/update_account.php" method="POST">
+  <div class="modal fade" id="reactivateModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to reactivate?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password:</label>
+                <div class="col-sm-6">
+                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <input type="hidden" name="account_id" value="<?php echo $user['account_id']?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="reactivate" class="btn btn-success">Reactivate</button>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+
 <?php $modal_counter++ ?>
 <?php endforeach ?>
-
-
 
 </div>
 

@@ -122,6 +122,7 @@ require_once SCRIPTS . 'functions.inc.php';
               <?php else: ?>
                 <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#restoreModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:106px;">Restore</button>
               <?php endif ?>
+              
             </td>
           </tr>
       

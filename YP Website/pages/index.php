@@ -8,6 +8,13 @@ require_once SCRIPTS . 'functions.inc.php';
 
 require_once INCLUDES . 'navbar.inc.php';
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <!-- Parallax -->

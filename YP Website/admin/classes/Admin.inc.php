@@ -204,7 +204,6 @@ class Admin{
 		return $resultsArray;
 	}
 
-
 	function update_pending_transaction($transaction_id, $choice){
 		require SCRIPTS . 'dbh.inc.php';
 

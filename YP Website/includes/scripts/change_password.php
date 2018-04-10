@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../config.php';
+require_once CLASSES . 'Notifications.php';
 
 	if(isset($_POST['change_password'])){
 		
@@ -19,12 +20,14 @@ require_once '../../config.php';
 		$row = $result->fetch_assoc();
 
 		if($new_password != $confirm_new_password){
-			header("Location: ../../pages/user_page.php?change_password=confirm_password_not_the_same");
+			Notification::save_to_session('danger', 'Password and confirm password is not the same!');
+			header("Location: ../../pages/user_page.php");
 			exit();	
 		}
 
 		if(!password_verify($password, $row['password'])){
-			header("Location: ../../pages/user_page.php?change_password=wrong_password");
+			Notification::save_to_session('danger', 'Password is invalid!');
+			header("Location: ../../pages/user_page.php");
 			exit();	
 		}
 
@@ -36,14 +39,17 @@ require_once '../../config.php';
 				WHERE `account_id` = $id;";
 
 		if($Database->query($sql)){
-			header("Location: ../../pages/user_page.php?change_password=success");
+			Notification::save_to_session('success', 'Password changed!');
+			header("Location: ../../pages/user_page.php");
 			exit();
 		} else {
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
 			header("Location: ../../pages/user_page.php?change_password=database_fail");
 			exit();
 		}
 		
 	} else {
+		Notification::save_to_session('danger', 'Oops! You cannot access that page');
 		header("Location: ../../pages/user_page.php?change_password=used_get");
 		exit();
 	}
