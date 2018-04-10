@@ -178,18 +178,16 @@
             </div>
           </div>
           
-          <div class="form-row">
+          <div class="form-group">
             <div class="col">
               <label for="fulladdress">Enter Full Address</label>
-              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
+              <textarea type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" cols="25" rows="1" required></textarea>
             </div>
             <div class="col">
               <label for="city">Enter City</label>
               <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
             </div>
           </div>
-
-          <hr>
 
           <div class="modal-footer col-lg-12">
             <button type="submit" name="submit" class="btn btn-success float-right">Sign Up</button>
@@ -224,8 +222,6 @@
               <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
             </div>
           </div>
-          
-          <hr style="width:360px;">
 
           <div class="modal-footer col-lg-12">
             <button type="submit" name="submit" class="btn btn-success">Log In</button>

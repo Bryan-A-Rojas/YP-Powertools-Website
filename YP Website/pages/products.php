@@ -78,12 +78,12 @@ require_once INCLUDES . 'navbar.inc.php';
         ?>
 
         <?php foreach ($products_array as $product): ?>
-            <div class='col-lg-4 col-sm-6'>
+            <div class='col-lg-3 col-sm-6'>
                 <a href='../pages/specific_product_page.php?productid=<?php echo $product['product_id']?>' type='button' class='btn btn-link product-button'>
                 <img class='rounded-square-size img-rounded img-fluid' src='../images/products/<?php echo $product['image']?>'>
                 </a>
                 
-                <h2><?php echo $product['name'] ?></h2>
+                <h4><?php echo $product['name'] ?></h4>
                 <p style="color:green;"><?php echo commafy($product['price']); ?></p>
             </div>
         <?php endforeach ?>
