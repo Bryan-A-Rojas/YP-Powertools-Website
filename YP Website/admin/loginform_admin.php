@@ -6,7 +6,7 @@ require_once INCLUDES . 'header.inc.php';
 
 ?>
 
-<!-- <div style="background-image: url(../images/powertooloop.gif); background-repeat: no-repeat; background-size: 1400px;"> -->
+<div style="background-image: url(../images/powertooloop.gif); background-repeat: no-repeat; background-size: 1400px;">
 
     <div class="container">
         <div class="row">
@@ -41,7 +41,7 @@ require_once INCLUDES . 'header.inc.php';
             </div>
 	    </div>
     </div>
-
+</div>
     
 
 <?php 
@@ -50,4 +50,3 @@ require_once INCLUDES . 'endtags.inc.php';
 
 ?>
 
-</div>
