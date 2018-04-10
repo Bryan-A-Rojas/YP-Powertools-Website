@@ -14,7 +14,7 @@ class Cart{
 
 		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
 		$sql = "SELECT cart.product_id,image, name, 
-					   price, SUM(quantity) as quantity, description 
+					   price, SUM(quantity) AS quantity, description 
 				FROM products
 				INNER JOIN cart
 				ON products.product_id = cart.product_id
@@ -77,7 +77,7 @@ class Cart{
 
 	function remove_item($product_id){
 		//include database header
-		require_once SCRIPTS . "dbh.inc.php";
+		require SCRIPTS . "dbh.inc.php";
 		
 		$sql = "DELETE FROM cart 
 				WHERE `account_id` = $this->user_id AND `product_id` = $product_id;";

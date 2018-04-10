@@ -63,16 +63,8 @@ $modal_counter = 0;
 <div class="container" style="padding-bottom: 20px;margin-top: 30px;">
 
   <?php if(isset($_GET['account_id'])): ?>
-
-    <?php if($_SESSION['role'] == 'admin'): ?>
     
-      <a href="accountlist_admin.php">&lt;Back to Account List page</a>
-    
-    <?php elseif($_SESSION['role'] == 'superadmin'): ?>
-    
-      <a href="accountlist_superadmin.php">&lt;Back to Account List page</a>
-    
-    <?php endif ?>
+    <a href="accountlist.php">&lt;Back to Account List page</a>
   
   <?php endif ?>
 

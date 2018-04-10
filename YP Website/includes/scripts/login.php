@@ -36,6 +36,7 @@ require_once '../../config.php';
 						$_SESSION['name'] = $row['name'];
 						$_SESSION['role'] = $row['role'];
 						$_SESSION['profile_image'] = $row['profile_image'];
+						$_SESSION['status'] = $row['status'];
 
 						$id = $_SESSION['account_id'];
 

@@ -13,7 +13,7 @@ class Admin{
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address
+		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address, status
 				FROM accounts 
 				LEFT JOIN addresses
 				ON accounts.account_id = addresses.account_id
@@ -73,12 +73,13 @@ class Admin{
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
-				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, `status`
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, 
+						`payment_given`, (`payment_given` -`total_price`) AS `change_given` , 
+						DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
-				WHERE `status` = 'approved' OR `status` = 'denied'
+				WHERE transactions.`status` = 'approved' OR transactions.`status` = 'denied'
 				ORDER BY `date_of_purchase` ASC;";
 
 		//Query sql string
@@ -100,12 +101,13 @@ class Admin{
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
-				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, `status`
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, 
+						`total_price`, `payment_given`, (`payment_given` -`total_price`) AS `change_given` ,
+						 DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
-				WHERE (`status` = 'approved' OR `status` = 'denied') AND transactions.`account_id` = $account_id
+				WHERE (transactions.`status` = 'approved' OR transactions.`status` = 'denied') AND transactions.`account_id` = $account_id
 				ORDER BY `date_of_purchase` ASC;";
 
 		//Query sql string
@@ -153,12 +155,11 @@ class Admin{
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
-				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, (`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
-				WHERE `status` = 'pending'
+				WHERE transactions.`status` = 'pending'
 				ORDER BY `date_of_purchase` ASC;";
 
 		//Query sql string
@@ -185,7 +186,7 @@ class Admin{
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
-				WHERE `status` = 'pending' AND transactions.account_id = $account_id
+				WHERE transactions.`status` = 'pending' AND transactions.account_id = $account_id
 				ORDER BY `date_of_purchase` ASC;";
 
 		//Query sql string

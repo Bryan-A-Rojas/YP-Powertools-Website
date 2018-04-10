@@ -137,4 +137,5 @@ Pages:
         - Add a bar graph for the products sales
         - generate downloadable pdfs
             - optional: also make csv for reports
-        - 
+        - Add a reset password button in accountlist for users
+        - Add a password field for all of actions in admin

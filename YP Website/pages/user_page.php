@@ -36,7 +36,6 @@ if(isset($_SESSION['role'])){
 			<label for="fulladdress">Address:</label>
 			<p><?php echo $_SESSION['full_address']?></p>
 			
-			
 			 <button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#editProfileModal" data-whatever="@mdo">Edit Profile</button>
 
 			 <button type="button" class="btn btn-danger btn-lg float-right" data-toggle="modal" data-target="#changePasswordModal" data-whatever="@mdo" style="margin-right:5px;">Change Password</button>

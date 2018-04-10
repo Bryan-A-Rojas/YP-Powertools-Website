@@ -106,7 +106,11 @@ require_once SCRIPTS . 'functions.inc.php';
               $availability = strtoupper($item['availability']);
               $color = $availability == "AVAILABLE" ? "green" : "red";
 
-              echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>$availability<p></td>";
+              echo "<td>
+                      <p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>
+                        $availability
+                      <p>
+                    </td>";
             ?>
 
             <td>

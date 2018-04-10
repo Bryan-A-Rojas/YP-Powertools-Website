@@ -30,7 +30,7 @@
 
         <li class="nav-item">
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
+            <button class="btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
             <img src="../images/profile_images/<?php echo $_SESSION['profile_image']?>" width="35" height="35" alt="UserImg" style="border-radius: 50%;margin-right:2px;"><?php echo $_SESSION['name'] ?>
                                     </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: -16px;">
@@ -42,12 +42,12 @@
 
         <li class="nav-item">
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;margin-right: 2px;">
+            <button class="btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;margin-right: 2px;">
                                     Actions <i class="fas fa-cogs"></i>
                                     </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <a class="dropdown-item" href="../admin/report_page.php"><i class="fas fa-chart-pie"></i> Reports</a>
-              <a class="dropdown-item" href="../admin/accountlist_admin.php"><i class="fas fa-users"></i> Account List</a>
+              <a class="dropdown-item" href="../admin/accountlist.php"><i class="fas fa-users"></i> Account List</a>
               <a class="dropdown-item" href="../admin/receipt_page.php"><i class="fas fa-list-alt"></i> Order History</a>
               <a class="dropdown-item" href="../admin/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
             </div>
@@ -56,7 +56,7 @@
        
        <li class="nav-item">
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
+            <button class="btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white;">
                                     Edit Pages <i class="fas fa-edit"></i>
                                     </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
@@ -67,7 +67,7 @@
 
         <li class="nav-item">
           <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
+            <button class="btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
             <img src="../images/profile_images/<?php echo $_SESSION['profile_image']?>" width="35" height="35" alt="UserImg" style="border-radius: 50%;margin-right:2px;"><?php echo $_SESSION['name'] ?>
                                     </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3" style="left: -16px;">
@@ -82,7 +82,7 @@
                                     </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <a class="dropdown-item" href="../admin/report_page.php"><i class="fas fa-chart-pie"></i> Reports</a>
-              <a class="dropdown-item" href="../admin/accountlist_superadmin.php"><i class="fas fa-users"></i> Account List</a>
+              <a class="dropdown-item" href="../admin/accountlist.php"><i class="fas fa-users"></i> Account List</a>
               <a class="dropdown-item" href="../admin/receipt_page.php"><i class="fas fa-list-alt"></i> Order History</a>
               <a class="dropdown-item" href="../admin/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
             </div>

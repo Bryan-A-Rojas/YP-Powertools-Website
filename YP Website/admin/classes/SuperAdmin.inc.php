@@ -13,7 +13,7 @@ class SuperAdmin extends Admin{
 		//Require database header
 		require_once SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address, role
+		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address, role, status
 				FROM accounts 
 				LEFT JOIN addresses
 				ON accounts.account_id = addresses.account_id
