@@ -44,7 +44,7 @@ require_once INCLUDES . 'navbar.inc.php';
 <div class="col-lg-6 col-sm-12">
         <h2>Location:</h2>
 
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15455.762071098161!2d121.0036502!3d14.4305915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4275f2715e0b8821!2sYP+POWERTOOLS!5e0!3m2!1sen!2sph!4v1520347094055" width="600" height="450" frameborder="0" style="border:1px solid black;" allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15455.762071098161!2d121.0036502!3d14.4305915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4275f2715e0b8821!2sYP+POWERTOOLS!5e0!3m2!1sen!2sph!4v1520347094055" width=100% height="450" frameborder="0" style="border:1px solid black;" allowfullscreen></iframe>
 </div>
 
         </div>

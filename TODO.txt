@@ -139,3 +139,23 @@ Pages:
             - optional: also make csv for reports
         - Add a reset password button in accountlist for users
         - Add a password field for all of actions in admin
+
+        Mobile Friendly Pages [x are not yet mobile friendly]
+        0-index.php
+        0-products.php
+        x-specific_product_page.php
+        0-aboutus.php
+        0-contact.php
+		0-user_page.php
+		x-cart.php
+		x-admin.php
+		x-admin_page.php
+		0-report_page.php
+		x-accountlist.php
+		x-receipt_page.php
+		x-pending_orders.php
+		x-edit_products.php
+
+    	IN MODAL
+        	0-signup
+        	0-login
