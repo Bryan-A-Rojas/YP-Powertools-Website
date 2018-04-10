@@ -36,7 +36,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: -16px;">
               <a class="dropdown-item" href="../pages/user_page.php"><i class="fa fa-user"></i> Profile</a> 
               <a class="dropdown-item" href="../pages/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
-            
+              <a class="dropdown-item" href="../pages/orderhistory.php"><i class="fas fa-list-alt"></i> Order History</a>
 
         <?php elseif($_SESSION['role'] == "admin"): ?>
 
