@@ -61,9 +61,13 @@ require_once INCLUDES . 'navbar.inc.php';
 			</div>
 
           <div class="form-row">
-            <label for="uploading">Upload Profile Picture:</label>
-            <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+            <div class="custom-file">
+              <input name="profile_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="uploading">Upload Profile Picture Here</label>
+            </div>
           </div>
+
+          <br />
 
           <div class="form-row">
             <div class="col">

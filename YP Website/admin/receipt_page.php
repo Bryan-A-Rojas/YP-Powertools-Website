@@ -79,6 +79,8 @@ $modal_counter = 0;
     <?php endif ?>
   </div>
 
+  <div class="table-responsive">
+
   <table class="table table-hover table-bordered table-striped table-dark">
     <thead class="thead-dark">
       <tr>
@@ -126,6 +128,7 @@ $modal_counter = 0;
       
     </tbody>
   </table>
+</div>
 </div>
 
 <?php $modal_counter = 0; ?>

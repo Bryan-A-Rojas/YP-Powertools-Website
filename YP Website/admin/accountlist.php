@@ -46,9 +46,13 @@ $modal_counter = 0;
         <div class="modal-body">
 
           <div class="form-row">
-            <label for="uploading">Upload Profile Picture:</label>
-            <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+            <div class="custom-file">
+              <input name="profile_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="uploading">Upload Profile Picture Here</label>
+            </div>
           </div>
+
+          <br />
 
           <div class="form-row">
             <div class="col">
@@ -66,11 +70,18 @@ $modal_counter = 0;
           
           <div class="form-row">
             <div class="col">
-              <label for="fulladdress">Enter Full Address</label>
+              <label for="phonenumber">Enter Phone Number:</label>
+              <input type="phonenumber" placeholder="Enter Phone Number" name="txtphonenumber" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label for="fulladdress">Enter Full Address:</label>
               <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control">
             </div>
             <div class="col">
-              <label for="city">Enter City</label>
+              <label for="city">Enter City:</label>
               <input type="city" placeholder="Enter City" name="txtcity" class="form-control">
             </div>
           </div>
@@ -117,7 +128,7 @@ $modal_counter = 0;
   </div>
 </form>
 
-
+<div class="table-responsive">
 
   <?php if($_SESSION['role'] == 'superadmin'): ?>
 
@@ -134,6 +145,7 @@ $modal_counter = 0;
       <th scope="col">Account Image</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
       <th scope="col">City</th>
       <th scope="col">Address</th>
 
@@ -161,6 +173,7 @@ $modal_counter = 0;
 
       <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
+      <td>09772007355</td>
       <td><?php echo $user['city'] ?></td>
       <td><?php echo $user['full_address'] ?></td>
       
@@ -213,6 +226,7 @@ $modal_counter = 0;
   </tbody>
 </table>
 
+</div>
 
 <?php $modal_counter = 0; ?>
 
@@ -241,9 +255,13 @@ $modal_counter = 0;
       </div>
 
           <div class="form-row">
-            <label for="uploading">Upload Profile Picture:</label>
-            <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+            <div class="custom-file">
+              <input name="profile_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="uploading">Upload New Profile Picture Here</label>
+            </div>
           </div>
+
+          <br />
 
           <div class="form-row">
             <div class="col">

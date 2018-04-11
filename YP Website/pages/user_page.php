@@ -37,12 +37,15 @@ if(isset($_SESSION['role'])){
 			<label for="email">Email:</label>
 			<p><?php echo $_SESSION['email'] ?></p>
 			
+      <label for="phonenumber">Phone Number:</label>
+      <p>09772007355</p>
+
 			<label for="city">City:</label>
 			<p><?php echo $_SESSION['city']?></p>
 
 			<label for="fulladdress">Address:</label>
 			<p><?php echo $_SESSION['full_address']?></p>
-			
+
 			 <button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#editProfileModal" data-whatever="@mdo">Edit Profile</button>
 
 			 <button type="button" class="btn btn-danger btn-lg float-right" data-toggle="modal" data-target="#changePasswordModal" data-whatever="@mdo" style="margin-right:5px;">Change Password</button>
@@ -75,8 +78,10 @@ if(isset($_SESSION['role'])){
 			</div>
 
           <div class="form-row">
-            <label for="uploading">Upload Profile Picture:</label>
-            <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+            <div class="custom-file">
+              <input name="profile_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="uploading">Upload Profile Picture Here</label>
+            </div>
           </div>
 
           <div class="form-row">
@@ -93,6 +98,13 @@ if(isset($_SESSION['role'])){
               </div>
           </div>
           
+          <div class="form-row">
+            <div class="col">
+              <label for="phonenumber">Enter Phone Number:</label>
+              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" required>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="col">
               <label for="fulladdress">Enter Full Address</label>

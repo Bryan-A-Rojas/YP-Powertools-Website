@@ -17,7 +17,7 @@ require_once INCLUDES . 'header.inc.php';
                 <img src="../images/icons/yplogoblk.png" id="logo-padding-sm">
                 <h1 id="logo-text-sm">Powertools</h1>
                 <div class="col-lg-12" style="margin-left: 80px">
-                <div class="container" id="form-transbox" style="border-radius: 15px; margin-bottom: 100px; margin-left: 50px; margin-right: 200px">
+                <div class="container" id="form-transbox" style="border-radius: 15px; margin-bottom: 100px; margin-left: 50px; margin-right: 200px; width: 50%">
                 <form action="scripts/login.php" method="POST">
 	                <div class="form-group">
 					    <label for="email">Email:</label>
@@ -34,7 +34,7 @@ require_once INCLUDES . 'header.inc.php';
 					  </div>
 					<br />
 
-					<button type="submit" name="submit" class="btn btn-success" style="margin-left: 160px">Log In</button>
+					<button type="submit" name="submit" class="btn btn-success float-right" style="margin-top: -35px">Log In</button>
 				</form>
 				</div>
 				</div>

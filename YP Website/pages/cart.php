@@ -37,6 +37,7 @@ if(isset($_SESSION['notify'])){
 
 </div>
 
+<div class="table-responsive">
 <table class="table table-hover table-dark">
   <thead>
     <tr>
@@ -91,6 +92,8 @@ if(isset($_SESSION['notify'])){
     </tr>
   </tfoot>
 </table>
+
+</div>
 
 </div>
 

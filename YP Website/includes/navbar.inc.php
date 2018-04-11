@@ -146,9 +146,13 @@
         </div>
         <div class="modal-body">
           <div class="form-row">
-            <label for="uploading">Upload Profile Picture:</label>
-            <input type="file" name="profile_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
+            <div class="custom-file">
+              <input name="profile_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="uploading">Upload Profile Picture Here</label>
+            </div>
           </div>
+
+          <br />
 
           <div class="form-row">
             <div class="col">
@@ -180,14 +184,21 @@
           
           <div class="form-row">
             <div class="col">
-              <label for="fulladdress">Enter Full Address</label>
-              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
-            </div>
-            <div class="col">
-              <label for="city">Enter City</label>
-              <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
+              <label for="phonenumber">Enter Phone Number:</label>
+              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" required>
             </div>
           </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label for="fulladdress">Enter Full Address:</label>
+              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
+            </div>
+              <div class="col">
+              <label for="city">Enter City:</label>
+              <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
+            </div>
+            </div>
 
           <hr>
 

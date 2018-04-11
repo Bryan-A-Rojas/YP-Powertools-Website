@@ -149,7 +149,7 @@ Pages:
 		0-user_page.php
 		x-cart.php
 		x-admin.php
-		x-admin_page.php
+		0-admin_page.php
 		0-report_page.php
 		x-accountlist.php
 		x-receipt_page.php
@@ -159,3 +159,8 @@ Pages:
     	IN MODAL
         	0-signup
         	0-login
+
+        Added phone number to:
+        0-signup.php
+        0-user_page.php
+        0-accountlist.php

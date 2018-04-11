@@ -34,10 +34,15 @@ require_once SCRIPTS . 'functions.inc.php';
             </button>
           </div>
             <div class="modal-body">
-              <div class="form-group">
-                <label for="uploading">Upload Product Picture:</label>
-                <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary">
-              </div>
+
+          <div class="form-row">
+            <div class="custom-file">
+              <input name="product_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="uploading">Upload Product Picture Here</label>
+            </div>
+          </div>
+
+          <br />
 
                 <div class="form-row">
               <div class="col">
@@ -151,10 +156,15 @@ require_once SCRIPTS . 'functions.inc.php';
               <div class="form-group">
                 <img src="../images/products/<?php echo $item['image'] ?>" alt="sample image" class="modal-image-size">
               </div>
-              <div class="form-group">
-                  <label for="uploading">Upload New Product Picture:</label>
-                  <input type="file" name="product_image" accept="image/*" class="form-control-file btn btn-primary" id="exampleFormControlFile1">
-                </div>
+
+            <div class="form-row">
+              <div class="custom-file">
+                <input name="product_image" type="file" accept="image/*" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="uploading">Upload New Product Picture Here</label>
+              </div>
+            </div>
+
+            <br />
 
                 <div class="form-row">
                   <div class="col">
