@@ -21,7 +21,7 @@ if(isset($_SESSION['role'])){
 <div class="container">
 	<div class="row">
 		<div class="col-md-6" id="profile-transbox" style="margin-top: 20px;">
-			<div>
+			<div style="text-align: center; margin-left: -70px;">
 				<h2><?php echo $_SESSION['name'] ?>'s Profile</h2>	
 			</div>
 
