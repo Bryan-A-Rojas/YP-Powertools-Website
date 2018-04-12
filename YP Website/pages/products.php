@@ -43,7 +43,7 @@ $products_array = $products_array['products'];
 </div>
 </div>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="padding-top:auto;">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-bottom: -200px">
     <ol class="carousel-indicators" id="indicator-adj">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
