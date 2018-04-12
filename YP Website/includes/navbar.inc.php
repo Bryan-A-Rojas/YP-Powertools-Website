@@ -37,6 +37,7 @@
               <a class="dropdown-item" href="../pages/user_page.php"><i class="fa fa-user"></i> Profile</a> 
               <a class="dropdown-item" href="../pages/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
               <a class="dropdown-item" href="../pages/orderhistory.php"><i class="fas fa-list-alt"></i> Order History</a>
+              <a class="dropdown-item" href="../pages/pending_orders.php"><i class="fas fa-hourglass-half"></i> Pending Transactions</a>
 
         <?php elseif($_SESSION['role'] == "admin"): ?>
 
