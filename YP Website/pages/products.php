@@ -82,18 +82,24 @@ $products_array = $products_array['products'];
 
 <!-- Search and Sort by -->
 <div class="container">
-    <div class="row" style="padding-left:20px; margin-top:100px;">
-        <div class="col-lg-6 float-right">
-        	<form action="" method="GET">
-        		<input type="text" placeholder="Search Product" name="txtsearchproduct" class="form-control">
-        		<!-- <select name="sortby">
-        			<option value="">Sort A to Z</option>
-        			<option value="">Sort Z to A</option>
-        			<option value="">Sort by Price Ascending</option>
-        			<option value="">Sort by Price Descending</option>
-        		</select> -->
-        		<input type="submit" name="search" value="Search" class="btn btn-primary">
-        	</form>
+    <div class="form-group">
+        <div class="row" style="padding-left:20px; margin-top:100px;">
+            <div class="col-lg-6 float-right mx-auto">
+            	<form action="" method="GET">
+                    <div class="col-sm-2 float-right">
+                    <input type="submit" name="search" value="Search" class="btn btn-primary">
+                    </div>
+                    <!-- <select name="sortby">
+            			<option value="">Sort A to Z</option>
+            			<option value="">Sort Z to A</option>
+            			<option value="">Sort by Price Ascending</option>
+            			<option value="">Sort by Price Descending</option>
+            		</select> -->
+                    <div class="col-sm-10">
+                    <input type="text" placeholder="Search Product" name="txtsearchproduct" class="form-control">
+                    </div>
+            	</form>
+            </div>
         </div>
     </div>
     <br>
