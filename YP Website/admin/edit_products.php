@@ -54,11 +54,11 @@ if(isset($_SESSION['notify'])){
                 <div class="form-row">
               <div class="col">
                 <label for="product">Product Name:</label>
-                <input type="text" class="form-control" placeholder="Enter Product Name" name="txtname" required>
+                <input type="text" class="form-control" name="txtname" required>
               </div>
               <div class="col">
                 <label for="price">Price:</label>
-                <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" required>
+                <input type="text" class="form-control" name="txtprice" required>
               </div>
             </div>
 
@@ -83,7 +83,7 @@ if(isset($_SESSION['notify'])){
 
               <div class="modal-footer">
                 <label for="password">Password:</label>
-                <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                <input type="password" name="txtadminpassword" class="form-control" required>
                 <button type="submit" name="submit" class="btn btn-success" style="margin-top:10px;">Add Product</button>
               </div>
           </div>
@@ -204,11 +204,11 @@ if(isset($_SESSION['notify'])){
                 <div class="form-row">
                   <div class="col">
                     <label for="product">Change Product Name:</label>
-                    <input type="text" class="form-control" placeholder="Enter Produce Name" name="txtname" value="<?php echo $item['name'] ?>" required>
+                    <input type="text" class="form-control" name="txtname" value="<?php echo $item['name'] ?>" required>
                   </div>
                   <div class="col">
                     <label for="price">Change Price:</label>
-                    <input type="text" class="form-control" placeholder="Enter Price" name="txtprice" value="<?php echo $item['price'] ?>" required>
+                    <input type="text" class="form-control" name="txtprice" value="<?php echo $item['price'] ?>" required>
                   </div>
                 </div>
 
@@ -235,6 +235,8 @@ if(isset($_SESSION['notify'])){
                 </div>
 
               <div class="modal-footer">
+                <label for="password">Password:</label>
+                <input type="password" name="txtadminpassword" class="form-control" required>
                 <button type="submit" name="Edit" class="btn btn-warning">Update</button>
               </div>
           </div>
@@ -257,7 +259,7 @@ if(isset($_SESSION['notify'])){
             <div class="form-group">
               <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
                 </div>
             </div>
@@ -284,7 +286,7 @@ if(isset($_SESSION['notify'])){
             <div class="form-group">
               <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
                 </div>
             </div>

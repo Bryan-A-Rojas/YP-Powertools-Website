@@ -80,14 +80,14 @@ if(isset($_SESSION['notify'])){
           <div class="form-row">
             <div class="col">
               <label for="Name">Full Name:</label>
-              <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" value="<?php echo $_SESSION['name'] ?>" required>
+              <input type="text" name="txtfullname" class="form-control" value="<?php echo $_SESSION['name'] ?>" required>
             </div>
           </div>
 
           <div class="form-row">
               <div class="col">
                 <label for="email">Email:</label>
-                <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" value="<?php echo $_SESSION['email'] ?>" required>
+                <input type="email" name="txtemail" class="form-control" value="<?php echo $_SESSION['email'] ?>" required>
               </div>
           </div>
 
@@ -95,7 +95,7 @@ if(isset($_SESSION['notify'])){
 
           <div class="modal-footer col-lg-12">
             <label for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+            <input type="password" name="txtadminpassword" class="form-control" required>
             <button type="submit" name="update" class="btn btn-lg btn-warning float-right">Update</button>
           </div>
         </div>
@@ -122,21 +122,21 @@ if(isset($_SESSION['notify'])){
               <div class="form-row">
 	            <div class="col">
 	              <label for="password">Password:</label>
-	              <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+	              <input type="password" name="txtpassword" class="form-control" required>
 	            </div>
 	          </div>
 
 	          <div class="form-row">
 	            <div class="col">
 	              <label for="password">New Password:</label>
-	              <input type="password" placeholder="Enter Password" name="txtnewpassword" class="form-control" required>
+	              <input type="password" name="txtnewpassword" class="form-control" required>
 	            </div>
 	          </div>
 
 	          <div class="form-row">
 	            <div class="col">
 	              <label for="confirmpassword">Confirm New Password:</label>
-	              <input type="password" placeholder="Confirm Password" name="txtconfirmnewpassword" class="form-control" required>
+	              <input type="password" name="txtconfirmnewpassword" class="form-control" required>
 	            </div>
 	          </div>
             </div>

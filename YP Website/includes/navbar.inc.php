@@ -157,46 +157,46 @@
           <div class="form-row">
             <div class="col">
               <label for="Name">Full Name:</label>
-              <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" required>
+              <input type="text" name="txtfullname" class="form-control" required>
             </div>
           </div>
 
           <div class="form-row">
               <div class="col">
                 <label for="email">Email:</label>
-                <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+                <input type="email" name="txtemail" class="form-control" required>
               </div>
           </div>
 
           <div class="form-row">
             <div class="col">
               <label for="password">Password:</label>
-              <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+              <input type="password" name="txtpassword" class="form-control" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="col">
               <label for="confirmpassword">Confirm Password:</label>
-              <input type="password" placeholder="Confirm Password" name="txtconfirmpassword" class="form-control" required>
+              <input type="password" name="txtconfirmpassword" class="form-control" required>
             </div>
           </div>
           
           <div class="form-row">
             <div class="col">
               <label for="phonenumber">Enter Phone Number:</label>
-              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" required>
+              <input type="phonenumber" name="txtno" class="form-control" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="col">
               <label for="fulladdress">Enter Full Address:</label>
-              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" required>
+              <input type="fulladdress" name="txtfulladdress" class="form-control" required>
             </div>
               <div class="col">
               <label for="city">Enter City:</label>
-              <input type="city" placeholder="Enter City" name="txtcity" class="form-control" required>
+              <input type="city" name="txtcity" class="form-control" required>
             </div>
             </div>
 
@@ -225,14 +225,14 @@
           <div class="form-group">
             <label for="email">Email:</label>
             <div class="col-sm-12">
-              <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+              <input type="email" name="txtemail" class="form-control" required>
             </div>
           </div>
 
           <div class="form-group">
             <label for="password">Password:</label>
             <div class="col-sm-12">
-              <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+              <input type="password" name="txtpassword" class="form-control" required>
             </div>
           </div>
           

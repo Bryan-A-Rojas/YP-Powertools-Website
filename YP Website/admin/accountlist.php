@@ -62,43 +62,43 @@ if(isset($_SESSION['notify'])){
           <div class="form-row">
             <div class="col">
               <label for="Name">Full Name:</label>
-              <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" required>
+              <input type="text" name="txtfullname" class="form-control" required>
             </div>
           </div>
 
           <div class="form-row">
               <div class="col">
                 <label for="email">Email:</label>
-                <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+                <input type="email" name="txtemail" class="form-control" required>
               </div>
           </div>
           
           <div class="form-row">
             <div class="col">
               <label for="phonenumber">Enter Phone Number:</label>
-              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control">
+              <input type="phonenumber" name="txtno" class="form-control">
             </div>
           </div>
 
           <div class="form-row">
             <div class="col">
               <label for="fulladdress">Enter Full Address:</label>
-              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control">
+              <input type="fulladdress" name="txtfulladdress" class="form-control">
             </div>
             <div class="col">
               <label for="city">Enter City:</label>
-              <input type="city" placeholder="Enter City" name="txtcity" class="form-control">
+              <input type="city" name="txtcity" class="form-control">
             </div>
           </div>
 
           <div class="form-group">
             <label>Password:</label>
-            <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+            <input type="password" name="txtpassword" class="form-control" required>
           </div>
 
           <div class="form-group">
             <label>Confirm Password:</label>
-            <input type="password" placeholder="Enter Password" name="txtconfirmpassword" class="form-control" required>
+            <input type="password" name="txtconfirmpassword" class="form-control" required>
           </div>
           
           <div class="form-group">
@@ -126,7 +126,7 @@ if(isset($_SESSION['notify'])){
 
           <div class="modal-footer col-lg-12">
             <label for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+            <input type="password" name="txtadminpassword" class="form-control" required>
             <button type="submit" name="create" class="btn btn-lg btn-success float-right">Add Account</button>
           </div>
         </div>
@@ -269,14 +269,14 @@ if(isset($_SESSION['notify'])){
           <div class="form-row">
             <div class="col">
               <label for="Name">Full Name:</label>
-              <input type="text" placeholder="Enter Full Name" name="txtfullname" class="form-control" value="<?php echo $user['name'] ?>" required>
+              <input type="text" name="txtfullname" class="form-control" value="<?php echo $user['name'] ?>" required>
             </div>
           </div>
 
           <div class="form-row">
               <div class="col">
                 <label for="email">Email:</label>
-                <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" value="<?php echo $user['email'] ?>" required>
+                <input type="email" name="txtemail" class="form-control" value="<?php echo $user['email'] ?>" required>
               </div>
           </div>
           
@@ -285,17 +285,17 @@ if(isset($_SESSION['notify'])){
           <div class="form-row">
             <div class="col">
               <label for="phonenumber">Enter Phone Number:</label>
-              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" value="<?php echo $user['phone_number']?>" required>
+              <input type="phonenumber" name="txtno" class="form-control" value="<?php echo $user['phone_number']?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col">
               <label for="fulladdress">Enter Full Address</label>
-              <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" value="<?php echo $user['full_address']?>" required>
+              <input type="fulladdress" name="txtfulladdress" class="form-control" value="<?php echo $user['full_address']?>" required>
             </div>
             <div class="col">
               <label for="city">Enter City</label>
-              <input type="city" placeholder="Enter City" name="txtcity" class="form-control" value="<?php echo $user['city']?>" required>
+              <input type="city" name="txtcity" class="form-control" value="<?php echo $user['city']?>" required>
             </div>
           </div>
 
@@ -340,7 +340,7 @@ if(isset($_SESSION['notify'])){
 
           <div class="modal-footer col-lg-12">
             <label for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+            <input type="password" name="txtadminpassword" class="form-control" required>
             <button type="submit" name="update" class="btn btn-lg btn-warning float-right">Update</button>
           </div>
         </div>
@@ -363,7 +363,7 @@ if(isset($_SESSION['notify'])){
             <div class="form-group">
                 <div class="col-sm-6">
                   <label for="password">Password:</label>
-                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="account_id" value="<?php echo $user['account_id']?>">
                 </div>
             </div>
@@ -390,7 +390,7 @@ if(isset($_SESSION['notify'])){
             <div class="form-group">
                 <div class="col-sm-6">
                   <label for="password">Password:</label>
-                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="account_id" value="<?php echo $user['account_id']?>">
                 </div>
             </div>

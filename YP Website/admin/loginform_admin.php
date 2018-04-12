@@ -50,14 +50,14 @@ require_once CLASSES . 'Notifications.php';
 		                <div class="form-group">
 						    <label for="email">Email:</label>
 						    <div class="col-sm-12">
-						    <input type="email" placeholder="Enter Email" name="txtemail" class="form-control" required>
+						    <input type="email" name="txtemail" class="form-control" required>
 							</div>
 						  </div>
 
 						    <div class="form-group">
 						    <label for="password">Password:</label>
 						    <div class="col-sm-12">
-						    <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+						    <input type="password" name="txtadminpassword" class="form-control" required>
 							</div>
 						  </div>
 						<br />
