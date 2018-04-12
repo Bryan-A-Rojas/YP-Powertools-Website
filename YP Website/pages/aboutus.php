@@ -15,14 +15,16 @@ if(isset($_SESSION['notify'])){
 
 ?>
 
-<div class="jumbotron" id="jumbotron-color">
+<div style="background-image: url(../images/aboutus-page-background.jpg); margin-bottom: -25px; color: black;">
+
+<div class="jumbotron" style="opacity: 0.5; color: black;">
 	<div class="container">
 		<div class="row">
 		<h1>About Us</h1>
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container" style="background-color: white; opacity: 0.6;">
 	<div class="row">
 		<div class="col-lg-4 col-sm-3">
 			<h2>Meaning of YP?</h2>
@@ -49,6 +51,8 @@ if(isset($_SESSION['notify'])){
 				</ul>
 		</div>		
 	</div>
+</div>
+
 </div>
 
 <?php 
