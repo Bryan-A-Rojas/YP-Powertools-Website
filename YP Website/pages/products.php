@@ -77,7 +77,6 @@ $products_array = $products_array['products'];
     </a>
 </div>
 
-
 <br>
 
 <!-- Search and Sort by -->
