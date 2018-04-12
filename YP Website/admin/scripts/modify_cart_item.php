@@ -1,12 +1,22 @@
 <?php
 
 require_once '../config_admin.php';
+require_once CLASSES . 'Notifications.php';
 
 	if(isset($_POST['Edit'])){
 
 		require_once SCRIPTS . 'functions.inc.php';
 
 		require_once SCRIPTS . 'dbh.inc.php';
+
+		$account_id = $_SESSION['account_id'];
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($account_id);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../edit_products.php");
+			exit();
+		}
 
 		$product_image = $_FILES['product_image'];
 
@@ -41,12 +51,12 @@ require_once '../config_admin.php';
 		}
 		
 		if ($Database->query($sql) === TRUE) {
-			header("Location: ../edit_products.php?add_product=success");
+			Notification::save_to_session('success', 'Product Updated!');
+			header("Location: ../edit_products.php");
 			exit();
 		} else {
-			$error = $Database->error;
-			echo $error;
-			header("Location: ../edit_products.php?add_product=$error");
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+			header("Location: ../edit_products.php");
 			exit();
 		}
 
@@ -55,16 +65,12 @@ require_once '../config_admin.php';
 		//Check if password is correct
 		require SCRIPTS . 'dbh.inc.php';
 
-		$email = $_SESSION['email'];
-
-		$sql = "SELECT password 
-				FROM accounts 
-				WHERE email = '$email';";
-		$result = $Database->query($sql);
-		$row = $result->fetch_assoc();
-
-		if(!password_verify($_POST['txtpassword'], $row['password'])){
-			header("Location: ../edit_products.php?products=wrong_password");
+		$account_id = $_SESSION['account_id'];
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($account_id);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../edit_products.php");
 			exit();
 		}
 
@@ -74,10 +80,12 @@ require_once '../config_admin.php';
 		$Products = new Products($_SESSION['account_id']);
 		
 		if($Products->restore_product($_POST['product_id'])){
-			header("Location: ../edit_products.php?products=restored");
+			Notification::save_to_session('success', 'Product Restored!');
+			header("Location: ../edit_products.php");
 			exit();
 		} else {
-			header("Location: ../edit_products.php?products=fail_to_restore");
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+			header("Location: ../edit_products.php");
 			exit();
 		}
 
@@ -86,16 +94,12 @@ require_once '../config_admin.php';
 		//Check if password is correct
 		require SCRIPTS . 'dbh.inc.php';
 
-		$email = $_SESSION['email'];
-
-		$sql = "SELECT password 
-				FROM accounts 
-				WHERE email = '$email';";
-		$result = $Database->query($sql);
-		$row = $result->fetch_assoc();
-
-		if(!password_verify($_POST['txtpassword'], $row['password'])){
-			header("Location: ../edit_products.php?products=wrong_password");
+		$account_id = $_SESSION['account_id'];
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($account_id);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../edit_products.php");
 			exit();
 		}
 
@@ -105,14 +109,17 @@ require_once '../config_admin.php';
 		$Products = new Products($_SESSION['account_id']);
 		
 		if($Products->delete_product($_POST['product_id'])){
-			header("Location: ../edit_products.php?products=removed");
+			Notification::save_to_session('success', 'Product Removed!');
+			header("Location: ../edit_products.php");
 			exit();
 		} else {
-			header("Location: ../edit_products.php?products=fail_to_remove");
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+			header("Location: ../edit_products.php");
 			exit();
 		}
 
 	} else {
-		header("Location: ../edit_products.php?products=used_get");
+		Notification::save_to_session('danger', 'Oops! You cannot access that page');
+		header("Location: ../edit_products.php");
 		exit();
 	}

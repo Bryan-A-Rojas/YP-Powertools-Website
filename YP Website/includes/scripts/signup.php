@@ -1,7 +1,7 @@
 <?php
 	
 	require '../../config.php';
-
+	require_once CLASSES . 'Notifications.php';
 	require_once SCRIPTS . 'functions.inc.php';
 
 	//Check if they used the button
@@ -14,31 +14,32 @@
 		$profile_image = $_FILES['profile_image'];
 		$full_name = $Database->real_escape_string($_POST['txtfullname']);
 		$email = $Database->real_escape_string($_POST['txtemail']);
+		$phone_number = $Database->real_escape_string($_POST['txtno']);
 		$password = $Database->real_escape_string($_POST['txtpassword']);
 		$confirm_password = $Database->real_escape_string($_POST['txtconfirmpassword']);
 		$full_address = $Database->real_escape_string($_POST['txtfulladdress']);
 		$city = $Database->real_escape_string($_POST['txtcity']);
 
 		if(empty($full_name) 		||
-		   empty($email) 	 		|| 
+		   empty($email) 	 		||  
 		   empty($password)  		|| 
 		   empty($confirm_password) || 
 		   empty($full_address) 	|| 
 		   empty($city)){
 
-			//Fields are empty
-			header("Location: ../../pages/signupform.php?signup=empty");
+			Notification::save_to_session('danger', 'Please fill up all fields!');
+			header("Location: ../../pages/signupform.php");
 			exit();
 		} else {
-			//Check if password and confirm password is NOT the same
 			if($password != $confirm_password){
-				header("Location: ../../pages/signupform.php?signup=password_not_same");
+				Notification::save_to_session('danger', 'Password and confirm password is not the same!');
+				header("Location: ../../pages/signupform.php");
 				exit();
 			} else {
 				//Check if they are in the right format
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				    //Invalid email format
-				    header("Location: ../../pages/signupform.php?signup=invalid_email");
+				    Notification::save_to_session('danger', 'Email is in the wrong format!');
+				    header("Location: ../../pages/signupform.php");
 					exit();
 				} else {
 					//Hash password
@@ -48,17 +49,18 @@
 					$sql = "";
 					//if profile image is not uploaded then use different insert
 					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
-						$sql = "INSERT INTO `accounts` (`name`, `email`, `password`) 
-								VALUES ('$full_name', '$email', '$HashedPassword')";
+						$sql = "INSERT INTO `accounts` (`name`, `email`, `phone_number`, `password`) 
+								VALUES ('$full_name', '$email', '$phone_number', '$HashedPassword')";
 					} else {
 						//else move profile image to a folder
 						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
-							header("Location: ../../pages/signupform.php?$error");
+							Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+							header("Location: ../../pages/signupform.php");
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
-							$sql = "INSERT INTO `accounts` (`profile_image`, `name`, `email`, `password`) 
-									VALUES ('$image_name', '$full_name', '$email', '$HashedPassword')";
+							$sql = "INSERT INTO `accounts` (`profile_image`, `name`, `email`, `phone_number`, `password`) 
+									VALUES ('$image_name', '$full_name', '$email', '$phone_number', '$HashedPassword')";
 						}
 					}
 
@@ -80,6 +82,7 @@
 						$_SESSION['username'] = $row['username'];
 						$_SESSION['email'] = $row['email'];
 						$_SESSION['name'] = $row['name'];
+						$_SESSION['phone_number'] = $row['phone_number'];
 						$_SESSION['role'] = $row['role'];
 						$_SESSION['profile_image'] = $row['profile_image'];
 
@@ -91,18 +94,19 @@
 						$_SESSION['full_address'] = $row['full_address'];
 						$_SESSION['city'] = $row['city'];
 						
-					    header("Location: ../../pages/signupform.php?signup=success");
+						Notification::save_to_session('success', 'Welcome!');
+					    header("Location: ../../pages/signupform.php");
 					    exit();
 					} else {
-
-					    header("Location: ../../pages/signupform.php?signup=database_error");
+						Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+					    header("Location: ../../pages/signupform.php");
 					    exit();
 					}
 				}
 			}
 		}
 	} else {
-		//User did not click the button
-		header("Location: ../../pages/signupform.php?signup=used_get");
+		Notification::save_to_session('danger', 'Oops! You cannot access that page');
+		header("Location: ../../pages/signupform.php");
 		exit();
 	}

@@ -58,6 +58,13 @@ if(isset($_SESSION['account_id'])){
 
 $modal_counter = 0;
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <div class="container" style="padding-bottom: 20px;margin-top: 30px;">

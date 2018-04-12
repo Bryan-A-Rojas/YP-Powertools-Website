@@ -2,9 +2,7 @@
 
 require_once 'config_admin.php';
 require_once INCLUDES . 'header.inc.php';
-
 require_once INCLUDES . 'navbar.inc.php';
-
 require_once ADMIN_CLASSES . 'Admin.inc.php';
 
 if($_SESSION['role'] == 'admin'){
@@ -23,6 +21,13 @@ if($_SESSION['role'] == 'admin'){
 }
 
 $modal_counter = 0;
+
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
 
 ?>
 
@@ -71,7 +76,7 @@ $modal_counter = 0;
           <div class="form-row">
             <div class="col">
               <label for="phonenumber">Enter Phone Number:</label>
-              <input type="phonenumber" placeholder="Enter Phone Number" name="txtphonenumber" class="form-control">
+              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control">
             </div>
           </div>
 
@@ -120,6 +125,8 @@ $modal_counter = 0;
           <hr>
 
           <div class="modal-footer col-lg-12">
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
             <button type="submit" name="create" class="btn btn-lg btn-success float-right">Add Account</button>
           </div>
         </div>
@@ -128,18 +135,8 @@ $modal_counter = 0;
   </div>
 </form>
 
-<div class="table-responsive">
-
-  <?php if($_SESSION['role'] == 'superadmin'): ?>
-
-    <table class="table table-hover table-dark" style="margin-left:-40px;">
-    
-  <?php elseif($_SESSION['role'] == 'admin'): ?>
-
-    <table class="table table-hover table-dark">
-  
-  <?php endif  ?>
-
+<div class="table-responsive-xl">
+  <table class="table table-hover table-dark">
   <thead>
     <tr>
       <th scope="col">Account Image</th>
@@ -166,14 +163,21 @@ $modal_counter = 0;
     <tr>
 
       <?php if($user['profile_image'] != NULL): ?>
-        <th scope="row"><img src="../images/profile_images/<?php echo $user['profile_image'] ?>" alt="product-img" class="product-image-size" style="width: 270px;"></th>
+        <td scope="row"><img src="../images/profile_images/<?php echo $user['profile_image'] ?>" alt="product-img" class="product-image-size" style="width: 150px;height:100px;"></td>
       <?php else: ?>
-        <th scope="row"><img src="../images/profile_images/sample-user.png"  alt="product-img" class="product-image-size" style="width: 270px;"></th>
+        <td scope="row"><img src="../images/profile_images/sample-user.png"  alt="product-img" class="product-image-size" style="width: width: 230px;"></td>
       <?php endif ?>
 
       <td><?php echo $user['name'] ?></td>
       <td><?php echo $user['email'] ?></td>
-      <td>09772007355</td>
+
+      <td>
+        <?php 
+          $number = $user['phone_number'] != NULL ? $user['phone_number'] : 'N/A';
+          echo $number;
+        ?>
+      </td>
+      
       <td><?php echo $user['city'] ?></td>
       <td><?php echo $user['full_address'] ?></td>
       
@@ -203,29 +207,27 @@ $modal_counter = 0;
 
       <td>
         <form action="receipt_page.php" method="GET">
-          <input type="submit" class="btn btn-info btn-lg float-right" value="Order History" style="margin-bottom: 10px;width: 227px;"></input>
+          <input type="submit" class="btn btn-info float-right" value="Order History" style="margin-bottom: 10px;width: 175px;"></input>
           <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
         </form>
         <form action="pending_orders.php" method="GET">
-          <input type="submit" class="btn btn-secondary btn-lg float-right" value="Pending Transactions" style="margin-bottom: 10px; width: 227px;">
+          <input type="submit" class="btn btn-secondary float-right" value="Pending Transactions" style="margin-bottom: 10px;width: 175px;">
           <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
         </form>
-        <button type="button" class="btn btn-warning btn-lg float-right" data-toggle="modal" data-target="#editProfileModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-bottom: 10px; width:227px;">Edit</button>
+        <button type="button" class="btn btn-warning float-right" data-toggle="modal" data-target="#editProfileModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-bottom: 10px;width: 175px;">Edit</button>
 
         <?php if($user['status'] == "active"): ?>
-          <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#deactivateModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Deactivate</button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deactivateModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width: 175px;margin-left: 9px;">Deactivate</button>
         <?php else: ?>
-          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#reactivateModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width:227px;">Reactivate</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#reactivateModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="width: 175px;margin-left: 9px;">Reactivate</button>
         <?php endif ?>
       </td>
     </tr>
-
     <?php $modal_counter++ ?>
     <?php endforeach ?>
 
   </tbody>
 </table>
-
 </div>
 
 <?php $modal_counter = 0; ?>
@@ -281,6 +283,12 @@ $modal_counter = 0;
 
           <div class="form-row">
             <div class="col">
+              <label for="phonenumber">Enter Phone Number:</label>
+              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" value="<?php echo $user['phone_number']?>" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
               <label for="fulladdress">Enter Full Address</label>
               <input type="fulladdress" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" value="<?php echo $user['full_address']?>" required>
             </div>
@@ -330,6 +338,8 @@ $modal_counter = 0;
           <hr>
 
           <div class="modal-footer col-lg-12">
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
             <button type="submit" name="update" class="btn btn-lg btn-warning float-right">Update</button>
           </div>
         </div>
@@ -337,7 +347,6 @@ $modal_counter = 0;
     </div>
   </div>
 </form>
-
 
 <form action="scripts/update_account.php" method="POST">
   <div class="modal fade" id="deactivateModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -351,9 +360,9 @@ $modal_counter = 0;
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <label for="password">Password:</label>
+                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="account_id" value="<?php echo $user['account_id']?>">
                 </div>
             </div>
@@ -378,9 +387,9 @@ $modal_counter = 0;
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <label for="password">Password:</label>
+                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="account_id" value="<?php echo $user['account_id']?>">
                 </div>
             </div>

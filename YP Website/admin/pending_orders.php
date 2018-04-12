@@ -58,6 +58,13 @@ if(isset($_SESSION['account_id'])){
 
 $modal_counter = 0;
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <div class="container" style="padding-bottom: 20px;margin-top: 30px;">
@@ -79,56 +86,50 @@ $modal_counter = 0;
     <?php endif ?>
   </div>
 
-
   <div class="table-responsive">
-  <table class="table table-hover table-bordered table-striped table-dark">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Transaction ID</th>
-        
-        <?php if(!isset($_GET['account_id'])): ?>
-          <th scope="col">Account Name</th>
-        <?php endif ?>
-        
-        <th scope="col">Total Price</th>
-        <th scope="col">Payment Given</th>
-        <th scope="col">Change Given</th>
-        <th scope="col">Date of Purchase</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <?php foreach($pending_transactions as $key => $item): ?>
-
+    <table class="table table-hover table-bordered table-striped table-dark">
+      <thead class="thead-dark">
         <tr>
-          <td style="text-align:center;"><?php echo $item['transaction_id'] ?></td>
-
+          <th scope="col">Transaction ID</th>
+          
           <?php if(!isset($_GET['account_id'])): ?>
-            <td><?php echo $item['account_name'] ?></td>
+            <th scope="col">Account Name</th>
           <?php endif ?>
           
-          <td style="color:lightgreen;"><?php echo commafy($item['total_price']) ?></td>
-          <td style="color:rgb(255, 116, 91);"><?php echo commafy($item['payment_given']) ?></td>
-          <td style="color:orange;"><?php echo commafy($item['change_given']) ?></td>
-          <td><?php echo $item['date_of_purchase'] ?></td>
-          <td style="width:240px;">
-            <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-left: 5px;">Info</button>
-          
-          <form action="scripts/pending_orders.php" method="POST">
-            <input type="submit" class="btn btn-danger float-right" style="margin-left: 5px;" name="Deny" value="Deny">
-            <input type="submit" class="btn btn-success float-right" name="Approve" value="Approve">
-            <input type="hidden" value="<?php echo $item['transaction_id'] ?>" name="transaction_id">
-          </form>
-
-          </td>
+          <th scope="col">Total Price</th>
+          <th scope="col">Payment Given</th>
+          <th scope="col">Change Given</th>
+          <th scope="col">Date of Purchase</th>
         </tr>
+      </thead>
+      <tbody>
+        
+        <?php foreach($pending_transactions as $key => $item): ?>
 
-      <?php $modal_counter++ ?>
-      <?php endforeach ?>
-      
-    </tbody>
-  </table>
-</div>
+          <tr>
+            <td style="text-align:center;"><?php echo $item['transaction_id'] ?></td>
+
+            <?php if(!isset($_GET['account_id'])): ?>
+              <td><?php echo $item['account_name'] ?></td>
+            <?php endif ?>
+            
+            <td style="color:lightgreen;"><?php echo commafy($item['total_price']) ?></td>
+            <td style="color:rgb(255, 116, 91);"><?php echo commafy($item['payment_given']) ?></td>
+            <td style="color:orange;"><?php echo commafy($item['change_given']) ?></td>
+            <td><?php echo $item['date_of_purchase'] ?></td>
+            <td style="width:244px;">
+              <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-left: 5px;">Info</button>
+              <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#denyModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-left: 5px;">Deny</button>
+              <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#approveModal<?php echo $modal_counter ?>" data-whatever="@mdo" style="margin-left: 5px;">Approve</button>
+            </td>
+          </tr>
+
+        <?php $modal_counter++ ?>
+        <?php endforeach ?>
+        
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <?php $modal_counter = 0; ?>
@@ -200,6 +201,60 @@ $modal_counter = 0;
     </div>
   </div>
 </div>
+
+  <form action="scripts/pending_orders.php" method="POST">
+    <div class="modal fade" id="denyModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to deny?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password:</label>
+                <div class="col-sm-6">
+                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="hidden" value="<?php echo $pending_transactions[$modal_counter]['transaction_id'] ?>" name="transaction_id">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="Deny" class="btn btn-danger">Deny</button>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <form action="scripts/pending_orders.php" method="POST">
+    <div class="modal fade" id="approveModal<?php echo $modal_counter ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to approve?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="password">Password:</label>
+                <div class="col-sm-6">
+                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="hidden" value="<?php echo $pending_transactions[$modal_counter]['transaction_id'] ?>" name="transaction_id">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" name="Approve" class="btn btn-success">Approve</button>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 
 <?php $modal_counter++ ?>
 <?php endforeach ?>

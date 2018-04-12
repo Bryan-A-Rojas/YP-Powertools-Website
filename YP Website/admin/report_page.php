@@ -30,6 +30,13 @@ $week_title =  $weekly_sales[0]['SalesDate'] . " - " . end($weekly_sales)['Sales
 //   print_r($weekly_sales);
 // echo "</pre>";
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <div class="jumbotron" id="jumbotron-color">

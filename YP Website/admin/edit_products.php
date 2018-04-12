@@ -13,6 +13,13 @@ $modal_counter = 0;
 
 require_once SCRIPTS . 'functions.inc.php';
 
+//Display notification if it exists
+if(isset($_SESSION['notify'])){
+    require_once CLASSES . 'Notifications.php';
+    echo Notification::display_notification();
+    Notification::delete_from_session();        
+}
+
 ?>
 
 <div class="jumbotron" id="jumbotron-color">
@@ -75,7 +82,9 @@ require_once SCRIPTS . 'functions.inc.php';
             </div>
 
               <div class="modal-footer">
-                 <button type="submit" name="submit" class="btn btn-success" style="margin-top:10px;">Add Product</button>
+                <label for="password">Password:</label>
+                <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                <button type="submit" name="submit" class="btn btn-success" style="margin-top:10px;">Add Product</button>
               </div>
           </div>
         </div>
@@ -83,7 +92,7 @@ require_once SCRIPTS . 'functions.inc.php';
     </div>
   </form>
 
-
+<div class="table-responsive-xl">
   <table class="table table-hover table-dark">
     <thead>
       <tr>
@@ -104,7 +113,32 @@ require_once SCRIPTS . 'functions.inc.php';
             <th scope="row"><img src="../images/products/<?php echo $item['image'] ?>" class="product-image-size"></th>
             <td><?php echo $item['name'] ?></td>
             <td><?php echo commafy($item['price']); ?></td>
-            <td><?php echo $item['stock'] ?></td>
+            
+            <?php 
+
+            $stock = $item['stock'];
+            $color = "";
+
+            if($stock >= 10) {
+              $color = 'green';
+            }
+
+            if($stock < 10){
+               $color = 'orange';
+            } 
+
+            if($stock < 5) {
+              $color = 'red';
+            } 
+
+            echo "<td>
+                      <p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>
+                        $stock
+                      <p>
+                    </td>";
+            ?>
+
+
             <td><?php echo $item['description'] ?></td>
 
             <?php 
@@ -136,6 +170,7 @@ require_once SCRIPTS . 'functions.inc.php';
 
     </tbody>
   </table>
+</div>
   
   <?php $modal_counter = 0; ?>
 
@@ -222,7 +257,7 @@ require_once SCRIPTS . 'functions.inc.php';
             <div class="form-group">
               <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
                 </div>
             </div>
@@ -249,7 +284,7 @@ require_once SCRIPTS . 'functions.inc.php';
             <div class="form-group">
               <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtpassword" class="form-control" required>
+                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" name="product_id" value="<?php echo $item['product_id']?>">
                 </div>
             </div>

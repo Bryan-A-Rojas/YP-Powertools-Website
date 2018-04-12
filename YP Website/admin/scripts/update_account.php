@@ -1,38 +1,44 @@
 <?php
 
-require_once '../../config.php';
+require_once '../config_admin.php';
+require_once CLASSES . 'Notifications.php';
 
 	if(isset($_POST['update'])){
 
+		require_once SCRIPTS . 'dbh.inc.php';
+		
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($_SESSION['account_id']);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../accountlist.php");
+			exit();
+		}
+
 		require_once SCRIPTS . 'functions.inc.php';
 
-		require_once SCRIPTS . 'dbh.inc.php';
-
-		//Get all post data and sanitize input
-		//profile_image,full_name, email, password, confirm password
 		$profile_image = $_FILES['profile_image'];
 		$full_name = $Database->real_escape_string($_POST['txtfullname']);
 		$email = $Database->real_escape_string($_POST['txtemail']);
+		$phone_number = $Database->real_escape_string($_POST['txtno']);
 		$full_address = $Database->real_escape_string($_POST['txtfulladdress']);
 		$city = $Database->real_escape_string($_POST['txtcity']);
 		$account_id = $Database->real_escape_string($_POST['account_id']);
 
 		if(empty($full_name) || empty($email)){
-			//Fields are empty
-			header("Location: ../accountlist.php?update=empty");
+			Notification::save_to_session('danger', 'Please fill up all fields!');
+			header("Location: ../accountlist.php");
 			exit();
 		} else {
 				//Check if they are in the right format
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				    //Invalid email format
-				    header("Location: ../accountlist.php?update=invalid_email");
+				    Notification::save_to_session('danger', 'Email is in the wrong format!');
+				    header("Location: ../accountlist.php");
 					exit();
 				} else {
 					
 					$status = isset($_POST['status']) ? "active" : "inactive";
 					
-
-					//SQL string to insert in database
 					$sql = "";
 					//if profile image is not uploaded then use different insert
 					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
@@ -42,22 +48,24 @@ require_once '../../config.php';
 							$sql = "UPDATE `accounts` 
 								SET `name` = '$full_name',
 								 	`email`= '$email',
+								 	`phone_number` = '$phone_number',
 								 	`role` = '$role',
 								 	`status` = '$status'
 								WHERE `account_id` = $account_id;";
 						} else {
 							$sql = "UPDATE `accounts` 
 								SET `name` = '$full_name',
+									`phone_number` = '$phone_number',
 								 	`email`= '$email',
 								 	`status` = '$status'
 								WHERE `account_id` = $account_id;";
 						}
 
-						
 					} else {
 						//else move profile image to a folder
-						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
-							header("Location: ../accountlist.php?$error");
+						if(move_image($_FILES['profile_image'], "profile_images") !== true){
+							Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+							header("Location: ../accountlist.php");
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
@@ -68,6 +76,7 @@ require_once '../../config.php';
 										SET `profile_image` = '$image_name',
 											`name` = '$full_name',
 										 	`email`= '$email',
+										 	`phone_number` = '$phone_number',
 										 	`role` = '$role',
 										 	`status` = '$status'
 										WHERE `account_id` = $account_id;";
@@ -75,6 +84,7 @@ require_once '../../config.php';
 								$sql = "UPDATE `accounts` 
 									SET `profile_image` = '$image_name',
 										`name` = '$full_name',
+										`phone_number` = '$phone_number',
 									 	`email`= '$email',
 									 	`status` = '$status'
 									WHERE `account_id` = $account_id;";
@@ -94,32 +104,27 @@ require_once '../../config.php';
 										  			FROM accounts
 										  			WHERE account_id = $account_id");
 
-					    header("Location: ../accountlist.php?update=success");
+						Notification::save_to_session('success', 'Account Updated!');
+					    header("Location: ../accountlist.php");
 					    exit();
 					} else {
-
-					    header("Location: ../accountlist.php?update=database_error");
+						Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+					    header("Location: ../accountlist.php");
 					    exit();
 					}
 				}
 			}
 	} elseif(isset($_POST['reactivate'])){
 
-		//Check if password is correct
 		require SCRIPTS . 'dbh.inc.php';
 
-		// $email = $_SESSION['email'];
-
-		// $sql = "SELECT password 
-		// 		FROM accounts 
-		// 		WHERE email = '$email';";
-		// $result = $Database->query($sql);
-		// $row = $result->fetch_assoc();
-
-		// if(!password_verify($_POST['txtpassword'], $row['password'])){
-		// 	header("Location: ../edit_products.php?products=wrong_password");
-		// 	exit();
-		// }
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($_SESSION['account_id']);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../accountlist.php");
+			exit();
+		}
 
 		$account_id = $_POST['account_id'];
 
@@ -128,30 +133,24 @@ require_once '../../config.php';
 				WHERE `account_id` = $account_id;";
 		
 		if($Database->query($sql)){
-			header("Location: ../accountlist.php?account=restored");
+			Notification::save_to_session('success', 'Account Restored!');
+			header("Location: ../accountlist.php");
 			exit();
 		} else {
-			header("Location: ../accountlist.php?account=fail_to_restore");
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+			header("Location: ../accountlist.php");
 			exit();
 		}
-
 	} elseif(isset($_POST['deactivate'])) {
-
-		//Check if password is correct
 		require SCRIPTS . 'dbh.inc.php';
 
-		// $email = $_SESSION['email'];
-
-		// $sql = "SELECT password 
-		// 		FROM accounts 
-		// 		WHERE email = '$email';";
-		// $result = $Database->query($sql);
-		// $row = $result->fetch_assoc();
-
-		// if(!password_verify($_POST['txtpassword'], $row['password'])){
-		// 	header("Location: ../edit_products.php?products=wrong_password");
-		// 	exit();
-		// }
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($_SESSION['account_id']);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../accountlist.php");
+			exit();
+		}
 
 		$account_id = $_POST['account_id'];
 
@@ -160,25 +159,31 @@ require_once '../../config.php';
 				WHERE `account_id` = $account_id;";
 		
 		if($Database->query($sql)){
-			header("Location: ../accountlist.php?account=restored");
+			Notification::save_to_session('success', 'Account Deactivated!');
+			header("Location: ../accountlist.php");
 			exit();
 		} else {
-			header("Location: ../accountlist.php?account=fail_to_restore");
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+			header("Location: ../accountlist.php");
+			exit();
+		}
+	} elseif(isset($_POST['create'])) {
+		require SCRIPTS . 'dbh.inc.php';
+
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($_SESSION['account_id']);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../accountlist.php");
 			exit();
 		}
 
-	} elseif(isset($_POST['create'])) {
-
-		//connect to database
-		require SCRIPTS . 'dbh.inc.php';
-
 		require SCRIPTS . 'functions.inc.php';
 
-		//Get all post data and sanitize input
-		//profile_image,full_name, email, password, confirm password
 		$profile_image = $_FILES['profile_image'];
 		$full_name = $Database->real_escape_string($_POST['txtfullname']);
 		$email = $Database->real_escape_string($_POST['txtemail']);
+		$phone_number = $Database->real_escape_string($_POST['txtno']);
 		$password = $Database->real_escape_string($_POST['txtpassword']);
 		$confirm_password = $Database->real_escape_string($_POST['txtconfirmpassword']);
 		$full_address = $Database->real_escape_string($_POST['txtfulladdress']);
@@ -198,19 +203,19 @@ require_once '../../config.php';
 		   empty($full_address) 	|| 
 		   empty($city)){
 
-			//Fields are empty
-			header("Location: ../accountlist.php?signup=empty");
+			Notification::save_to_session('danger', 'Please fill up all fields!');
+			header("Location: ../accountlist.php");
 			exit();
 		} else {
-			//Check if password and confirm password is NOT the same
+			
 			if($password != $confirm_password){
-				header("Location: ../accountlist.php?signup=password_not_same");
+				Notification::save_to_session('danger', 'Password and confirm password is not the same!');
+				header("Location: ../accountlist.php");
 				exit();
 			} else {
-				//Check if they are in the right format
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				    //Invalid email format
-				    header("Location: ../accountlist.php?signup=invalid_email");
+				    Notification::save_to_session('danger', 'Email is in the wrong format!');
+				    header("Location: ../accountlist.php");
 					exit();
 				} else {
 					//Hash password
@@ -220,17 +225,18 @@ require_once '../../config.php';
 					$sql = "";
 					//if profile image is not uploaded then use different insert
 					if(!file_exists($_FILES['profile_image']['tmp_name']) || !is_uploaded_file($_FILES['profile_image']['tmp_name'])) {
-						$sql = "INSERT INTO `accounts` (`name`, `email`, `password`, `status`, `role`) 
-								VALUES ('$full_name', '$email', '$HashedPassword', '$status', '$role');";
+						$sql = "INSERT INTO `accounts` (`name`, `email`, `phone_number`, `password`, `status`, `role`) 
+								VALUES ('$full_name', '$email', '$phone_number', '$HashedPassword', '$status', '$role');";
 					} else {
 						//else move profile image to a folder
-						if($error = move_image($_FILES['profile_image'], "profile_images") !== true){
-							header("Location: ../accountlist.php?$error");
+						if(move_image($_FILES['profile_image'], "profile_images") !== true){
+							Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+							header("Location: ../accountlist.php");
 							exit();
 						} else {
 							$image_name = $_FILES['profile_image']['name'];
-							$sql = "INSERT INTO `accounts` (`profile_image`, `name`, `email`, `password`, `status`, `role`) 
-									VALUES ('$image_name', '$full_name', '$email', '$HashedPassword', '$status', '$role');";
+							$sql = "INSERT INTO `accounts` (`profile_image`, `name`, `email`, `phone_number`,`password`, `status`, `role`) 
+									VALUES ('$image_name', '$full_name', '$email', '$phone_number','$HashedPassword', '$status', '$role');";
 						}
 					}
 
@@ -242,16 +248,19 @@ require_once '../../config.php';
 								VALUES ($id, '$full_address','$city');";
 						$Database->query($sql);
 						
-					    header("Location: ../accountlist.php?signup=success");
+						Notification::save_to_session('success', 'Account Created!');
+					    header("Location: ../accountlist.php");
 					    exit();
 					} else {
-					    header("Location: ../accountlist.php?signup=database_error");
+						Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+					    header("Location: ../accountlist.php");
 					    exit();
 					}
 				}
 			}
 		}
 	} else {
-		header("Location: ../accountlist.php?update=used_get");
+		Notification::save_to_session('danger', 'Oops! You cannot access that page');
+		header("Location: ../accountlist.php");
 		exit();
 	}

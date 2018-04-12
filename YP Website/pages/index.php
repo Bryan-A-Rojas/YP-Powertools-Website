@@ -3,9 +3,7 @@
 require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
-
 require_once SCRIPTS . 'functions.inc.php';
-
 require_once INCLUDES . 'navbar.inc.php';
 
 //Display notification if it exists
@@ -44,13 +42,13 @@ if(isset($_SESSION['notify'])){
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="../images/Available in Stock/Angle Grinder/20180217_145912.jpg" alt="First slide">
+                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Angle Grinder/20180217_145912.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="../images/Available in Stock/Asaki - Table Vice/20180217_154915.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Asaki - Table Vice/20180217_154915.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="../images/Available in Stock/Finish Sander HT-FS 18702/20180217_150810.jpg" alt="Third slide">
+                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Finish Sander HT-FS 18702/20180217_150810.jpg" alt="Third slide">
                     </div>
                 </div>
 

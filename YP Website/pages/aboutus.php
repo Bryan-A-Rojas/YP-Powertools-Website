@@ -3,9 +3,7 @@
 require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
-
 require_once SCRIPTS . 'functions.inc.php';
-
 require_once INCLUDES . 'navbar.inc.php';
 
 //Display notification if it exists

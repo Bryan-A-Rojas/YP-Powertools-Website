@@ -1,0 +1,9 @@
+SPECIFICATION:
+voltage frequency:220v~60hz 
+input power: 800w  S2  10min 
+no~load speed: 3450/min-1 
+saw blade: (8") 200*16*2.4mm 
+table size: 505*335mm 
+max. cutting depth: 43mm(90°) 27mm(45°)
+
+3750php

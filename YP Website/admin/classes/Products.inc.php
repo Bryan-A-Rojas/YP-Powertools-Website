@@ -54,15 +54,11 @@ class Products{
 	}
 
  	function delete_product($product_id){
-		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 		
-		//Make variable called sql with query string "SELECT * from products WHERE id=$id_number"
 		$sql = "UPDATE `products` 
 				SET `availability`= 'unavailable' 
 				WHERE `product_id` = $product_id;";
-				
-		//Query sql string
 		$result = $Database->query($sql);
 
 		return $result;

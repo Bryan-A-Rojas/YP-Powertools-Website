@@ -44,12 +44,12 @@ require_once CLASSES . 'Notifications.php';
 			exit();
 		} else {
 			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
-			header("Location: ../../pages/user_page.php?change_password=database_fail");
+			header("Location: ../../pages/user_page.php");
 			exit();
 		}
 		
 	} else {
 		Notification::save_to_session('danger', 'Oops! You cannot access that page');
-		header("Location: ../../pages/user_page.php?change_password=used_get");
+		header("Location: ../../pages/user_page.php");
 		exit();
 	}

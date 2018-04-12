@@ -3,9 +3,7 @@
 require_once '../config.php';
 
 require_once INCLUDES . 'header.inc.php';
-
 require_once INCLUDES . 'navbar.inc.php';
-
 require_once CLASSES . 'cart.inc.php';
 
 $checkout = new Cart($_SESSION['account_id']);

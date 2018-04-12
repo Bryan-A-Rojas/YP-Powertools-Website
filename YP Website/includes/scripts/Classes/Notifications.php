@@ -23,7 +23,7 @@ class Notification{
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
-			        ' . $_SESSION['notify']['message'] . '
+			        ' . $_SESSION['notify']['message'] . ' 
 			      </div>
 			    </div>
 			  </div>

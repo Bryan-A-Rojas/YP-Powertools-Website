@@ -13,7 +13,7 @@ class Admin{
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT accounts.account_id,profile_image,name,email, city, full_address, status
+		$sql = "SELECT accounts.account_id,profile_image,name,email, phone_number, city, full_address, status, role
 				FROM accounts 
 				LEFT JOIN addresses
 				ON accounts.account_id = addresses.account_id
@@ -38,7 +38,7 @@ class Admin{
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "SELECT accounts.account_id,profile_image,name as account_name,email, city, full_address
+		$sql = "SELECT accounts.account_id, phone_number,profile_image,name as account_name,email, city, full_address
 				FROM accounts 
 				LEFT JOIN addresses
 				ON accounts.account_id = addresses.account_id
@@ -211,6 +211,24 @@ class Admin{
 				SET `status`= '$choice'
 				WHERE `transaction_id` = $transaction_id;";
 		return $Database->query($sql);
+	}
+
+	function check_password($password){
+		require SCRIPTS . 'dbh.inc.php';
+
+		$account_id = $this->Admin_id;
+
+		$sql = "SELECT password 
+				FROM accounts 
+				WHERE account_id = $account_id;";
+		$result = $Database->query($sql);
+		$row = $result->fetch_assoc();
+
+		if(!password_verify($password, $row['password'])){
+			return false;
+		}
+
+		return true;
 	}
 
 }

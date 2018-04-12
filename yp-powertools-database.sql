@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2018 at 09:23 AM
+-- Generation Time: Apr 12, 2018 at 02:27 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -33,6 +33,7 @@ CREATE TABLE `accounts` (
   `profile_image` varchar(500) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'user',
   `status` varchar(255) NOT NULL DEFAULT 'active'
@@ -42,12 +43,14 @@ CREATE TABLE `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`account_id`, `profile_image`, `name`, `email`, `password`, `role`, `status`) VALUES
-(1, 'sample-user.png', 'John Doe', 'johndoe@gmail.com', '$2y$10$Im/icrwqDB7xHPLXJaCMQuz/l./in1iBGvX1qclr9FDs3d3aA0hVO', 'user', 'active'),
-(2, NULL, 'test1', 'test1@gmail.com', '$2y$10$K94nyapkq5o8y1vbaMyNfOX/E14RHrSvdmJ1PEx0um5FAV4OS8Waq', 'user', 'active'),
-(3, 'sample-admin.png', 'admin', 'admin@gmail.com', '$2y$10$NsJrlA8n3REFAy0.yJGtieHYIlBIoBEFwpn3Va3vZgAGtRz5lAgE.', 'admin', 'active'),
-(4, '1lqtvaic0sa01.png', 'superadmin', 'superadmin@gmail.com', '$2y$10$wHOu42/7tAn8RQvEgEC6b.ak4b8WWMCbz.IOkxXKv.cdztTzTbB5u', 'superadmin', 'active'),
-(5, 'aE9vBTqvT2XvmkkQUX8s_Us6AWnfgD5ByjZlYlU5WJg.png', 'test2', 'test2@gmail.com', '$2y$10$jT3Rew5mZOUtIkn.zPeyAuqAMu6stu2npftJQWflBNFZlL4OI.08y', 'user', 'active');
+INSERT INTO `accounts` (`account_id`, `profile_image`, `name`, `email`, `phone_number`, `password`, `role`, `status`) VALUES
+(1, 'sample-user.png', 'John Doe', 'johndoe@gmail.com', '0955', '$2y$10$mz7UP3HKnHLqBLP7Yg3/K.rsNfjyRKHV9Ylzo3XdXr5Zx1QQ/9zgS', 'user', 'active'),
+(3, 'sample-admin.png', 'admin', 'admin@gmail.com', NULL, '$2y$10$NsJrlA8n3REFAy0.yJGtieHYIlBIoBEFwpn3Va3vZgAGtRz5lAgE.', 'admin', 'active'),
+(4, '1lqtvaic0sa01.png', 'superadmin', 'superadmin@gmail.com', NULL, '$2y$10$wHOu42/7tAn8RQvEgEC6b.ak4b8WWMCbz.IOkxXKv.cdztTzTbB5u', 'superadmin', 'active'),
+(5, 'aE9vBTqvT2XvmkkQUX8s_Us6AWnfgD5ByjZlYlU5WJg.png', 'test2', 'test2@gmail.com', NULL, '$2y$10$jT3Rew5mZOUtIkn.zPeyAuqAMu6stu2npftJQWflBNFZlL4OI.08y', 'user', 'active'),
+(7, 'buffsuki.png', 'Buff Suki', 'user@gmail.com', NULL, '$2y$10$R9N5.TVWrHXpkKKxv/DaIuc4kVgwxttcsmllV9AXxeuVl052CTJE.', 'user', 'active'),
+(8, 'customify_1.png', 'user2', 'user2@gmail.com', NULL, '$2y$10$da.oa1tvT0DHXLAGaDu4xu6K8Ht1ZmxkpdaJXXxFj9rijEJOQJoKu', 'user', 'active'),
+(9, 'monika 2.png', 'asd', 'asd@gmail.com', '0945345', '$2y$10$TyenHxo0CLffYRut89dGrOSdgIT4R.zJDO5hLy4rx9/p0Go4df.Sa', 'user', 'active');
 
 -- --------------------------------------------------------
 
@@ -67,8 +70,12 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`addresses_id`, `account_id`, `full_address`, `city`) VALUES
-(1, 1, 'Alabang Hills, Muntinlupa City', 'Muntinlupa'),
-(2, 5, 'Alabang Hills, SBCA, Muntinlupa City', 'Muntinlupa City');
+(1, 1, 'Alabang Hills, Muntinlupa City', 'Muntinlupa City'),
+(2, 5, 'Alabang Hills, SBCA, Muntinlupa City', 'Muntinlupa City'),
+(3, 6, 'Equitable, Las Pinas City', 'Las Pinas City'),
+(4, 7, 'Equitable, Las Pinas City', 'Las Pinas City'),
+(5, 8, 'Pulanglupa, Las Pinas City', 'Las Pinas City'),
+(6, 9, 'asd', 'asd city');
 
 -- --------------------------------------------------------
 
@@ -324,7 +331,42 @@ INSERT INTO `log` (`log_id`, `account_id`, `date`, `description`) VALUES
 (214, 1, '2018-04-10 14:34:55', 'added 1 piece(s) of Hoyoma Japan - Jigsaw HT - JS650 to cart'),
 (215, 1, '2018-04-10 14:34:56', 'viewed their cart'),
 (216, 1, '2018-04-10 14:35:05', 'viewed checkout'),
-(217, 1, '2018-04-10 14:35:25', 'checked out');
+(217, 1, '2018-04-10 14:35:25', 'checked out'),
+(218, 1, '2018-04-10 17:26:13', 'added 1 piece(s) of Hoyoma Japan - Jigsaw HT - JS650 to cart'),
+(219, 1, '2018-04-10 17:26:14', 'viewed their cart'),
+(220, 1, '2018-04-10 17:26:16', 'viewed checkout'),
+(221, 1, '2018-04-10 17:26:25', 'viewed their cart'),
+(222, 1, '2018-04-10 17:26:33', 'viewed checkout'),
+(223, 1, '2018-04-10 17:26:39', 'viewed their cart'),
+(224, 1, '2018-04-10 20:03:27', 'added 1 piece(s) of Hoyoma Japan - Jigsaw HT - JS650 to cart'),
+(225, 1, '2018-04-10 20:03:28', 'viewed their cart'),
+(226, 1, '2018-04-10 20:03:34', 'removed Hoyoma Japan - Jigsaw HT - JS650 from cart'),
+(227, 1, '2018-04-10 20:03:35', 'viewed their cart'),
+(228, 1, '2018-04-10 20:04:34', 'added 1 piece(s) of Makute - Trimmer TR001 to cart'),
+(229, 1, '2018-04-10 20:04:35', 'viewed their cart'),
+(230, 1, '2018-04-10 20:04:40', 'cleared their cart'),
+(231, 1, '2018-04-10 20:04:40', 'viewed their cart'),
+(232, 1, '2018-04-10 20:07:05', 'added 2 piece(s) of Hoyoma Japan - Jigsaw HT - JS650 to cart'),
+(233, 1, '2018-04-10 20:07:05', 'viewed their cart'),
+(234, 1, '2018-04-10 20:07:09', 'viewed checkout'),
+(235, 1, '2018-04-10 20:07:17', 'checked out'),
+(236, 5, '2018-04-11 08:54:25', 'viewed their cart'),
+(237, 1, '2018-04-11 12:16:29', 'added 1 piece(s) of Total - Electric Drill 280W to cart'),
+(238, 1, '2018-04-11 12:16:30', 'viewed their cart'),
+(239, 1, '2018-04-11 12:16:36', 'cleared their cart'),
+(240, 1, '2018-04-11 12:16:37', 'viewed their cart'),
+(241, 1, '2018-04-11 12:17:05', 'added 1 piece(s) of Total - Electric Drill 280W to cart'),
+(242, 1, '2018-04-11 12:17:06', 'viewed their cart'),
+(243, 1, '2018-04-11 12:17:25', 'viewed their cart'),
+(244, 1, '2018-04-11 12:17:27', 'viewed their cart'),
+(245, 1, '2018-04-11 12:17:34', 'removed Total - Electric Drill 280W from cart'),
+(246, 1, '2018-04-11 12:17:35', 'viewed their cart'),
+(247, 1, '2018-04-12 12:48:10', 'viewed their cart'),
+(248, 1, '2018-04-12 12:55:37', 'added 1 piece(s) of asd to cart'),
+(249, 1, '2018-04-12 12:55:38', 'viewed their cart'),
+(250, 1, '2018-04-12 12:55:43', 'viewed checkout'),
+(251, 1, '2018-04-12 12:55:47', 'checked out'),
+(252, 1, '2018-04-12 13:26:33', 'viewed their cart');
 
 -- --------------------------------------------------------
 
@@ -347,12 +389,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `image`, `name`, `price`, `description`, `stock`, `availability`) VALUES
-(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care.', 3, 'available'),
+(1, 'Angle Grinder.jpg', 'Angle Grinder', 3000, 'This is one of our best angle grinders and can last for years under the right care.', 1, 'available'),
 (2, '20180217_153001.jpg', 'Total - Electric Drill 280W', 23000.5, 'This is our finest drill, it can even drill through diamonds!', 19, 'available'),
 (3, '20180217_151735.jpg', 'Makute - Trimmer TR001', 5000.5, 'Top notch american based trimmer', 5, 'available'),
 (4, '20180217_152633.jpg', 'Fujima - Air Die Grinder XQ-T02', 1000, 'Newly arrived Fujima Grinder', 9, 'available'),
-(5, 'Hoyoma Japan - Jigsaw HT - JS650.jpg', 'Hoyoma Japan - Jigsaw HT - JS650', 5599, 'Useful for cutting wooden planks at great speed, also used for precision cutting', 6, 'available'),
-(11, '20180217_151314.jpg', 'Hoyoma Japan - Electric Blower HTEB-600', 13000, 'You don\'t need a lawn mower when you can just use our powerful lawn blower', 15, 'unavailable');
+(5, 'Hoyoma Japan - Jigsaw HT - JS650.jpg', 'Hoyoma Japan - Jigsaw HT - JS650', 5599, 'Useful for cutting wooden planks at great speed, also used for precision cutting', 4, 'available'),
+(11, '20180217_151314.jpg', 'Hoyoma Japan - Electric Blower HTEB-600', 13000, 'You don\'t need a lawn mower when you can just use our powerful lawn blower', 15, 'unavailable'),
+(12, 'natsuki 4.png', 'asd', 234, 'asfsdf', 2, 'available');
 
 -- --------------------------------------------------------
 
@@ -400,7 +443,9 @@ INSERT INTO `purchases` (`purchase_id`, `transaction_id`, `product_id`, `quantit
 (26, 0, 2, 1),
 (27, 16, 2, 1),
 (28, 17, 2, 1),
-(29, 18, 5, 1);
+(29, 18, 5, 1),
+(30, 19, 5, 2),
+(31, 20, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -438,7 +483,9 @@ INSERT INTO `transactions` (`transaction_id`, `account_id`, `total_price`, `paym
 (15, 1, 5000.5, 6000, '2018-04-04 17:52:56', 'approved'),
 (16, 1, 23000.5, 25000, '2018-04-09 10:14:53', 'approved'),
 (17, 1, 23000.5, 25000, '2018-04-10 08:42:50', 'denied'),
-(18, 1, 5599, 10000, '2018-04-10 14:35:24', 'pending');
+(18, 1, 5599, 10000, '2018-04-10 14:35:24', 'approved'),
+(19, 1, 11198, 12000, '2018-04-10 20:07:17', 'approved'),
+(20, 1, 234, 500, '2018-04-12 12:55:47', 'denied');
 
 --
 -- Indexes for dumped tables
@@ -494,43 +541,43 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `addresses_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `addresses_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

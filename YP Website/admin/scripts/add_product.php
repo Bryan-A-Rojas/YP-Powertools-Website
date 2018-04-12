@@ -1,12 +1,20 @@
 <?php
 	require_once '../config_admin.php';
-
+	require_once CLASSES . 'Notifications.php';
 	require_once SCRIPTS . 'functions.inc.php';
 
-	//Check if they used the button
 	if(isset($_POST['submit'])){
 		//connect to database
 		require_once SCRIPTS . 'dbh.inc.php';
+
+		$account_id = $_SESSION['account_id'];
+		require ADMIN_CLASSES . 'Admin.inc.php';
+		$Admin = New Admin($account_id);
+		if(!$Admin->check_password($_POST['txtadminpassword'])){
+			Notification::save_to_session('danger', 'Access Denied!');
+			header("Location: ../edit_products.php");
+			exit();
+		}
 
 		$product_image = $_FILES['product_image'];
 
@@ -17,7 +25,8 @@
 		$availability = isset($_POST['availability']) ? 'available' : 'unavailable' ; 
 
 		if($error = move_image($product_image, "products") !== true){
-			header("Location: ../edit_products.php?$error");
+			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+			header("Location: ../edit_products.php");
 			exit();
 		} else {
 			$image_name = $_FILES['product_image']['name'];
@@ -26,15 +35,17 @@
 					VALUES ('$image_name', '$txtname', $price, '$description', $stock, '$availability');";
 
 			if ($Database->query($sql) === TRUE) {
-				header("Location: ../edit_products.php?add_product=success");
+				Notification::save_to_session('success', 'Added the product!');
+				header("Location: ../edit_products.php");
 				exit();
 			} else {
-				header("Location: ../edit_products.php?add_product=failed_database");
+				Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
+				header("Location: ../edit_products.php");
 				exit();
 			}
 		}
 	} else {
-		//User did not click the button
-		header("Location: ../edit_products.php?add_product=used_get");
+		Notification::save_to_session('danger', 'Oops! You cannot access that page');
+		header("Location: ../edit_products.php");
 		exit();
 	}

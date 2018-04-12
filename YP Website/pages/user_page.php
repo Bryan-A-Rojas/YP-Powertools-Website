@@ -38,7 +38,7 @@ if(isset($_SESSION['role'])){
 			<p><?php echo $_SESSION['email'] ?></p>
 			
       <label for="phonenumber">Phone Number:</label>
-      <p>09772007355</p>
+      <p><?php echo $_SESSION['phone_number'] ?></p>
 
 			<label for="city">City:</label>
 			<p><?php echo $_SESSION['city']?></p>
@@ -101,7 +101,7 @@ if(isset($_SESSION['role'])){
           <div class="form-row">
             <div class="col">
               <label for="phonenumber">Enter Phone Number:</label>
-              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" required>
+              <input type="phonenumber" placeholder="Enter Phone Number" name="txtno" class="form-control" value="<?php echo $_SESSION['phone_number'] ?>" required>
             </div>
           </div>
 

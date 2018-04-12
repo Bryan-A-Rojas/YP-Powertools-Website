@@ -4,16 +4,9 @@ require_once CLASSES . 'Person.php';
 
 class User extends Person{
 
-	//private $cart;
-
-	public function __construct($email){
+	function __construct($email){
 		$this->email = $email;
 		$this->getInfo();
-
-		//include cart class
-		//require_once CLASSES . 'Cart.inc.php';
-
-		//$this->cart = new Cart($this->id);
 	}
 
 	private function getInfo(){
@@ -36,7 +29,7 @@ class User extends Person{
 		$this->email = $row['email'];
 	}
 
-	public static function login($email = "", $password = ""){
+	static function login($email = "", $password = ""){
 		//Require Database connection
 		require SCRIPTS . 'dbh.inc.php';
 		
@@ -63,20 +56,86 @@ class User extends Person{
 
 		return true;
 	}
+
+	static function get_specific_pending_transactions($account_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, `payment_given`, 
+				(`payment_given` -`total_price`) AS `change_given` , DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`
+				FROM `transactions`
+				inner join `accounts`
+				on transactions.account_id = accounts.account_id
+				WHERE transactions.`status` = 'pending' AND transactions.account_id = $account_id
+				ORDER BY `date_of_purchase` ASC;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+	static function get_products_in_order_history($transaction_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT image, name, price, SUM(quantity) as quantity, description, (SUM(quantity) * price) as total
+				FROM purchases
+				INNER JOIN products
+				ON products.product_id = purchases.product_id
+				WHERE purchases.transaction_id = $transaction_id
+				GROUP BY products.image, products.name, products.price, products.description;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+	static function get_specific_order_history($account_id){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT `transaction_id`, `name` AS `account_name`, 
+						`total_price`, `payment_given`, (`payment_given` -`total_price`) AS `change_given` ,
+						 DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`
+				FROM `transactions`
+				inner join `accounts`
+				on transactions.account_id = accounts.account_id
+				WHERE (transactions.`status` = 'approved' OR transactions.`status` = 'denied') AND transactions.`account_id` = $account_id
+				ORDER BY `date_of_purchase` ASC;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
 	
 }
-
-
-
-//Handler
-// if(($message = User::login("test@gmail.com", "test")) === true){
-// 	$user = new User("test@gmail.com");
-// 	$_SESSION['user'] = $user;
-// 	echo $_SESSION['user']->getName();
-
-// 	//$_SESSION['user']->useCart()->add_to_cart(2, 2);
-
-// 	$_SESSION['user']->logout();
-// } else {
-// 	echo $message;
-// }

@@ -6,11 +6,8 @@ require_once '../config.php';
 if(isset($_GET['productid'])){
 
 require_once INCLUDES . 'header.inc.php';
-
 require_once SCRIPTS . 'functions.inc.php';
-
 require_once INCLUDES . 'navbar.inc.php';
-
 require_once CLASSES . 'Products.inc.php';
 
 $product_information = Products::get_specific_product($_GET['productid']);

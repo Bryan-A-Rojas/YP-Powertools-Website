@@ -11,9 +11,7 @@ require_once '../../config.php';
 		$password = $_POST['txtpassword'];
 
 		if(empty($email) || empty($password)){
-			
 			Notification::save_to_session('danger', 'Please fill up all fields!');
-
 			header("Location: ../../pages/user_page.php");
 			exit();
 		} else {
@@ -24,24 +22,27 @@ require_once '../../config.php';
 			$result = $Database->query($sql);
 			
 			if($result->num_rows < 1){
-
 				Notification::save_to_session('danger', 'Email or Password is incorrect!');
-
 				header("Location: ../../pages/user_page.php");
 				exit();
 			} else {
 				if($row = $result->fetch_assoc()){
 
 					if(!password_verify($password, $row['password'])){
-
 						Notification::save_to_session('danger', 'Email or Password is incorrect!');
-
 						header("Location: ../../pages/user_page.php");
 						exit();
-					}else{
+					} elseif($row['status'] != 'active') {
+						Notification::save_to_session('danger', 'Account is deactivated!');
+						header("Location: ../../pages/index.php");
+						exit();
+					} else {
 
 						$_SESSION['account_id'] = $row['account_id'];
 						$_SESSION['email'] = $row['email'];
+
+						$_SESSION['phone_number'] = $row['phone_number'] != NULL ? $row['phone_number'] : 'N/A';
+						
 						$_SESSION['name'] = $row['name'];
 						$_SESSION['role'] = $row['role'];
 						$_SESSION['profile_image'] = $row['profile_image'];
@@ -58,7 +59,6 @@ require_once '../../config.php';
 						$_SESSION['city'] = $row['city'];
 
 						Notification::save_to_session('success', 'Welcome!');
-
 						header("Location: ../../pages/user_page.php");
 						exit();
 					}
