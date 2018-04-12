@@ -54,9 +54,9 @@ $products_array = $products_array['products'];
         <div class="carousel-item active">
             <img class="d-block w-100" src="../images/Joe's Pictures/Old/Angle Grinder/20180217_145912.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block" id="indicator-adj">
-	    		<h5>Chainsaw</h5>
-	    		<p>The best product in our store</p>
-    		</div>
+                <h5>Chainsaw</h5>
+                <p>The best product in our store</p>
+            </div>
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="../images/Joe's Pictures/Old/Asaki - Table Vice/20180217_154915.jpg" alt="Second slide">
@@ -67,14 +67,14 @@ $products_array = $products_array['products'];
     </div>
 
     <a class="carousel-control-prev" id="control-adj" href="#carouselExampleIndicators" role="button" data-slide="prev" style="margin-bottom: ">
-		<span class="arrow-black arrow-size fas fa-angle-left" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a>
+        <span class="arrow-black arrow-size fas fa-angle-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
 
     <a class="carousel-control-next" id="control-adj" href="#carouselExampleIndicators" role="button" data-slide="next">
-		<span class="arrow-black arrow-size fas fa-angle-right" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	</a>
+        <span class="arrow-black arrow-size fas fa-angle-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
 
@@ -85,25 +85,24 @@ $products_array = $products_array['products'];
     <div class="form-group">
         <div class="row" style="padding-left:20px; margin-top:100px;">
             <div class="col-lg-6 float-right mx-auto">
-            	<form action="" method="GET">
+                <form action="" method="GET">
                     <div class="col-sm-2 float-right">
-                    <input type="submit" name="search" value="Search" class="btn btn-primary">
+                        <input type="submit" name="search" value="Search" class="btn btn-primary">
                     </div>
                     <!-- <select name="sortby">
-            			<option value="">Sort A to Z</option>
-            			<option value="">Sort Z to A</option>
-            			<option value="">Sort by Price Ascending</option>
-            			<option value="">Sort by Price Descending</option>
-            		</select> -->
+                            <option value="">Sort A to Z</option>
+                            <option value="">Sort Z to A</option>
+                            <option value="">Sort by Price Ascending</option>
+                            <option value="">Sort by Price Descending</option>
+                        </select> -->
                     <div class="col-sm-10">
-                    <input type="text" placeholder="Search Product" name="txtsearchproduct" class="form-control">
+                        <input type="text" placeholder="Search Product" name="txtsearchproduct" class="form-control">
                     </div>
-            	</form>
+                </form>
             </div>
         </div>
     </div>
-    <br>
-    
+
     <?php if(count($products_array) < 1): ?>
         
         <div class="col-lg-12">
@@ -121,12 +120,22 @@ $products_array = $products_array['products'];
                 </a>
                 
                 <h4><?php echo $product['name'] ?></h4>
-                <p style="color:green;"><?php echo commafy($product['price']); ?></p>
+
+                <?php if($product['availability'] != 'available' || $product['stock'] < 1): ?>
+
+                    <p class="unavailable-message" style="font-size: 14px;">UNAVAILABLE<p>
+                
+                <?php else: ?>
+                    
+                    <p style="color:green;"><?php echo commafy($product['price']); ?></p>
+
+                <?php endif ?>
+
             </div>
         <?php endforeach ?>
     </div>
 
-	 <!-- Pagination -->
+     <!-- Pagination -->
      <div class="row"> 
         <nav aria-label="Page navigation example" class="pagination-placement">
             <ul class="pagination">

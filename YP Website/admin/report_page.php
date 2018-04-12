@@ -14,21 +14,14 @@ $current_year = date('Y');
 
 $yearly_sales = Reports::get_yearly_sales();
 $yearly_title = "$current_month " . ($current_year - 1) .  "-$current_year";
-// echo "<pre>";
-//   print_r($yearly_sales);
-// echo "</pre>";
 
 $monthly_sales = Reports::get_monthly_sales();
 $monthly_title = $monthly_sales[0]['SalesMonth'] . " " . $monthly_sales[0]['SalesDay'] . " - " . end($monthly_sales)['SalesMonth'] . " " . end($monthly_sales)['SalesDay'];
-// echo "<pre>";
-//   print_r($monthly_sales);
-// echo "</pre>";
 
 $weekly_sales = Reports::get_weekly_sales();
 $week_title =  $weekly_sales[0]['SalesDate'] . " - " . end($weekly_sales)['SalesDate'];
-// echo "<pre>";
-//   print_r($weekly_sales);
-// echo "</pre>";
+
+$sales_per_product = Reports::get_sales_per_product();
 
 //Display notification if it exists
 if(isset($_SESSION['notify'])){
@@ -40,22 +33,24 @@ if(isset($_SESSION['notify'])){
 ?>
 
 <div class="jumbotron" id="jumbotron-color">
-  <h2>Report Page</h2>
+  <h1>Report Page</h1>
 </div>
 
-<div class="container-fluid" style="background-color:lightgrey">
+<div class="container" style="background-color:lightgrey">
   <div class="row" style="background-color: white">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8" style="margin-bottom:30px;">
+    <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
+       <canvas id="per_product"></canvas>
+    </div>
+    <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
       <canvas id="yearlyChart"></canvas>
     </div>
-    <div class="col-lg-2"></div>
+    
   </div>
   <div class="row" style="background-color: white">
-    <div class="col-lg-6" style="margin-bottom:30px;">
+    <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
       <canvas id="monthlyChart"></canvas>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
       <canvas id="weeklyChart"></canvas>
     </div>
   </div>
@@ -64,6 +59,33 @@ if(isset($_SESSION['notify'])){
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
+  var per_product = document.getElementById('per_product').getContext('2d');
+  var chart = new Chart(per_product, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+      labels: [<?php foreach($sales_per_product as $key => $item){echo '"' . $item['name'] . '", ';} ?>],
+
+      datasets: [{
+        label: "Sales Per Product",
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'red',
+        data: [<?php foreach($sales_per_product as $key => $item){echo '"' . $item['quantity'] . '", ';} ?>], 
+      }]
+    },
+
+    // Configuration options go here
+    options: {
+      title:{
+        display:true,
+        text:'Sales Per Product',
+        fontSize:35
+      }
+    }
+  });
+
+
   var yearly_chart = document.getElementById('yearlyChart').getContext('2d');
   var chart = new Chart(yearly_chart, {
     // The type of chart we want to create
@@ -145,8 +167,6 @@ if(isset($_SESSION['notify'])){
     }
   });
 </script>
-
-
 
 <?php 
 

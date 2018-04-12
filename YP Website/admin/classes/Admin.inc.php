@@ -8,7 +8,6 @@ class Admin{
 		$this->Admin_id = $id;
 	}
 
-	//Get all users
 	function get_users(){
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';

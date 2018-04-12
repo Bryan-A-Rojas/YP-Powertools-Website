@@ -178,8 +178,17 @@ if(isset($_SESSION['notify'])){
         ?>
       </td>
       
-      <td><?php echo $user['city'] ?></td>
-      <td><?php echo $user['full_address'] ?></td>
+       <?php if($user['role'] == 'user'): ?>
+
+        <td><?php echo $user['city'] ?></td>
+        <td><?php echo $user['full_address'] ?></td>
+
+      <?php else: ?>
+        
+        <td></td>
+        <td></td>
+
+      <?php endif ?>
       
       <?php 
 
@@ -279,23 +288,39 @@ if(isset($_SESSION['notify'])){
                 <input type="email" name="txtemail" class="form-control" value="<?php echo $user['email'] ?>" required>
               </div>
           </div>
-          
+
           <?php if($user['role'] == 'user'): ?>
 
           <div class="form-row">
             <div class="col">
               <label for="phonenumber">Enter Phone Number:</label>
-              <input type="phonenumber" name="txtno" class="form-control" value="<?php echo $user['phone_number']?>" required>
+              <input type="text" placeholder="Enter Phone Number" name="txtno" class="form-control" value="<?php echo $user['phone_number']?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col">
               <label for="fulladdress">Enter Full Address</label>
-              <input type="fulladdress" name="txtfulladdress" class="form-control" value="<?php echo $user['full_address']?>" required>
+              <input type="text" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" value="<?php echo $user['full_address']?>" required>
             </div>
             <div class="col">
               <label for="city">Enter City</label>
-              <input type="city" name="txtcity" class="form-control" value="<?php echo $user['city']?>" required>
+              <input type="text" placeholder="Enter City" name="txtcity" class="form-control" value="<?php echo $user['city']?>" required>
+            </div>
+          </div>
+
+          <?php else: ?>
+
+          <div class="form-row">
+            <div class="col">
+              <input type="hidden" placeholder="Enter Phone Number" name="txtno" class="form-control" value="<?php echo $user['phone_number']?>" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input type="hidden" placeholder="Enter Full Address" name="txtfulladdress" class="form-control" value="<?php echo $user['full_address']?>" required>
+            </div>
+            <div class="col">
+              <input type="hidden" placeholder="Enter City" name="txtcity" class="form-control" value="<?php echo $user['city']?>" required>
             </div>
           </div>
 

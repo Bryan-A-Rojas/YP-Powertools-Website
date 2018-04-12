@@ -57,7 +57,6 @@ class Reports{
 	}
 
 	static function get_weekly_sales(){
-		//Require database header
 		require SCRIPTS . 'dbh.inc.php';
 
 		$sql = "SELECT DAYNAME(date_of_purchase) as SalesDay,
@@ -69,6 +68,32 @@ class Reports{
                         AND status = 'approved'
 				GROUP BY YEAR(date_of_purchase), MONTH(date_of_purchase), DAY(date_of_purchase)
 				ORDER BY YEAR(date_of_purchase), MONTH(date_of_purchase), DAY(date_of_purchase);";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
+	static function get_sales_per_product(){
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT products.name, SUM(quantity) AS quantity FROM purchases
+				INNER JOIN transactions
+				ON transactions.transaction_id = purchases.transaction_id
+				INNER JOIN products
+				ON products.product_id = purchases.product_id
+				WHERE transactions.status = 'approved'
+				GROUP BY purchases.product_id;";
 
 		//Query sql string
 		$result = $Database->query($sql);
