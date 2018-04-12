@@ -31,8 +31,9 @@ class Products{
 		$sql = "SELECT * FROM products LIMIT $offset, $items_per_page;";
 		$result = $Database->query($sql);
 		
-		//loop through information
-	    while($row = $result->fetch_assoc()) {
+		$resultsArray['products'] = array();
+		
+		while($row = $result->fetch_assoc()) {
 	        $resultsArray['products'][] = $row;
 	    }
 
@@ -52,7 +53,7 @@ class Products{
 		return $num_of_pages;
 	}
 
-	static function get_products_per_page_with_search($page, $items_per_page, $search){
+	static function get_products_per_page_with_search($page, $items_per_page, $search = ''){
 		require SCRIPTS . 'dbh.inc.php';
 
 		$num_of_pages = Products::get_number_of_pages($items_per_page);
@@ -62,6 +63,8 @@ class Products{
 				WHERE name LIKE '%$search%'
  				LIMIT $offset, $items_per_page;";
 		$result = $Database->query($sql);
+
+		$resultsArray['products'] = array();
 		
 		//loop through information
 	    while($row = $result->fetch_assoc()) {

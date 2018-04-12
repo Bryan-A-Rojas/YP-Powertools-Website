@@ -79,12 +79,20 @@ if(isset($_SESSION['notify'])){
 
 <div class="container">
   <div class="jumbotron" id="jumbotron-color">
-    <h1>Pending Transactions</h1>
+    <h1>Pending Transaction</h1>
 
     <?php if(isset($user_name)): ?>
       <h2><?php echo $user_name ?></h2>
     <?php endif ?>
   </div>
+
+  <?php if(count($pending_transactions) < 1): ?>
+    
+    <div class="col-lg-12">
+      <p class="unavailable-message" style="background-color: darkblue; margin-bottom: 39px;">No Pending Orders<p>
+    </div>
+
+  <?php else: ?>
 
   <div class="table-responsive">
     <table class="table table-hover table-bordered table-striped table-dark">
@@ -130,6 +138,8 @@ if(isset($_SESSION['notify'])){
       </tbody>
     </table>
   </div>
+
+  <?php endif ?>
 </div>
 
 <?php $modal_counter = 0; ?>

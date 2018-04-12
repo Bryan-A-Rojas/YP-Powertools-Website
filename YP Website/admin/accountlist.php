@@ -247,6 +247,7 @@ if(isset($_SESSION['notify'])){
         </div>
         <div class="modal-body">
       <input type="hidden" name="account_id" value="<?php echo $user['account_id'] ?>">
+      <input type="hidden" name="change" value="user">
 
       <div class="form-group">
         <?php if($user['profile_image'] != NULL): ?>

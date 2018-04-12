@@ -24,6 +24,7 @@ require_once CLASSES . 'Notifications.php';
 		$full_address = $Database->real_escape_string($_POST['txtfulladdress']);
 		$city = $Database->real_escape_string($_POST['txtcity']);
 		$account_id = $Database->real_escape_string($_POST['account_id']);
+		$role = $Database->real_escape_string($_POST['role']);
 
 		if(empty($full_name) || empty($email)){
 			Notification::save_to_session('danger', 'Please fill up all fields!');
@@ -104,6 +105,14 @@ require_once CLASSES . 'Notifications.php';
 										  			FROM accounts
 										  			WHERE account_id = $account_id");
 
+						if($role != 'user' AND !isset($_POST['change'])){
+							$_SESSION['name'] = $full_name;
+							$_SESSION['email'] = $email;
+							Notification::save_to_session('success', 'Account Updated!');
+						    header("Location: ../admin_page.php");
+						    exit();
+						}
+						
 						Notification::save_to_session('success', 'Account Updated!');
 					    header("Location: ../accountlist.php");
 					    exit();

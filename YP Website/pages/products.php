@@ -85,7 +85,7 @@ $products_array = $products_array['products'];
     <div class="row" style="padding-left:20px; margin-top:100px;">
         <div class="col-lg-6 float-right">
         	<form action="" method="GET">
-        		<input type="text" placeholder="Search Product" name="txtsearchproduct" class="form-control" required>
+        		<input type="text" placeholder="Search Product" name="txtsearchproduct" class="form-control">
         		<!-- <select name="sortby">
         			<option value="">Sort A to Z</option>
         			<option value="">Sort Z to A</option>
@@ -97,7 +97,15 @@ $products_array = $products_array['products'];
         </div>
     </div>
     <br>
-    <!-- Columns -->
+    
+    <?php if(count($products_array) < 1): ?>
+        
+        <div class="col-lg-12">
+            <p class="unavailable-message">No Result<p>
+        </div>
+
+    <?php else: ?>
+    
     <div class="col-lg-12">
     <div class="row">
         <?php foreach ($products_array as $product): ?>
@@ -139,6 +147,8 @@ $products_array = $products_array['products'];
             </ul>
         </nav>
     </div>
+    
+    <?php endif ?>
 
 </div>
 

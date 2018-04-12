@@ -12,6 +12,7 @@ require_once CLASSES . 'Notifications.php';
 		$password = $Database->real_escape_string($_POST['txtpassword']);
 		$new_password = $Database->real_escape_string($_POST['txtnewpassword']);
 		$confirm_new_password = $Database->real_escape_string($_POST['txtconfirmnewpassword']);
+		$role = $_SESSION['role'];
 
 		$sql = "SELECT password 
 				FROM accounts 
@@ -19,15 +20,23 @@ require_once CLASSES . 'Notifications.php';
 		$result = $Database->query($sql);
 		$row = $result->fetch_assoc();
 
+		$header = '';
+
+		if($role == 'user'){
+			$header = '../../pages/user_page.php';
+		} else {
+			$header = '../../admin/admin_page.php';
+		}
+
 		if($new_password != $confirm_new_password){
 			Notification::save_to_session('danger', 'Password and confirm password is not the same!');
-			header("Location: ../../pages/user_page.php");
+			header("Location: $header");
 			exit();	
 		}
 
 		if(!password_verify($password, $row['password'])){
 			Notification::save_to_session('danger', 'Password is invalid!');
-			header("Location: ../../pages/user_page.php");
+			header("Location: $header");
 			exit();	
 		}
 
@@ -40,16 +49,16 @@ require_once CLASSES . 'Notifications.php';
 
 		if($Database->query($sql)){
 			Notification::save_to_session('success', 'Password changed!');
-			header("Location: ../../pages/user_page.php");
+			header("Location: $header");
 			exit();
 		} else {
 			Notification::save_to_session('danger', 'Oops! Please refresh the page or contact the admin');
-			header("Location: ../../pages/user_page.php");
+			header("Location: $header");
 			exit();
 		}
 		
 	} else {
 		Notification::save_to_session('danger', 'Oops! You cannot access that page');
-		header("Location: ../../pages/user_page.php");
+		header("Location: $header");
 		exit();
 	}
