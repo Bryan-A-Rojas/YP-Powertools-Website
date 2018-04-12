@@ -86,56 +86,66 @@ if(isset($_SESSION['notify'])){
     <?php endif ?>
   </div>
 
+  <?php if(count($order_history_details) < 1): ?>
+    
+    <div class="col-lg-12">
+      <p class="unavailable-message" style="background-color: darkblue; margin-bottom: 39px;">No Records<p>
+    </div>
+
+  <?php else: ?>
+
   <div class="table-responsive">
-
-  <table class="table table-hover table-bordered table-striped table-dark">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Transaction ID</th>
-
-        <?php if(!isset($_GET['account_id'])): ?>
-          <th scope="col">Account Name</th>
-        <?php endif ?>
-        
-        <th scope="col">Total Price</th>
-        <th scope="col">Payment Given</th>
-        <th scope="col">Change Given</th>
-        <th scope="col">Date of Purchase</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <?php foreach($order_history as $key => $item): ?>
-
+    <table class="table table-hover table-bordered table-striped table-dark">
+      <thead class="thead-dark">
         <tr>
-          <td style="text-align:center;"><?php echo $item['transaction_id'] ?></td>
-          
+          <th scope="col">Transaction ID</th>
+
           <?php if(!isset($_GET['account_id'])): ?>
-            <td><?php echo $item['account_name'] ?></td>
+            <th scope="col">Account Name</th>
           <?php endif ?>
           
-          <td style="color:lightgreen;"><?php echo commafy($item['total_price']) ?></td>
-          <td style="color:rgb(255, 116, 91);"><?php echo commafy($item['payment_given']) ?></td>
-          <td style="color:orange;"><?php echo commafy($item['change_given']) ?></td>
-          <td><?php echo $item['date_of_purchase'] ?></td>
-          <?php 
-              $status = strtoupper($item['status']);
-              $color = $status == "APPROVED" ? "green" : "red";
-
-              echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>$status<p></td>";
-          ?>
-          <td>
-            <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal<?php echo $modal_counter ?>" data-whatever="@mdo">Info</button>
-          </td>
+          <th scope="col">Total Price</th>
+          <th scope="col">Payment Given</th>
+          <th scope="col">Change Given</th>
+          <th scope="col">Date of Purchase</th>
+          <th scope="col">Status</th>
         </tr>
+      </thead>
+      <tbody>
+        
+        <?php foreach($order_history as $key => $item): ?>
 
-      <?php $modal_counter++ ?>
-      <?php endforeach ?>
-      
-    </tbody>
-  </table>
-</div>
+          <tr>
+            <td style="text-align:center;"><?php echo $item['transaction_id'] ?></td>
+            
+            <?php if(!isset($_GET['account_id'])): ?>
+              <td><?php echo $item['account_name'] ?></td>
+            <?php endif ?>
+            
+            <td style="color:lightgreen;"><?php echo commafy($item['total_price']) ?></td>
+            <td style="color:rgb(255, 116, 91);"><?php echo commafy($item['payment_given']) ?></td>
+            <td style="color:orange;"><?php echo commafy($item['change_given']) ?></td>
+            <td><?php echo $item['date_of_purchase'] ?></td>
+            <?php 
+                $status = strtoupper($item['status']);
+                $color = $status == "APPROVED" ? "green" : "red";
+
+                echo "<td><p style='background-color:$color;border-radius: 5px; padding:8px;text-align: center;'>$status<p></td>";
+            ?>
+            <td>
+              <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#historyModal<?php echo $modal_counter ?>" data-whatever="@mdo">Info</button>
+            </td>
+          </tr>
+
+        <?php $modal_counter++ ?>
+        <?php endforeach ?>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <?php endif ?>
+
 </div>
 
 <?php $modal_counter = 0; ?>

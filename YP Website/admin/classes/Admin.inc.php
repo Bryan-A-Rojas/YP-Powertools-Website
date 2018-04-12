@@ -79,7 +79,7 @@ class Admin{
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
 				WHERE transactions.`status` = 'approved' OR transactions.`status` = 'denied'
-				ORDER BY `date_of_purchase` ASC;";
+				ORDER BY `transactions`.`transaction_id` DESC;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -107,7 +107,7 @@ class Admin{
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
 				WHERE (transactions.`status` = 'approved' OR transactions.`status` = 'denied') AND transactions.`account_id` = $account_id
-				ORDER BY `date_of_purchase` ASC;";
+				ORDER BY `transactions`.`transaction_id` DESC;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -159,7 +159,7 @@ class Admin{
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
 				WHERE transactions.`status` = 'pending'
-				ORDER BY `date_of_purchase` ASC;";
+				ORDER BY `transactions`.`transaction_id` DESC;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -186,7 +186,7 @@ class Admin{
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
 				WHERE transactions.`status` = 'pending' AND transactions.account_id = $account_id
-				ORDER BY `date_of_purchase` ASC;";
+				ORDER BY `transactions`.`transaction_id` DESC;";
 
 		//Query sql string
 		$result = $Database->query($sql);

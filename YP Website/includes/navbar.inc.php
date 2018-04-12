@@ -33,7 +33,7 @@
             <button class="btn dropdown-toggle btn-lg" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #dc3545; color: white; margin-right: 2px;">
             <img src="../images/profile_images/<?php echo $_SESSION['profile_image']?>" width="35" height="35" alt="UserImg" style="border-radius: 50%;margin-right:2px;"> <?php echo $_SESSION['name'] ?>
                                     </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: -16px;">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="left: -60px;">
               <a class="dropdown-item" href="../pages/user_page.php"><i class="fa fa-user"></i> Profile</a> 
               <a class="dropdown-item" href="../pages/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
               <a class="dropdown-item" href="../pages/orderhistory.php"><i class="fas fa-list-alt"></i> Order History</a>
