@@ -44,6 +44,7 @@ require_once CLASSES . 'Notifications.php';
 						$_SESSION['email'] = $row['email'];
 						$_SESSION['name'] = $row['name'];
 						$_SESSION['role'] = $row['role'];
+						$_SESSION['status'] = $row['status'];
 						$_SESSION['profile_image'] = $row['profile_image'];
 
 						Notification::save_to_session('success', 'Welcome!');
