@@ -28,7 +28,8 @@ class Products{
 
 		$num_of_pages = Products::get_number_of_pages($items_per_page);
 		$offset = ($page-1) * $items_per_page; 
-		$sql = "SELECT * FROM products LIMIT $offset, $items_per_page;";
+		$sql = "SELECT * FROM products ;";
+				//LIMIT $offset, $items_per_page;";
 		$result = $Database->query($sql);
 		
 		$resultsArray['products'] = array();
@@ -60,8 +61,8 @@ class Products{
 		$offset = ($page-1) * $items_per_page; 
 		$sql = "SELECT * 
 				FROM products 
-				WHERE name LIKE '%$search%'
- 				LIMIT $offset, $items_per_page;";
+				WHERE name LIKE '%$search%';";
+ 				//LIMIT $offset, $items_per_page;";
 		$result = $Database->query($sql);
 
 		$resultsArray['products'] = array();

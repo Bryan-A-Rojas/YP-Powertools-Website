@@ -131,32 +131,32 @@ $products_array = $products_array['products'];
     </div>
 
      <!-- Pagination -->
-     <div class="row"> 
+    <!--  <div class="row"> 
         <nav aria-label="Page navigation example" class="pagination-placement">
             <ul class="pagination">
 
-                <?php for($x = 1; $x <= $page_count; $x++): ?>
+                <?php //for($x = 1; $x <= $page_count; $x++): ?>
                     
-                    <?php if((isset($_GET['page']) AND $x == $_GET['page']) OR $x == 1): ?>
+                    <?php //if((isset($_GET['page']) AND $x == $_GET['page']) OR $x == 1): ?>
 
                          <li class="page-item active">
                           <span class="page-link">
-                            <?php echo $x ?>
+                            <?php //echo $x ?>
                             <span class="sr-only">(current)</span>
                           </span>
                         </li>
                     
-                    <?php else: ?>
+                    <?php //else: ?>
 
                         <li class="page-item">
                             <a class="page-link" href="products.php?page=<?php echo $x ?>"><?php echo $x ?></a>
                         </li>
                         
-                    <?php endif ?>
-                <?php endfor ?>
+                    <?php //endif ?>
+                <?php //endfor ?>
             </ul>
         </nav>
-    </div>
+    </div> -->
     
     <?php endif ?>
 
