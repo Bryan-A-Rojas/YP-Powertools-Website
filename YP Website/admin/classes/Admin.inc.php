@@ -41,7 +41,7 @@ class Admin{
 				FROM accounts 
 				LEFT JOIN addresses
 				ON accounts.account_id = addresses.account_id
-				WHERE `role` = 'user' AND accounts.account_id = $account_id;";
+				WHERE accounts.account_id = $account_id;";
 
 		//Query sql string
 		$result = $Database->query($sql);
@@ -235,7 +235,7 @@ class Admin{
 
 		$sql = "SELECT CEILING(COUNT(*) / $items_per_page) 
 				FROM accounts 
-				WHERE role = 'user' OR role = 'admin';";
+				WHERE role = 'user';";
 		$result = $Database->query($sql);
 		$num_of_pages = (int) $result->fetch_assoc();
 
@@ -251,7 +251,7 @@ class Admin{
 				FROM accounts 
 				INNER JOIN addresses
 				ON accounts.account_id = addresses.account_id
-				WHERE name LIKE '%$search%' AND (role = 'user' OR role = 'admin')
+				WHERE name LIKE '%$search%' AND (role = 'user')
  				LIMIT $offset, $items_per_page;";
 		$result = $Database->query($sql);
 

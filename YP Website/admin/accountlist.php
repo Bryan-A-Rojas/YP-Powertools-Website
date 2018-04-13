@@ -26,14 +26,14 @@ if($_SESSION['role'] == 'admin'){
   }
 } else if($_SESSION['role'] == 'superadmin'){
   
-  // require_once ADMIN_CLASSES . 'SuperAdmin.inc.php';
-  // $Admin = new SuperAdmin($_SESSION['account_id']);
+   require_once ADMIN_CLASSES . 'SuperAdmin.inc.php';
+   $Admin = new SuperAdmin($_SESSION['account_id']);
 
-  // if(isset($_GET['search'])){
-  //   $users_array = $Admin->get_users_and_admins($pageno, $items_per_page, $_GET['txtsearch']);
-  // } else {
-  //   $users_array = $Admin->get_users_and_admins($pageno, $items_per_page);
-  // }
+  if(isset($_GET['search'])){
+    $users_array = $Admin->get_users_and_admin_per_page($pageno, $items_per_page, $_GET['txtsearch']);
+  } else {
+    $users_array = $Admin->get_users_and_admin_per_page($pageno, $items_per_page);
+  }
 } else {
   header("Location: ../pages/index.php");
   exit();
@@ -263,33 +263,33 @@ if(isset($_SESSION['notify'])){
   </div>
 
   <!-- Pagination -->
-     <div class="row"> 
+   <!--   <div class="row"> 
         <nav aria-label="Page navigation example" class="pagination-placement">
             <ul class="pagination">
 
-                <?php echo $page_count ?>
-                <?php for($x = 1; $x <= $page_count; $x++): ?>
+                <?php //echo $page_count ?>
+                <?php //for($x = 1; $x <= $page_count; $x++): ?>
                     
-                    <?php if(($x == $_GET['page'])): ?>
+                    <?php //if(($x == $_GET['page'])): ?>
 
                          <li class="page-item active">
                           <span class="page-link">
-                            <?php echo $x ?>
+                            <?php //echo $x ?>
                             <span class="sr-only">(current)</span>
                           </span>
                         </li>
                     
-                    <?php else: ?>
+                    <?php //else: ?>
 
                         <li class="page-item">
-                            <a class="page-link" href="accountlist.php?page=<?php echo $x ?>"><?php echo $x ?></a>
+                            <a class="page-link" href="accountlist.php?page=<?php //echo $x ?>"><?php //echo $x ?></a>
                         </li>
                         
-                    <?php endif ?>
-                <?php endfor ?>
+                    <?php //endif ?>
+                <?php //endfor ?>
             </ul>
         </nav>
-    </div>
+    </div> -->
 
 <?php $modal_counter = 0; ?>
 
