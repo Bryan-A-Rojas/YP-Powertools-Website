@@ -42,13 +42,13 @@ if(isset($_SESSION['notify'])){
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Angle Grinder/20180217_145912.jpg" alt="First slide">
+                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Angle Grinder/Angle_Grinder_1.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Asaki - Table Vice/20180217_154915.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Asaki - Table Vice/Table_Vice_2.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Finish Sander HT-FS 18702/20180217_150810.jpg" alt="Third slide">
+                        <img class="d-block w-100" src="../images/Joe's Pictures/Old/Finish Sander HT-FS 18702/Finish_Sander_4.jpg" alt="Third slide">
                     </div>
                 </div>
 
