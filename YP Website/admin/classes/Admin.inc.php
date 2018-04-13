@@ -251,8 +251,8 @@ class Admin{
 				FROM accounts 
 				INNER JOIN addresses
 				ON accounts.account_id = addresses.account_id
-				WHERE name LIKE '%$search%' AND (role = 'user')
- 				LIMIT $offset, $items_per_page;";
+				WHERE name LIKE '%$search%' AND (role = 'user');";
+ 				//LIMIT $offset, $items_per_page;";
 		$result = $Database->query($sql);
 
 		$resultsArray['users'] = array();
