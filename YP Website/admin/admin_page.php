@@ -59,6 +59,7 @@ if(isset($_SESSION['notify'])){
         <div class="modal-body">
 			<input type="hidden" name="account_id" value="<?php echo $_SESSION['account_id'] ?>">
       <input type="hidden" name="role" value="<?php echo $_SESSION['role'] ?>">
+      <input type="hidden" name="status" value="<?php echo $_SESSION['status'] ?>">
 
 			<div class="form-group">
 				<?php if($_SESSION['profile_image'] != NULL): ?>
