@@ -87,7 +87,7 @@ if(isset($_SESSION['role'])){
           <div class="form-row">
             <div class="col">
               <label for="Name">Full Name:</label>
-              <input type="text" name="txtfullname" class="form-control" value="<?php echo $_SESSION['name'] ?>" required>
+              <input type="text" name="txtfullname" class="form-control" value="<?php echo $_SESSION['name'] ?>" required pattern="[a-zA-Z\s]+" title="Only letters are allowed">
             </div>
           </div>
 

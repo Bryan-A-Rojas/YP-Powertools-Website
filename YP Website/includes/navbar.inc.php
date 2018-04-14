@@ -188,7 +188,7 @@
           <div class="form-row">
             <div class="col">
               <label for="Name">Full Name:</label>
-              <input type="text" name="txtfullname" class="form-control" required>
+              <input type="text" name="txtfullname" class="form-control" required pattern="[a-zA-Z\s]+" title="Only letters are allowed">
             </div>
           </div>
 
