@@ -100,8 +100,8 @@ $products_array = $products_array['products'];
 
     <?php if(count($products_array) < 1): ?>
         
-        <div class="col-lg-12">
-            <p class="unavailable-message">No Result<p>
+        <div class="col-lg-12" style="margin-top: 200px; margin-bottom: 200px;">
+            <p class="unavailable-message">No Match Found</p>
         </div>
 
     <?php else: ?>

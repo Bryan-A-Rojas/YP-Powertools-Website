@@ -29,6 +29,96 @@ class Reports{
 		return $resultsArray;
 	}
 
+	static function get_status_percentage(){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT (SELECT Count(transactions.status) 
+				         FROM transactions 
+				         WHERE transactions.status = 'approved') * 100 / (Select Count(*) From transactions) as approved
+				from transactions
+				group by transactions.status;";
+
+				//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+	   	$whole_result = array();
+	   	$whole_result['approved'] = $resultsArray[0]['approved'];
+
+	   	$sql = "SELECT (SELECT Count(transactions.status) 
+				         FROM transactions 
+				         WHERE transactions.status = 'denied') * 100 / (Select Count(*) From transactions) as denied
+				from transactions
+				group by transactions.status;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+	   	$whole_result['denied'] = $resultsArray[0]['denied'];
+
+	   	$sql = "SELECT (SELECT Count(transactions.status) 
+				         FROM transactions 
+				         WHERE transactions.status = 'pending') * 100 / (Select Count(*) From transactions) as pending
+				from transactions
+				group by transactions.status;";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+	   	$whole_result['pending'] = $resultsArray[0]['pending'];
+
+	   	return $whole_result;
+	}
+
+
+
+	static function get_unavailable_percentage(){
+		//Require database header
+		require SCRIPTS . 'dbh.inc.php';
+
+		$sql = "SELECT ((SELECT Count(Availability) FROM products WHERE availability != 'available' OR stock < 1) * 100 / (Select Count(*) From products)) as Percentage
+			From products
+			GROUP BY availability";
+
+		//Query sql string
+		$result = $Database->query($sql);
+
+		//Array to store results
+		$resultsArray = array();
+
+		//loop through information
+	    while($row = $result->fetch_assoc()) {
+	        $resultsArray[] = $row;
+	   	}
+
+		//return array
+		return $resultsArray;
+	}
+
 	static function get_monthly_sales(){
 		//Require database header
 		require SCRIPTS . 'dbh.inc.php';

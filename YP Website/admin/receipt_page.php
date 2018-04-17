@@ -65,9 +65,6 @@ require_once 'config_admin.php';
     </head>
 <body>
 
-
-
-
 <?php 
 
 require_once INCLUDES . 'navbar.inc.php';
@@ -354,6 +351,23 @@ if(isset($_SESSION['notify'])){
             </tr>
           </tbody>
         </table>
+
+        <?php if($order_history[$modal_counter]['status'] == 'denied'): ?>
+          
+          <table class="table table-hover table-bordered table-striped table-dark">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Reason for Denial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align:center;" class="unavailable-message"><?php echo $order_history[$modal_counter]['message']; ?></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <?php endif ?>
 
         <table class="table table-hover table-bordered table-light">
           <thead>

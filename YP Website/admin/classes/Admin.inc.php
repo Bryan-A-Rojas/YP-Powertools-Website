@@ -74,7 +74,7 @@ class Admin{
 
 		$sql = "SELECT `transaction_id`, `name` AS `account_name`, `total_price`, 
 						`payment_given`, (`payment_given` -`total_price`) AS `change_given` , 
-						DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`
+						DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`, transactions.`message`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
@@ -102,7 +102,7 @@ class Admin{
 
 		$sql = "SELECT `transaction_id`, `name` AS `account_name`, 
 						`total_price`, `payment_given`, (`payment_given` -`total_price`) AS `change_given` ,
-						 DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`
+						 DATE_FORMAT(`date_of_purchase`, '%M %d ,%Y %r') as `date_of_purchase`, transactions.`status`, transactions.`message`
 				FROM `transactions`
 				inner join `accounts`
 				on transactions.account_id = accounts.account_id
@@ -203,12 +203,22 @@ class Admin{
 		return $resultsArray;
 	}
 
-	function update_pending_transaction($transaction_id, $choice){
+	function update_pending_transaction($transaction_id, $choice, $message = ""){
 		require SCRIPTS . 'dbh.inc.php';
 
-		$sql = "UPDATE `transactions` 
-				SET `status`= '$choice'
-				WHERE `transaction_id` = $transaction_id;";
+		$sql = "";
+
+		if($message == ""){
+			$sql = "UPDATE `transactions` 
+					SET `status`= '$choice'
+					WHERE `transaction_id` = $transaction_id;";
+		} else {
+			$sql = "UPDATE `transactions` 
+					SET `status`= '$choice',
+						`message` = '$message'
+					WHERE `transaction_id` = $transaction_id;";
+		}
+		
 		return $Database->query($sql);
 	}
 

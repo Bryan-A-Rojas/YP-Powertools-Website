@@ -23,6 +23,12 @@ $week_title =  $weekly_sales[0]['SalesDate'] . " - " . end($weekly_sales)['Sales
 
 $sales_per_product = Reports::get_sales_per_product();
 
+$availability_per_product = Reports::get_unavailable_percentage();
+$availability_per_product = $availability_per_product[0];
+$availability_per_product['Percentage_available'] = 100 - $availability_per_product['Percentage'];
+
+$status_pie_chart_array = Reports::get_status_percentage();
+
 //Display notification if it exists
 if(isset($_SESSION['notify'])){
     require_once CLASSES . 'Notifications.php';
@@ -38,13 +44,21 @@ if(isset($_SESSION['notify'])){
 
 <div class="container" style="background-color:lightgrey">
   <div class="row" style="background-color: white">
+    <div class="col-lg-5" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
+       <canvas id="availability_per_product_pie_chart"></canvas>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-5" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
+      <canvas id="status_pie_chart"></canvas>
+    </div>
+  </div>
+  <div class="row" style="background-color: white">
     <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
        <canvas id="per_product"></canvas>
     </div>
     <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
       <canvas id="yearlyChart"></canvas>
     </div>
-    
   </div>
   <div class="row" style="background-color: white">
     <div class="col-lg-6" style="margin-bottom:30px; border: 1px solid black; border-radius: 25px;">
@@ -59,6 +73,60 @@ if(isset($_SESSION['notify'])){
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
+  var availability_per_product = document.getElementById('availability_per_product_pie_chart').getContext('2d');
+  var chart = new Chart(availability_per_product, {
+    // The type of chart we want to create
+    type: 'pie',
+    // The data for our dataset
+    data: {
+      labels: ['Available' , 'Unavailable'],
+
+      datasets: [{
+        label: "Availability Percentage",
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor:['green','red'],
+        data: ['<?php echo $availability_per_product['Percentage_available'] ?>', '<?php echo $availability_per_product['Percentage'] ?>'], 
+      }]
+    },
+
+    // Configuration options go here
+    options: {
+      title:{
+        display:true,
+        text:'Product Availability Percentage',
+        fontSize:35
+      }
+    }
+  });
+
+  var status_percentage = document.getElementById('status_pie_chart').getContext('2d');
+  var chart = new Chart(status_percentage, {
+    // The type of chart we want to create
+    type: 'pie',
+    // The data for our dataset
+    data: {
+      labels: ['Approved' , 'Denied', 'Pending'],
+
+      datasets: [{
+        label: "Percentage",
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor:['green', 'red', 'orange'],
+        data: ['<?php echo $status_pie_chart_array['approved'] ?>','<?php echo $status_pie_chart_array['denied'] ?>','<?php echo $status_pie_chart_array['pending'] ?>'], 
+      }]
+    },
+
+    // Configuration options go here
+    options: {
+      title:{
+        display:true,
+        text:'Transaction Status Percentage',
+        fontSize:35
+      }
+    }
+  });
+
+
+
   var per_product = document.getElementById('per_product').getContext('2d');
   var chart = new Chart(per_product, {
     // The type of chart we want to create

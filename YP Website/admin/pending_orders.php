@@ -224,9 +224,13 @@ if(isset($_SESSION['notify'])){
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="password">Password:</label>
+                <div class="col-sm-12">
+                  <label for="reason">Reason:</label>
+                  <input type="text" name="txtreason" class="form-control" required>
+                </div>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <label for="password">Password:</label>
+                  <input type="password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" value="<?php echo $pending_transactions[$modal_counter]['transaction_id'] ?>" name="transaction_id">
                 </div>
             </div>
@@ -253,7 +257,7 @@ if(isset($_SESSION['notify'])){
             <div class="form-group">
               <label for="password">Password:</label>
                 <div class="col-sm-6">
-                  <input type="password" placeholder="Enter Password" name="txtadminpassword" class="form-control" required>
+                  <input type="password" name="txtadminpassword" class="form-control" required>
                   <input type="hidden" value="<?php echo $pending_transactions[$modal_counter]['transaction_id'] ?>" name="transaction_id">
                 </div>
             </div>

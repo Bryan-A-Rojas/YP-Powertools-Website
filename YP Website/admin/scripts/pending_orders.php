@@ -31,7 +31,7 @@ require_once CLASSES . 'Notifications.php';
 			exit();
 		}
 
-		$Admin->update_pending_transaction($_POST['transaction_id'], 'denied');
+		$Admin->update_pending_transaction($_POST['transaction_id'], 'denied', $_POST['txtreason']);
 		Notification::save_to_session('danger', 'Transaction Denied!');
 		header("Location: ../pending_orders.php");
 		exit();
