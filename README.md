@@ -1,2 +1,2 @@
 # YP-Powertools-Website
-Made by Bryan Rojas & Phillip Martinez
+Made by Bryan Rojas & Philip Martinez
